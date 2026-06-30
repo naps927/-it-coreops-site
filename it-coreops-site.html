@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>IT-CoreOps — Studio IT &amp; cybersécurité indépendant</title>
+<meta name="description" content="IT-CoreOps conçoit des outils IT et cybersécurité automatisés pour les structures sans équipe dédiée. Découvrez Vigi-CVE et parlons de votre besoin.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='6' r='2' fill='%233D4FE0'/%3E%3Ccircle cx='6' cy='17' r='2' fill='%233D4FE0'/%3E%3Ccircle cx='18' cy='17' r='2' fill='%233D4FE0'/%3E%3Cpath d='M12 8l-4.5 7M12 8l4.5 7M8 17h8' stroke='%231B1D29' stroke-width='1.3'/%3E%3C/svg%3E" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --paper:#F5F6FA; --surface:#FFFFFF; --ink:#1B1D29; --slate:#5B5F73; --slate-light:#9296A8;
+  --line:#E3E5EE; --dark:#14151F;
+  --cobalt:#3D4FE0; --cobalt-ink:#2B3AB0; --cobalt-dim:rgba(61,79,224,.09);
+  --moss:#3D6B4F; --moss-dim:rgba(61,107,79,.12);
+  --radius-sm:4px; --radius-md:8px; --radius-lg:14px;
+  --shadow-card:0 1px 2px rgba(27,29,41,.04), 0 10px 26px -16px rgba(27,29,41,.16);
+  --font-display:'Space Grotesk',sans-serif; --font-body:'Source Serif 4',serif; --font-mono:'JetBrains Mono',monospace;
+  --container:1140px;
+  --s1:.25rem;--s2:.5rem;--s3:.75rem;--s4:1rem;--s5:1.5rem;--s6:2rem;--s7:3rem;--s8:4rem;--s9:6rem;--s10:8rem;
+  --nav-h:74px;
+}
+*,*::before,*::after{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{margin:0;font-family:var(--font-body);color:var(--ink);background:var(--paper);line-height:1.6;-webkit-font-smoothing:antialiased;}
+img,svg{display:block;max-width:100%;}
+a{color:inherit;text-decoration:none;}
+ul{list-style:none;margin:0;padding:0;}
+button{font:inherit;color:inherit;background:none;border:none;cursor:pointer;}
+h1,h2,h3,h4,p{margin:0;}
+section{scroll-margin-top:var(--nav-h);}
+.container{max-width:var(--container);margin-inline:auto;padding-inline:var(--s6);}
+.eyebrow{font-family:var(--font-mono);font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;color:var(--cobalt-ink);font-weight:500;}
+.eyebrow.on-dark{color:#8E9CFF;}
+:focus-visible{outline:2px solid var(--cobalt);outline-offset:3px;border-radius:3px;}
+.skip-link{position:absolute;left:-999px;background:var(--ink);color:#fff;padding:.75rem 1.25rem;border-radius:var(--radius-sm);z-index:200;font-family:var(--font-display);}
+.skip-link:focus{left:var(--s4);top:var(--s4);}
+.fd{font-family:var(--font-display);}
+
+/* Buttons */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;padding:.85rem 1.5rem;border-radius:var(--radius-sm);font-family:var(--font-display);font-weight:600;font-size:.95rem;transition:transform .15s ease, box-shadow .15s ease, background .15s ease, border-color .15s;white-space:nowrap;}
+.btn-primary{background:var(--cobalt);color:#fff;}
+.btn-primary:hover{transform:translateY(-1px);box-shadow:0 12px 26px -12px rgba(61,79,224,.55);}
+.btn-ghost{border:1px solid var(--line);color:var(--ink);}
+.btn-ghost:hover{border-color:var(--slate-light);background:#fff;}
+.btn-ghost-dark{border:1px solid rgba(255,255,255,.18);color:#fff;}
+.btn-ghost-dark:hover{background:rgba(255,255,255,.06);}
+.btn-small{padding:.6rem 1.1rem;font-size:.85rem;}
+
+/* Nav */
+.nav{position:sticky;top:0;z-index:100;background:rgba(245,246,250,.88);backdrop-filter:blur(10px);border-bottom:1px solid var(--line);}
+.nav-inner{height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;}
+.logo{display:flex;align-items:center;gap:.55rem;font-family:var(--font-display);font-weight:700;font-size:1.3rem;letter-spacing:.01em;}
+.logo svg{width:22px;height:22px;}
+.nav-links{display:flex;align-items:center;gap:var(--s7);}
+.nav-links a{font-family:var(--font-display);font-size:.92rem;font-weight:500;color:var(--slate);transition:color .15s;}
+.nav-links a:hover{color:var(--ink);}
+.nav-right{display:flex;align-items:center;gap:var(--s5);}
+.nav-toggle{display:none;width:40px;height:40px;align-items:center;justify-content:center;}
+.nav-toggle .icon-close{display:none;}
+.nav-toggle.is-open .icon-open{display:none;}
+.nav-toggle.is-open .icon-close{display:block;}
+
+/* Hero */
+.hero-inner{padding-block:var(--s9) var(--s8);display:grid;grid-template-columns:1fr .85fr;gap:var(--s8);align-items:center;}
+.hero h1{font-family:var(--font-display);font-weight:700;font-size:clamp(2.3rem,1.85rem + 2.2vw,3.6rem);line-height:1.05;letter-spacing:-.01em;max-width:15ch;}
+.hero p.lead{margin-top:var(--s5);font-size:clamp(1.08rem,1rem + .3vw,1.22rem);color:var(--slate);max-width:50ch;line-height:1.65;}
+.hero p.lead .ph{color:var(--cobalt-ink);font-weight:600;font-style:normal;}
+.hero-ctas{margin-top:var(--s7);display:flex;flex-wrap:wrap;gap:var(--s4);align-items:center;}
+.hero-note{margin-top:var(--s5);font-family:var(--font-mono);font-size:.76rem;color:var(--slate-light);letter-spacing:.02em;}
+
+/* Node graph */
+.graph-wrap{display:flex;align-items:center;justify-content:center;}
+.graph{width:100%;max-width:420px;}
+.node-line{stroke:var(--line);stroke-width:1.4;}
+.node-line.active{stroke:var(--moss);stroke-width:1.6;}
+.node-dot{fill:var(--surface);stroke:var(--slate-light);stroke-width:1.4;}
+.node-dot.hub{fill:var(--ink);stroke:none;}
+.node-dot.active{fill:var(--moss);stroke:none;}
+.node-pulse{fill:var(--moss);}
+.node-label{font-family:var(--font-mono);font-size:9.5px;fill:var(--slate);}
+.node-label.active{fill:var(--moss);font-weight:500;}
+
+/* Section base */
+.section{padding-block:var(--s9);}
+.section-head{max-width:60ch;margin-bottom:var(--s7);}
+.section-head h2{font-family:var(--font-display);font-weight:700;font-size:clamp(1.8rem,1.55rem + 1.2vw,2.5rem);letter-spacing:-.005em;margin-top:var(--s3);line-height:1.1;}
+.section-head p{margin-top:var(--s4);color:var(--slate);font-size:1.05rem;line-height:1.65;}
+
+/* Solutions */
+.sol-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s5);}
+.sol-card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-lg);padding:var(--s6);display:flex;flex-direction:column;}
+.sol-card.future{background:transparent;border-style:dashed;}
+.sol-status{display:flex;align-items:center;gap:.45rem;font-family:var(--font-mono);font-size:.72rem;letter-spacing:.04em;text-transform:uppercase;color:var(--moss);margin-bottom:var(--s5);}
+.sol-card.future .sol-status{color:var(--slate-light);}
+.dot{width:7px;height:7px;border-radius:50%;background:var(--moss);}
+.sol-card.future .dot{background:none;border:1.4px solid var(--slate-light);}
+.sol-card h3{font-family:var(--font-display);font-weight:700;font-size:1.35rem;}
+.sol-card p{margin-top:var(--s3);color:var(--slate);font-size:.95rem;line-height:1.6;flex:1;}
+.sol-link{margin-top:var(--s5);font-family:var(--font-display);font-weight:600;font-size:.9rem;color:var(--cobalt-ink);display:inline-flex;align-items:center;gap:.3rem;}
+.sol-link svg{width:15px;height:15px;}
+
+/* Approche */
+.approche{background:var(--dark);color:#fff;}
+.approche .section-head p{color:rgba(255,255,255,.62);}
+.principles{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s6);}
+.principle-icon{width:42px;height:42px;border:1px solid rgba(255,255,255,.18);border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;margin-bottom:var(--s5);}
+.principle-icon svg{width:20px;height:20px;color:#8E9CFF;}
+.principle h3{font-family:var(--font-display);font-weight:600;font-size:1.1rem;margin-bottom:var(--s2);}
+.principle p{color:rgba(255,255,255,.62);font-size:.92rem;line-height:1.6;}
+
+/* About */
+.about-grid{display:grid;grid-template-columns:.7fr 1.3fr;gap:var(--s8);align-items:start;}
+.avatar-box{aspect-ratio:1;border:1.4px solid var(--cobalt);border-radius:var(--radius-md);position:relative;display:flex;align-items:center;justify-content:center;background:var(--surface);}
+.avatar-box svg{width:46%;height:46%;color:var(--line);}
+.crop{position:absolute;width:14px;height:14px;}
+.crop.tl{top:-1px;left:-1px;border-top:1.4px solid var(--cobalt);border-left:1.4px solid var(--cobalt);}
+.crop.tr{top:-1px;right:-1px;border-top:1.4px solid var(--cobalt);border-right:1.4px solid var(--cobalt);}
+.crop.bl{bottom:-1px;left:-1px;border-bottom:1.4px solid var(--cobalt);border-left:1.4px solid var(--cobalt);}
+.crop.br{bottom:-1px;right:-1px;border-bottom:1.4px solid var(--cobalt);border-right:1.4px solid var(--cobalt);}
+.about-text p{font-size:1.08rem;line-height:1.75;color:var(--ink);}
+.about-text p+p{margin-top:var(--s5);}
+.about-text .ph{color:var(--cobalt-ink);font-weight:600;font-style:normal;}
+.tags{margin-top:var(--s6);display:flex;flex-wrap:wrap;gap:.6rem;}
+.tag{font-family:var(--font-mono);font-size:.76rem;padding:.4rem .8rem;border:1px solid var(--line);border-radius:99px;color:var(--slate);}
+
+/* FAQ */
+.faq-list{border-top:1px solid var(--line);max-width:52rem;}
+.faq-item{border-bottom:1px solid var(--line);}
+.faq-q{width:100%;display:flex;justify-content:space-between;align-items:center;padding-block:var(--s5);text-align:left;font-family:var(--font-display);font-weight:600;font-size:1rem;gap:var(--s4);}
+.faq-q svg{width:17px;height:17px;flex-shrink:0;color:var(--slate);transition:transform .25s ease;}
+.faq-item.open .faq-q svg{transform:rotate(180deg);color:var(--cobalt);}
+.faq-a-wrap{display:grid;grid-template-rows:0fr;transition:grid-template-rows .3s ease;}
+.faq-item.open .faq-a-wrap{grid-template-rows:1fr;}
+.faq-a-inner{overflow:hidden;}
+.faq-a-inner p{padding-bottom:var(--s5);color:var(--slate);font-size:.97rem;line-height:1.65;max-width:56ch;}
+
+/* Contact */
+.contact{background:var(--ink);color:#fff;text-align:center;}
+.contact-inner{padding-block:var(--s9);display:flex;flex-direction:column;align-items:center;}
+.contact h2{font-family:var(--font-display);font-weight:700;font-size:clamp(1.9rem,1.6rem + 1.4vw,2.8rem);max-width:20ch;}
+.contact p.sub{margin-top:var(--s4);color:rgba(255,255,255,.62);font-size:1.05rem;max-width:48ch;line-height:1.65;}
+.contact .btn{margin-top:var(--s6);}
+.contact-secondary{margin-top:var(--s4);display:flex;align-items:center;gap:var(--s3);}
+.contact-secondary a{width:38px;height:38px;border-radius:50%;border:1px solid rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;color:#fff;transition:.15s;}
+.contact-secondary a:hover{background:rgba(255,255,255,.08);}
+.contact-secondary svg{width:16px;height:16px;}
+.starter-tags{margin-top:var(--s8);display:flex;flex-wrap:wrap;gap:.6rem;justify-content:center;}
+.starter-tags span{font-family:var(--font-mono);font-size:.76rem;padding:.4rem .85rem;border:1px solid rgba(255,255,255,.16);border-radius:99px;color:rgba(255,255,255,.55);}
+
+/* Footer */
+.footer{background:var(--surface);border-top:1px solid var(--line);}
+.footer-inner{padding-block:var(--s7) var(--s6);display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:var(--s6);}
+.footer-brand p{margin-top:var(--s2);color:var(--slate);font-size:.88rem;max-width:30ch;}
+.footer-links{display:flex;gap:var(--s7);}
+.footer-col h4{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--slate-light);margin-bottom:var(--s3);}
+.footer-col li{padding-block:.3rem;}
+.footer-col a{font-size:.9rem;font-family:var(--font-display);font-weight:500;}
+.footer-col a:hover{color:var(--cobalt-ink);}
+.footer-bottom{border-top:1px solid var(--line);padding-block:var(--s5);display:flex;justify-content:space-between;font-size:.8rem;color:var(--slate-light);flex-wrap:wrap;gap:var(--s3);font-family:var(--font-mono);}
+
+/* Reveal */
+.reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease, transform .6s ease;}
+.reveal.in-view{opacity:1;transform:none;}
+
+/* Responsive */
+@media (max-width:980px){
+  .hero-inner{grid-template-columns:1fr;gap:var(--s7);}
+  .graph-wrap{order:-1;}
+  .graph{max-width:300px;}
+  .sol-grid{grid-template-columns:1fr 1fr;}
+  .principles{grid-template-columns:1fr;gap:var(--s7);}
+  .about-grid{grid-template-columns:1fr;}
+  .avatar-box{max-width:200px;}
+}
+@media (max-width:760px){
+  .nav-links{position:fixed;inset:var(--nav-h) 0 0 0;background:var(--paper);flex-direction:column;align-items:flex-start;padding:var(--s6);gap:var(--s5);transform:translateX(100%);transition:transform .25s ease;overflow-y:auto;}
+  .nav-links.is-open{transform:translateX(0);}
+  .nav-links a{font-size:1.1rem;}
+  .nav-toggle{display:flex;}
+  .nav .btn-primary{display:none;}
+  .nav-links .btn-primary{display:inline-flex;margin-top:var(--s4);}
+  .sol-grid{grid-template-columns:1fr;}
+  .footer-inner{flex-direction:column;}
+  .footer-links{gap:var(--s6);flex-wrap:wrap;}
+  .container{padding-inline:var(--s5);}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto;}
+  .reveal{opacity:1;transform:none;transition:none;}
+  animateMotion{display:none;}
+}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Aller au contenu</a>
+
+<header class="nav">
+  <div class="container nav-inner">
+    <a class="logo" href="#">
+      <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="6" r="2" fill="#3D4FE0"/><circle cx="6" cy="17" r="2" fill="#3D4FE0"/><circle cx="18" cy="17" r="2" fill="#3D4FE0"/><path d="M12 8l-4.5 7M12 8l4.5 7M8 17h8" stroke="currentColor" stroke-width="1.3"/></svg>
+      IT-COREOPS
+    </a>
+    <nav class="nav-links" id="navLinks">
+      <a href="#solutions">Solutions</a>
+      <a href="#approche">Approche</a>
+      <a href="#a-propos">À propos</a>
+      <a href="#faq">FAQ</a>
+      <a class="btn btn-primary btn-small" href="#contact">Discutons de votre besoin</a>
+    </nav>
+    <div class="nav-right">
+      <a class="btn btn-primary btn-small" href="#contact">Discutons de votre besoin</a>
+      <button class="nav-toggle" id="navToggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="navLinks">
+        <svg class="icon-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+        <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="hero">
+    <div class="container hero-inner">
+      <div>
+        <p class="eyebrow">Studio IT &amp; cybersécurité indépendant</p>
+        <h1 class="reveal">L'IT et la cybersécurité, automatisées et simplifiées.</h1>
+        <p class="lead reveal">Je suis <span class="ph">[Prénom]</span>, et je construis les outils que les petites structures n'ont jamais le temps de construire elles-mêmes — en commençant par Vigi-CVE, ma veille de vulnérabilités automatisée. Une structure, plusieurs solutions, le même principe à chaque fois.</p>
+        <div class="hero-ctas reveal">
+          <a class="btn btn-primary" href="#contact">Discutons de votre besoin</a>
+          <a class="btn btn-ghost" href="#solutions">Découvrir Vigi-CVE</a>
+        </div>
+        <p class="hero-note">RÉPONSE PERSONNELLE SOUS 24–48H · PAS DE FORMULAIRE GÉNÉRIQUE</p>
+      </div>
+      <div class="graph-wrap" aria-hidden="true">
+        <svg class="graph" viewBox="0 0 440 380">
+          <line class="node-line active" x1="220" y1="200" x2="340" y2="100"/>
+          <line class="node-line" x1="220" y1="200" x2="370" y2="260"/>
+          <line class="node-line" x1="220" y1="200" x2="180" y2="330"/>
+          <line class="node-line" x1="220" y1="200" x2="80" y2="130"/>
+          <circle class="node-pulse" r="3.4"><animateMotion dur="2.6s" repeatCount="indefinite" path="M220,200 L340,100"/></circle>
+          <circle class="node-dot hub" cx="220" cy="200" r="9"/>
+          <text class="node-label" x="220" y="222" text-anchor="middle">IT-COREOPS</text>
+          <circle class="node-dot active" cx="340" cy="100" r="7"/>
+          <text class="node-label active" x="340" y="84" text-anchor="middle">VIGI-CVE · ACTIF</text>
+          <circle class="node-dot" cx="370" cy="260" r="6" stroke-dasharray="2 2"/>
+          <circle class="node-dot" cx="180" cy="330" r="6" stroke-dasharray="2 2"/>
+          <text class="node-label" x="180" y="352" text-anchor="middle">À VENIR</text>
+          <circle class="node-dot" cx="80" cy="130" r="6" stroke-dasharray="2 2"/>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="solutions">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="eyebrow">Solutions</p>
+        <h2>Une structure, plusieurs outils.</h2>
+        <p>IT-CoreOps est pensée pour grandir produit par produit. Aujourd'hui, une solution en production — d'autres en réflexion.</p>
+      </div>
+      <div class="sol-grid">
+        <div class="sol-card reveal">
+          <p class="sol-status"><span class="dot"></span>Actif</p>
+          <h3>Vigi-CVE</h3>
+          <p>Veille automatisée des vulnérabilités (CVE) qui touchent votre stack logicielle. Une alerte claire dès qu'une faille critique vous concerne, sans avoir à surveiller vous-même les bases de données de sécurité.</p>
+          <a class="sol-link" href="#">Voir Vigi-CVE <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        </div>
+        <div class="sol-card future reveal">
+          <p class="sol-status"><span class="dot"></span>À venir</p>
+          <h3>Prochaine solution</h3>
+          <p>De nouveaux outils d'automatisation IT et cybersécurité sont en cours de réflexion, dans la continuité de Vigi-CVE.</p>
+        </div>
+        <div class="sol-card future reveal">
+          <p class="sol-status"><span class="dot"></span>Sur mesure</p>
+          <h3>Votre besoin spécifique</h3>
+          <p>Un sujet IT ou cybersécurité vous prend du temps et n'a pas encore de solution toute faite ? C'est exactement ce dont IT-CoreOps aime discuter.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section approche" id="approche">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="eyebrow on-dark">Approche</p>
+        <h2>Automatiser ce qui prend du temps. Simplifier ce qui est compliqué.</h2>
+      </div>
+      <div class="principles">
+        <div class="principle reveal">
+          <div class="principle-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.2"/><path d="M5 20c.8-3.6 3.6-5.5 7-5.5s6.2 1.9 7 5.5"/></svg></div>
+          <h3>Construit pour ceux qui n'ont pas d'équipe IT</h3>
+          <p>Vous n'avez pas besoin d'être informaticien pour vous en servir — c'est tout le travail que je fais en amont, justement pour ça.</p>
+        </div>
+        <div class="principle reveal">
+          <div class="principle-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 13a7.6 7.6 0 0 0 0-2l2-1.5-2-3.4-2.3.7a7.6 7.6 0 0 0-1.7-1L15 3h-4l-.4 2.3a7.6 7.6 0 0 0-1.7 1l-2.3-.7-2 3.4L6.6 11a7.6 7.6 0 0 0 0 2l-2 1.5 2 3.4 2.3-.7a7.6 7.6 0 0 0 1.7 1L11 21h4l.4-2.3a7.6 7.6 0 0 0 1.7-1l2.3.7 2-3.4-2-1.5z"/></svg></div>
+          <h3>Automatisé par défaut</h3>
+          <p>Si une tâche peut tourner toute seule, elle tourne toute seule. Le temps gagné, c'est l'objectif.</p>
+        </div>
+        <div class="principle reveal">
+          <div class="principle-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+          <h3>Une vraie personne au bout du fil</h3>
+          <p>Pas de support générique. Quand vous écrivez, vous parlez directement à la personne qui construit l'outil.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="a-propos">
+    <div class="container about-grid">
+      <div class="reveal">
+        <div class="avatar-box">
+          <span class="crop tl"></span><span class="crop tr"></span><span class="crop bl"></span><span class="crop br"></span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21c1-4.5 4.5-7 8-7s7 2.5 8 7"/></svg>
+        </div>
+      </div>
+      <div class="about-text reveal">
+        <p class="eyebrow">À propos</p>
+        <h2 class="fd" style="font-size:clamp(1.8rem,1.55rem + 1.2vw,2.5rem);font-weight:700;margin-top:var(--s3);margin-bottom:var(--s5);line-height:1.1;">Qui est derrière IT-CoreOps.</h2>
+        <p>Je m'appelle <span class="ph">[Prénom Nom]</span>. Après <span class="ph">[X années]</span> à <span class="ph">[gérer l'IT de PME / travailler en cybersécurité — à préciser]</span>, j'ai commencé à construire les outils que j'aurais aimé avoir : simples, automatisés, pensés pour des équipes qui n'ont pas de DSI.</p>
+        <p>IT-CoreOps, c'est cette idée mise en structure — une base commune pour tous ces outils, en commençant par Vigi-CVE. Pas une grosse équipe, pas un centre d'appel : juste quelqu'un qui construit, et qui répond.</p>
+        <div class="tags">
+          <span class="tag">Cybersécurité</span>
+          <span class="tag">Automatisation IT</span>
+          <span class="tag">[Votre spécialité]</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="faq">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="eyebrow">Questions fréquentes</p>
+        <h2>Ce qu'on me demande le plus souvent.</h2>
+      </div>
+      <div class="faq-list reveal">
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">Vigi-CVE convient à quel type d'entreprise ?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <div class="faq-a-wrap"><div class="faq-a-inner"><p>Principalement des PME sans équipe sécurité dédiée, qui veulent être informées des vulnérabilités critiques sans surveiller elles-mêmes les bases de données CVE.</p></div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">Travaillez-vous aussi sur des besoins sur mesure ?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <div class="faq-a-wrap"><div class="faq-a-inner"><p>Oui. IT-CoreOps existe justement pour ça — si Vigi-CVE ne couvre pas votre besoin, écrivez-moi et on regarde ensemble ce qui est possible.</p></div></div>
+        </div>
+        <div class="faq-item">
+          <button class="faq-q" aria-expanded="false">Comment se passe un premier échange ?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+          <div class="faq-a-wrap"><div class="faq-a-inner"><p>Un message, un échange de 20-30 minutes pour comprendre votre contexte, et un retour honnête sur si et comment je peux aider. Pas de discours commercial.</p></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact" id="contact">
+    <div class="container contact-inner">
+      <h2 class="reveal">Vous avez un besoin IT ou cybersécurité ? Parlons-en.</h2>
+      <p class="sub reveal">Que ce soit pour Vigi-CVE, un besoin spécifique, ou juste une question — écrivez-moi directement. Je réponds personnellement, sous 24 à 48h.</p>
+      <a class="btn btn-primary reveal" href="mailto:bonjour@it-coreops.io">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+        Envoyer un message
+      </a>
+      <div class="contact-secondary reveal">
+        <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.76-2.05 4.02 0 4.76 2.65 4.76 6.1V21h-4v-5.6c0-1.34-.02-3.06-1.87-3.06-1.87 0-2.16 1.46-2.16 2.97V21H9z"/></svg></a>
+      </div>
+      <div class="starter-tags reveal">
+        <span>Veille CVE</span>
+        <span>Automatisation IT</span>
+        <span>Audit sécurité</span>
+        <span>Un autre besoin</span>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="footer">
+  <div class="container footer-inner">
+    <div class="footer-brand">
+      <a class="logo" href="#">
+        <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="6" r="2" fill="#3D4FE0"/><circle cx="6" cy="17" r="2" fill="#3D4FE0"/><circle cx="18" cy="17" r="2" fill="#3D4FE0"/><path d="M12 8l-4.5 7M12 8l4.5 7M8 17h8" stroke="currentColor" stroke-width="1.3"/></svg>
+        IT-COREOPS
+      </a>
+      <p>Studio IT &amp; cybersécurité indépendant.</p>
+    </div>
+    <div class="footer-links">
+      <div class="footer-col">
+        <h4>Aller à</h4>
+        <ul>
+          <li><a href="#solutions">Solutions</a></li>
+          <li><a href="#approche">Approche</a></li>
+          <li><a href="#a-propos">À propos</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Légal</h4>
+        <ul>
+          <li><a href="#">Mentions légales</a></li>
+          <li><a href="#">Confidentialité</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="container footer-bottom">
+    <span>© 2026 IT-CoreOps</span>
+    <span>bonjour@it-coreops.io</span>
+  </div>
+</footer>
+
+<script>
+const navToggle = document.getElementById('navToggle');
+const navLinks = document.getElementById('navLinks');
+navToggle.addEventListener('click', () => {
+  const isOpen = navLinks.classList.toggle('is-open');
+  navToggle.classList.toggle('is-open', isOpen);
+  navToggle.setAttribute('aria-expanded', String(isOpen));
+  navToggle.setAttribute('aria-label', isOpen ? 'Fermer le menu' : 'Ouvrir le menu');
+});
+navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
+  navLinks.classList.remove('is-open');
+  navToggle.classList.remove('is-open');
+  navToggle.setAttribute('aria-expanded', 'false');
+}));
+
+document.querySelectorAll('.faq-item').forEach(item => {
+  const btn = item.querySelector('.faq-q');
+  btn.addEventListener('click', () => {
+    const isOpen = item.classList.toggle('open');
+    btn.setAttribute('aria-expanded', String(isOpen));
+  });
+});
+
+const revealEls = document.querySelectorAll('.reveal');
+if ('IntersectionObserver' in window) {
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('in-view');
+        io.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+  revealEls.forEach(el => io.observe(el));
+} else {
+  revealEls.forEach(el => el.classList.add('in-view'));
+}
+</script>
+</body>
+</html>
