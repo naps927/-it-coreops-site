@@ -58,6 +58,8 @@ section{scroll-margin-top:var(--nav-h);}
 .nav-links a{font-family:var(--font-display);font-size:.92rem;font-weight:500;color:var(--slate);transition:color .15s;}
 .nav-links a:hover{color:var(--ink);}
 .nav-right{display:flex;align-items:center;gap:var(--s5);}
+.nav-right .btn-primary,.nav-links .btn-primary{background:#fff;color:var(--cobalt);border:1.5px solid var(--cobalt);}
+.nav-right .btn-primary:hover,.nav-links .btn-primary:hover{background:var(--cobalt-dim);}
 .nav-toggle{display:none;width:40px;height:40px;align-items:center;justify-content:center;}
 .nav-toggle .icon-close{display:none;}
 .nav-toggle.is-open .icon-open{display:none;}
@@ -186,7 +188,7 @@ section{scroll-margin-top:var(--nav-h);}
   .nav-links.is-open{transform:translateX(0);}
   .nav-links a{font-size:1.1rem;}
   .nav-toggle{display:flex;}
-  .nav .btn-primary{display:none;}
+  .nav-right .btn-primary{display:none;}
   .nav-links .btn-primary{display:inline-flex;margin-top:var(--s4);}
   .sol-grid{grid-template-columns:1fr;}
   .footer-inner{flex-direction:column;}
@@ -368,7 +370,7 @@ section{scroll-margin-top:var(--nav-h);}
         Envoyer un message
       </a>
       <div class="contact-secondary reveal">
-        <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.76-2.05 4.02 0 4.76 2.65 4.76 6.1V21h-4v-5.6c0-1.34-.02-3.06-1.87-3.06-1.87 0-2.16 1.46-2.16 2.97V21H9z"/></svg></a>
+        <a href="https://www.linkedin.com/in/nabil-yagoubi-768b7b231/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.76-2.05 4.02 0 4.76 2.65 4.76 6.1V21h-4v-5.6c0-1.34-.02-3.06-1.87-3.06-1.87 0-2.16 1.46-2.16 2.97V21H9z"/></svg></a>
       </div>
       <div class="starter-tags reveal">
         <span>Veille CVE</span>
