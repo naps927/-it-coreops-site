@@ -123,6 +123,12 @@ section{scroll-margin-top:var(--nav-h);}
 .sol-card:hover .sol-link{gap:.55rem;}
 .sol-card:hover .sol-link svg{transform:translateX(2px);}
 
+/* Démo vidéo */
+.demo .section-head{text-align:center;margin-inline:auto;}
+.demo .section-head .eyebrow{justify-content:center;}
+.video-frame{position:relative;max-width:900px;margin:0 auto;border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow-card);background:var(--dark);aspect-ratio:16/9;}
+.video-frame video{width:100%;height:100%;display:block;object-fit:cover;background:var(--dark);}
+
 /* Approche */
 .approche{position:relative;overflow:hidden;background:radial-gradient(100% 120% at 85% 0%,#1c1f30,var(--dark) 55%);color:#fff;}
 .approche::before{content:"";position:absolute;top:-20%;left:-10%;width:480px;height:480px;background:radial-gradient(circle,rgba(61,79,224,.22),transparent 70%);pointer-events:none;}
@@ -245,6 +251,7 @@ section{scroll-margin-top:var(--nav-h);}
     </a>
     <nav class="nav-links" id="navLinks">
       <a href="#solutions">Solutions</a>
+      <a href="#demo">Démo</a>
       <a href="#approche">Approche</a>
       <a href="#a-propos">À propos</a>
       <a href="#faq">FAQ</a>
@@ -327,6 +334,22 @@ section{scroll-margin-top:var(--nav-h);}
           <h3>Votre besoin spécifique</h3>
           <p>Un sujet IT ou cybersécurité vous prend du temps et n'a pas encore de solution toute faite ? C'est exactement ce dont IT-CoreOps aime discuter.</p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section demo" id="demo">
+    <div class="container">
+      <div class="section-head reveal">
+        <p class="eyebrow">Démo</p>
+        <h2>Vigi-CVE en action.</h2>
+        <p>Quelques minutes pour voir concrètement comment Vigi-CVE surveille vos vulnérabilités et vous alerte, sans jargon.</p>
+      </div>
+      <div class="video-frame reveal">
+        <video controls preload="none" poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 900'%3E%3Crect width='1600' height='900' fill='%2314151F'/%3E%3Ccircle cx='800' cy='415' r='66' fill='%233D4FE0'/%3E%3Cpath d='M785 385 L843 415 L785 445 Z' fill='%23ffffff'/%3E%3Ctext x='800' y='560' fill='%238E9CFF' font-family='monospace' font-size='30' letter-spacing='6' text-anchor='middle'%3EVIGI-CVE EN ACTION%3C/text%3E%3C/svg%3E">
+          <source src="assets/vigi-cve-demo.mp4" type="video/mp4">
+          Votre navigateur ne peut pas lire cette vidéo. <a href="assets/vigi-cve-demo.mp4">Télécharger la vidéo</a>.
+        </video>
       </div>
     </div>
   </section>
