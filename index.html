@@ -76,7 +76,7 @@ section{scroll-margin-top:var(--nav-h);}
 .hero{position:relative;overflow:hidden;}
 .hero::before{content:"";position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:44px 44px;opacity:.5;-webkit-mask-image:radial-gradient(120% 90% at 78% 22%,#000 0%,transparent 62%);mask-image:radial-gradient(120% 90% at 78% 22%,#000 0%,transparent 62%);pointer-events:none;}
 .hero::after{content:"";position:absolute;top:-18%;right:-8%;width:560px;height:560px;background:radial-gradient(circle,rgba(61,79,224,.16),transparent 68%);filter:blur(6px);pointer-events:none;}
-.hero-inner{position:relative;z-index:1;padding-block:var(--s7) var(--s8);display:grid;grid-template-columns:1fr .85fr;gap:var(--s8);align-items:center;}
+.hero-inner{position:relative;z-index:1;padding-block:var(--s6) var(--s7);display:grid;grid-template-columns:1fr .85fr;gap:var(--s8);align-items:center;}
 .hero h1{font-family:var(--font-display);font-weight:700;font-size:clamp(2.3rem,1.85rem + 2.2vw,3.6rem);line-height:1.05;letter-spacing:-.01em;max-width:15ch;}
 .hero p.lead{margin-top:var(--s5);font-size:clamp(1.08rem,1rem + .3vw,1.22rem);color:var(--slate);max-width:50ch;line-height:1.65;}
 .hero p.lead .ph{color:var(--cobalt-ink);font-weight:600;font-style:normal;}
@@ -96,7 +96,7 @@ section{scroll-margin-top:var(--nav-h);}
 .node-label.active{fill:var(--moss);font-weight:500;}
 
 /* Section base */
-.section{padding-block:var(--s8);}
+.section{padding-block:var(--s7);}
 .section-head{max-width:60ch;margin-bottom:var(--s7);}
 .section-head h2{font-family:var(--font-display);font-weight:700;font-size:clamp(1.8rem,1.55rem + 1.2vw,2.5rem);letter-spacing:-.005em;margin-top:var(--s3);line-height:1.1;}
 .section-head p{margin-top:var(--s4);color:var(--slate);font-size:1.05rem;line-height:1.65;}
@@ -121,12 +121,6 @@ section{scroll-margin-top:var(--nav-h);}
 .sol-link svg{width:15px;height:15px;transition:transform .2s ease;}
 .sol-card:hover .sol-link{gap:.55rem;}
 .sol-card:hover .sol-link svg{transform:translateX(2px);}
-
-/* Démo vidéo */
-.demo .section-head{text-align:center;margin-inline:auto;}
-.demo .section-head .eyebrow{justify-content:center;}
-.video-frame{position:relative;max-width:900px;margin:0 auto;border-radius:var(--radius-lg);overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow-card);background:var(--dark);aspect-ratio:16/9;}
-.video-frame video{width:100%;height:100%;display:block;object-fit:cover;background:var(--dark);}
 
 /* Approche */
 .approche{position:relative;overflow:hidden;background:radial-gradient(100% 120% at 85% 0%,#1c1f30,var(--dark) 55%);color:#fff;}
@@ -250,7 +244,6 @@ section{scroll-margin-top:var(--nav-h);}
     </a>
     <nav class="nav-links" id="navLinks">
       <a href="#solutions">Solutions</a>
-      <a href="#demo">Démo</a>
       <a href="#approche">Approche</a>
       <a href="#a-propos">À propos</a>
       <a href="#faq">FAQ</a>
@@ -332,22 +325,6 @@ section{scroll-margin-top:var(--nav-h);}
           <h3>Votre besoin spécifique</h3>
           <p>Un sujet IT ou cybersécurité vous prend du temps et n'a pas encore de solution toute faite ? C'est exactement ce dont IT-CoreOps aime discuter.</p>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section demo" id="demo">
-    <div class="container">
-      <div class="section-head reveal">
-        <p class="eyebrow">Démo</p>
-        <h2>Vigi-CVE en action.</h2>
-        <p>Quelques minutes pour voir concrètement comment Vigi-CVE surveille vos vulnérabilités et vous alerte, sans jargon.</p>
-      </div>
-      <div class="video-frame reveal">
-        <video controls preload="none" poster="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1600 900'%3E%3Crect width='1600' height='900' fill='%2314151F'/%3E%3Ccircle cx='800' cy='415' r='66' fill='%233D4FE0'/%3E%3Cpath d='M785 385 L843 415 L785 445 Z' fill='%23ffffff'/%3E%3Ctext x='800' y='560' fill='%238E9CFF' font-family='monospace' font-size='30' letter-spacing='6' text-anchor='middle'%3EVIGI-CVE EN ACTION%3C/text%3E%3C/svg%3E">
-          <source src="vigi-cve-demo.mp4" type="video/mp4">
-          Votre navigateur ne peut pas lire cette vidéo. <a href="vigi-cve-demo.mp4">Télécharger la vidéo</a>.
-        </video>
       </div>
     </div>
   </section>
