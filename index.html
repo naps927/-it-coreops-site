@@ -199,11 +199,11 @@ section{scroll-margin-top:var(--nav-h);}
 .scroll-hint svg{width:16px;height:16px;animation:nudge 1.8s ease-in-out infinite;}
 @keyframes nudge{0%,100%{transform:translateY(0);}50%{transform:translateY(4px);}}
 
-/* Visual density: render at the same scale as 90% browser zoom by default —
-   a touch larger than before for reading comfort, while keeping the layout compact.
+/* Visual density: render compact by default so the site fits comfortably at
+   the browser's normal 100% zoom (no need to zoom out manually).
    Only above the mobile breakpoint — shrinking text further on phones hurts readability. */
 @media (min-width:761px){
-  html{zoom:90%;}
+  html{zoom:67.5%;}
 }
 
 /* Responsive */
