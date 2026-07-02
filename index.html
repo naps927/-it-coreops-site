@@ -54,7 +54,6 @@ section{scroll-margin-top:var(--nav-h);}
 /* Nav */
 .nav{position:sticky;top:0;z-index:100;background:rgba(245,246,250,.72);backdrop-filter:blur(14px) saturate(1.4);border-bottom:1px solid transparent;transition:background .25s ease, border-color .25s ease, box-shadow .25s ease;}
 .nav.scrolled{background:rgba(245,246,250,.9);border-bottom-color:var(--line);box-shadow:0 6px 24px -18px rgba(27,29,41,.5);}
-.scroll-progress{position:absolute;left:0;bottom:-1px;height:2px;width:100%;transform:scaleX(0);transform-origin:left;background:linear-gradient(90deg,var(--cobalt),var(--moss));z-index:2;}
 .nav-inner{height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;}
 .logo{display:flex;align-items:center;gap:.55rem;font-family:var(--font-display);font-weight:700;font-size:1.3rem;letter-spacing:.01em;}
 .logo svg{width:22px;height:22px;}
@@ -265,7 +264,6 @@ section{scroll-margin-top:var(--nav-h);}
       </button>
     </div>
   </div>
-  <span class="scroll-progress" id="scrollProgress" aria-hidden="true"></span>
 </header>
 
 <main id="main">
@@ -502,9 +500,7 @@ document.querySelectorAll('.faq-item').forEach(item => {
 });
 
 const navEl = document.querySelector('.nav');
-const progressEl = document.getElementById('scrollProgress');
 const toTopEl = document.getElementById('toTop');
-const doc = document.documentElement;
 
 let ticking = false;
 const onScroll = () => {
@@ -514,9 +510,6 @@ const onScroll = () => {
     const y = window.scrollY;
     navEl.classList.toggle('scrolled', y > 8);
     toTopEl.classList.toggle('show', y > 600);
-    const max = doc.scrollHeight - doc.clientHeight;
-    const ratio = max > 0 ? Math.min(y / max, 1) : 0;
-    progressEl.style.transform = 'scaleX(' + ratio + ')';
     ticking = false;
   });
 };
