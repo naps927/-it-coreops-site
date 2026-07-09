@@ -1,533 +1,607 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>IT-CoreOps — Vos outils IT &amp; cybersécurité, automatisés</title>
-<meta name="description" content="IT-CoreOps conçoit des outils IT et cybersécurité automatisés pour les structures sans équipe dédiée. Découvrez Vigi-CVE et parlons de votre besoin.">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='6' r='2' fill='%233D4FE0'/%3E%3Ccircle cx='6' cy='17' r='2' fill='%233D4FE0'/%3E%3Ccircle cx='18' cy='17' r='2' fill='%233D4FE0'/%3E%3Cpath d='M12 8l-4.5 7M12 8l4.5 7M8 17h8' stroke='%231B1D29' stroke-width='1.3'/%3E%3C/svg%3E" type="image/svg+xml">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
-<style>
-:root{
-  --paper:#F5F6FA; --surface:#FFFFFF; --ink:#1B1D29; --slate:#5B5F73; --slate-light:#9296A8;
-  --line:#E3E5EE; --dark:#14151F;
-  --cobalt:#3D4FE0; --cobalt-ink:#2B3AB0; --cobalt-dim:rgba(61,79,224,.09);
-  --moss:#3D6B4F; --moss-dim:rgba(61,107,79,.12);
-  --radius-sm:4px; --radius-md:8px; --radius-lg:14px;
-  --shadow-card:0 1px 2px rgba(27,29,41,.04), 0 10px 26px -16px rgba(27,29,41,.16);
-  --font-display:'Space Grotesk',sans-serif; --font-body:'Source Serif 4',serif; --font-mono:'JetBrains Mono',monospace;
-  --container:1140px;
-  --s1:.25rem;--s2:.5rem;--s3:.75rem;--s4:1rem;--s5:1.5rem;--s6:2rem;--s7:3rem;--s8:4rem;--s9:6rem;--s10:8rem;
-  --nav-h:74px;
-}
-*,*::before,*::after{box-sizing:border-box;}
-html{scroll-behavior:smooth;}
-body{margin:0;font-family:var(--font-body);color:var(--ink);background:var(--paper);line-height:1.6;-webkit-font-smoothing:antialiased;}
-img,svg{display:block;max-width:100%;}
-a{color:inherit;text-decoration:none;}
-ul{list-style:none;margin:0;padding:0;}
-button{font:inherit;color:inherit;background:none;border:none;cursor:pointer;}
-h1,h2,h3,h4,p{margin:0;}
-section{scroll-margin-top:var(--nav-h);}
-.container{max-width:var(--container);margin-inline:auto;padding-inline:var(--s6);}
-.eyebrow{display:inline-flex;align-items:center;gap:.6rem;font-family:var(--font-mono);font-size:.74rem;letter-spacing:.1em;text-transform:uppercase;color:var(--cobalt-ink);font-weight:500;}
-.eyebrow::before{content:"";width:22px;height:1.5px;background:currentColor;opacity:.55;}
-.eyebrow.on-dark{color:#8E9CFF;}
-:focus-visible{outline:2px solid var(--cobalt);outline-offset:3px;border-radius:3px;}
-.skip-link{position:absolute;left:-999px;background:var(--ink);color:#fff;padding:.75rem 1.25rem;border-radius:var(--radius-sm);z-index:200;font-family:var(--font-display);}
-.skip-link:focus{left:var(--s4);top:var(--s4);}
-.fd{font-family:var(--font-display);}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IT-CoreOPS — Cybersécurité & Automatisation pour PMEs</title>
+  <meta name="description" content="IT-CoreOPS — Audit de sécurité, infogérance, cybersécurité réseau et outils SaaS propulsés par l'IA. Basé en France et au Maroc." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Inter:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-/* Buttons */
-.btn{position:relative;display:inline-flex;align-items:center;justify-content:center;gap:.5rem;padding:.85rem 1.5rem;border-radius:var(--radius-sm);font-family:var(--font-display);font-weight:600;font-size:.95rem;transition:transform .15s ease, box-shadow .15s ease, background .15s ease, border-color .15s;white-space:nowrap;}
-.btn:active{transform:translateY(0) scale(.99);}
-.btn-primary{background:linear-gradient(180deg,#4a5bef,var(--cobalt));color:#fff;box-shadow:0 1px 2px rgba(27,29,41,.12);}
-.btn-primary:hover{transform:translateY(-2px);box-shadow:0 14px 30px -12px rgba(61,79,224,.6);}
-.btn-ghost{border:1px solid var(--line);color:var(--ink);}
-.btn-ghost:hover{border-color:var(--slate-light);background:#fff;}
-.btn-ghost-dark{border:1px solid rgba(255,255,255,.18);color:#fff;}
-.btn-ghost-dark:hover{background:rgba(255,255,255,.06);}
-.btn-small{padding:.6rem 1.1rem;font-size:.85rem;}
+    :root {
+      --white:    #FFFFFF;
+      --black:    #09090B;
+      --violet:   #6D28D9;
+      --violet-l: #7C3AED;
+      --sky:      #0EA5E9;
+      --lavender: #F1F0FF;
+      --surface:  #FAFAFA;
+      --border:   #E4E4E7;
+      --muted:    #71717A;
+      --dark:     #18181B;
+      --grad: linear-gradient(135deg, #6D28D9 0%, #0EA5E9 100%);
+      --syne: 'Syne', sans-serif;
+      --inter: 'Inter', sans-serif;
+    }
 
-/* Nav */
-.nav{position:sticky;top:0;z-index:100;background:rgba(245,246,250,.72);backdrop-filter:blur(14px) saturate(1.4);border-bottom:1px solid transparent;transition:background .25s ease, border-color .25s ease, box-shadow .25s ease;}
-.nav.scrolled{background:rgba(245,246,250,.9);border-bottom-color:var(--line);box-shadow:0 6px 24px -18px rgba(27,29,41,.5);}
-.nav-inner{height:var(--nav-h);display:flex;align-items:center;justify-content:space-between;}
-.logo{display:flex;align-items:center;gap:.55rem;font-family:var(--font-display);font-weight:700;font-size:1.3rem;letter-spacing:.01em;}
-.logo svg{width:22px;height:22px;}
-.nav-links{display:flex;align-items:center;gap:var(--s7);}
-.nav-links .btn-primary{display:none;}
-.nav-links a:not(.btn){position:relative;font-family:var(--font-display);font-size:.92rem;font-weight:500;color:var(--slate);transition:color .15s;padding-block:.35rem;}
-.nav-links a:not(.btn)::after{content:"";position:absolute;left:0;right:0;bottom:-2px;height:2px;background:var(--cobalt);border-radius:2px;transform:scaleX(0);transform-origin:left;transition:transform .22s ease;}
-.nav-links a:not(.btn):hover{color:var(--ink);}
-.nav-links a.active{color:var(--ink);}
-.nav-links a.active::after{transform:scaleX(1);}
-.nav-right{display:flex;align-items:center;gap:var(--s5);}
-.nav-right .btn-primary,.nav-links .btn-primary{background:#fff;color:var(--cobalt);border:1.5px solid var(--cobalt);}
-.nav-right .btn-primary:hover,.nav-links .btn-primary:hover{background:var(--cobalt-dim);}
-.nav-toggle{display:none;width:40px;height:40px;align-items:center;justify-content:center;}
-.nav-toggle .icon-close{display:none;}
-.nav-toggle.is-open .icon-open{display:none;}
-.nav-toggle.is-open .icon-close{display:block;}
+    html { scroll-behavior: smooth; }
 
-/* Hero */
-.hero{position:relative;overflow:hidden;}
-.hero::before{content:"";position:absolute;inset:0;background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);background-size:44px 44px;opacity:.5;-webkit-mask-image:radial-gradient(120% 90% at 78% 22%,#000 0%,transparent 62%);mask-image:radial-gradient(120% 90% at 78% 22%,#000 0%,transparent 62%);pointer-events:none;}
-.hero::after{content:"";position:absolute;top:-18%;right:-8%;width:560px;height:560px;background:radial-gradient(circle,rgba(61,79,224,.16),transparent 68%);filter:blur(6px);pointer-events:none;}
-.hero-inner{position:relative;z-index:1;padding-block:var(--s6) var(--s7);display:grid;grid-template-columns:1fr .85fr;gap:var(--s8);align-items:center;}
-.hero h1{font-family:var(--font-display);font-weight:700;font-size:clamp(2.3rem,1.85rem + 2.2vw,3.6rem);line-height:1.05;letter-spacing:-.01em;max-width:15ch;}
-.hero p.lead{margin-top:var(--s5);font-size:clamp(1.08rem,1rem + .3vw,1.22rem);color:var(--slate);max-width:50ch;line-height:1.65;}
-.hero p.lead .ph{color:var(--cobalt-ink);font-weight:600;font-style:normal;}
-.hero-ctas{margin-top:var(--s7);display:flex;flex-wrap:wrap;gap:var(--s4);align-items:center;}
-.hero-note{margin-top:var(--s5);font-family:var(--font-mono);font-size:.76rem;color:var(--slate-light);letter-spacing:.02em;}
+    body {
+      font-family: var(--inter);
+      background: var(--white);
+      color: var(--black);
+      overflow-x: hidden;
+    }
 
-/* Node graph */
-.graph-wrap{display:flex;align-items:center;justify-content:center;}
-.graph{width:100%;max-width:420px;}
-.node-line{stroke:var(--line);stroke-width:1.4;}
-.node-line.active{stroke:var(--moss);stroke-width:1.6;}
-.node-dot{fill:var(--surface);stroke:var(--slate-light);stroke-width:1.4;}
-.node-dot.hub{fill:var(--ink);stroke:none;}
-.node-dot.active{fill:var(--moss);stroke:none;}
-.node-pulse{fill:var(--moss);}
-.node-label{font-family:var(--font-mono);font-size:9.5px;fill:var(--slate);}
-.node-label.active{fill:var(--moss);font-weight:500;}
+    /* ─── NAV ─── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem 2.5rem;
+      background: rgba(255,255,255,0.88);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+    .logo {
+      font-family: var(--syne); font-size: 1rem; font-weight: 700;
+      color: var(--black); letter-spacing: -0.02em; text-decoration: none;
+    }
+    .logo-dot { color: var(--violet); }
+    .nav-links { list-style: none; display: flex; align-items: center; gap: 2rem; }
+    .nav-links a {
+      font-size: 0.85rem; color: var(--muted); text-decoration: none; transition: color .2s;
+    }
+    .nav-links a:hover { color: var(--black); }
+    .nav-btn {
+      font-size: 0.82rem !important; font-weight: 500 !important;
+      color: var(--white) !important; background: var(--black);
+      padding: .5rem 1.25rem; border-radius: 100px; transition: opacity .2s !important;
+    }
+    .nav-btn:hover { opacity: .75; }
 
-/* Section base */
-.section{padding-block:var(--s7);}
-.section-head{max-width:60ch;margin-bottom:var(--s7);}
-.section-head h2{font-family:var(--font-display);font-weight:700;font-size:clamp(1.8rem,1.55rem + 1.2vw,2.5rem);letter-spacing:-.005em;margin-top:var(--s3);line-height:1.1;}
-.section-head p{margin-top:var(--s4);color:var(--slate);font-size:1.05rem;line-height:1.65;}
+    /* ─── HERO ─── */
+    .hero {
+      position: relative; min-height: 100vh;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      text-align: center;
+      padding: 9rem 2rem 5rem;
+      overflow: hidden;
+    }
+    .blob {
+      position: absolute; border-radius: 50%;
+      filter: blur(90px); opacity: .10; pointer-events: none;
+    }
+    .blob-1 { width:650px;height:650px;background:var(--violet);top:-120px;left:-160px;animation:d1 20s ease-in-out infinite alternate; }
+    .blob-2 { width:500px;height:500px;background:var(--sky);bottom:-80px;right:-100px;animation:d2 24s ease-in-out infinite alternate; }
+    @keyframes d1 { to { transform:translate(60px,40px); } }
+    @keyframes d2 { to { transform:translate(-50px,-30px); } }
 
-/* Solutions */
-.sol-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s5);}
-.sol-card{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius-lg);padding:var(--s6);display:flex;flex-direction:column;overflow:hidden;transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;}
-.sol-card::before{content:"";position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--cobalt),var(--moss));transform:scaleX(0);transform-origin:left;transition:transform .3s ease;}
-.sol-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-card);border-color:transparent;}
-.sol-card:hover::before{transform:scaleX(1);}
-.sol-card:not(.future){box-shadow:var(--shadow-card);}
-.sol-card:not(.future)::before{transform:scaleX(1);background:var(--moss);}
-.sol-card.future{background:transparent;border-style:dashed;}
-.sol-card.future:hover{border-style:solid;}
-.sol-status{display:flex;align-items:center;gap:.45rem;font-family:var(--font-mono);font-size:.72rem;letter-spacing:.04em;text-transform:uppercase;color:var(--moss);margin-bottom:var(--s5);}
-.sol-card.future .sol-status{color:var(--slate-light);}
-.dot{width:7px;height:7px;border-radius:50%;background:var(--moss);}
-.sol-card.future .dot{background:none;border:1.4px solid var(--slate-light);}
-.sol-card h3{font-family:var(--font-display);font-weight:700;font-size:1.35rem;}
-.sol-card p{margin-top:var(--s3);color:var(--slate);font-size:.95rem;line-height:1.6;}
-.sol-link{margin-top:auto;padding-top:var(--s5);font-family:var(--font-display);font-weight:600;font-size:.9rem;color:var(--cobalt-ink);display:inline-flex;align-items:center;gap:.3rem;transition:gap .2s ease;}
-.sol-link svg{width:15px;height:15px;transition:transform .2s ease;}
-.sol-card:hover .sol-link{gap:.55rem;}
-.sol-card:hover .sol-link svg{transform:translateX(2px);}
+    .hero-tag {
+      display: inline-flex; align-items: center; gap: .45rem;
+      font-size: .78rem; font-weight: 500; color: var(--violet);
+      background: var(--lavender); border: 1px solid rgba(109,40,217,.2);
+      padding: .3rem .9rem; border-radius: 100px; margin-bottom: 2rem;
+    }
+    .tag-dot {
+      width:6px;height:6px;border-radius:50%;background:var(--violet);
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse { 0%,100%{transform:scale(1);opacity:1} 50%{transform:scale(.7);opacity:.5} }
 
-/* Approche */
-.approche{position:relative;overflow:hidden;background:radial-gradient(100% 120% at 85% 0%,#1c1f30,var(--dark) 55%);color:#fff;}
-.approche::before{content:"";position:absolute;top:-20%;left:-10%;width:480px;height:480px;background:radial-gradient(circle,rgba(61,79,224,.22),transparent 70%);pointer-events:none;}
-.approche .container{position:relative;z-index:1;}
-.approche .section-head p{color:rgba(255,255,255,.62);}
-.principles{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--s6);}
-.principle-icon{width:46px;height:46px;border:1px solid rgba(255,255,255,.18);border-radius:var(--radius-md);display:flex;align-items:center;justify-content:center;margin-bottom:var(--s5);background:rgba(142,156,255,.06);transition:border-color .25s ease, background .25s ease, box-shadow .25s ease;}
-.principle:hover .principle-icon{border-color:rgba(142,156,255,.55);background:rgba(142,156,255,.12);box-shadow:0 0 0 4px rgba(142,156,255,.08);}
-.principle-icon svg{width:20px;height:20px;color:#8E9CFF;}
-.principle h3{font-family:var(--font-display);font-weight:600;font-size:1.1rem;margin-bottom:var(--s2);}
-.principle p{color:rgba(255,255,255,.62);font-size:.92rem;line-height:1.6;}
+    .hero h1 {
+      font-family: var(--syne);
+      font-size: clamp(2.6rem, 6vw, 5.2rem);
+      font-weight: 800; line-height: 1.07; letter-spacing: -.035em;
+      max-width: 900px; margin-bottom: 1.5rem;
+    }
+    .g { background: var(--grad); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
 
-/* About */
-.about-text{max-width:60ch;}
-.about-text p{font-size:1.08rem;line-height:1.75;color:var(--ink);}
-.about-text p+p{margin-top:var(--s5);}
-.about-text .ph{color:var(--cobalt-ink);font-weight:600;font-style:normal;}
-.tags{margin-top:var(--s6);display:flex;flex-wrap:wrap;gap:.6rem;}
-.tag{font-family:var(--font-mono);font-size:.76rem;padding:.4rem .8rem;border:1px solid var(--line);border-radius:99px;color:var(--slate);background:var(--surface);transition:border-color .2s ease, color .2s ease, background .2s ease;}
-.tag:hover{border-color:var(--cobalt);color:var(--cobalt-ink);background:var(--cobalt-dim);}
+    .hero-sub {
+      font-size: 1.1rem; color: var(--muted); max-width: 54ch;
+      line-height: 1.75; font-weight: 300; margin-bottom: 2.5rem;
+    }
+    .hero-actions { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; margin-bottom:3.5rem; }
 
-/* FAQ */
-.faq-list{border-top:1px solid var(--line);max-width:52rem;}
-.faq-item{border-bottom:1px solid var(--line);}
-.faq-q{width:100%;display:flex;justify-content:space-between;align-items:center;padding:var(--s5) var(--s4);text-align:left;font-family:var(--font-display);font-weight:600;font-size:1rem;gap:var(--s4);border-radius:var(--radius-md);transition:background .2s ease, color .2s ease;}
-.faq-q:hover{background:var(--cobalt-dim);color:var(--cobalt-ink);}
-.faq-item.open .faq-q{color:var(--cobalt-ink);}
-.faq-q svg{width:17px;height:17px;flex-shrink:0;color:var(--slate);transition:transform .25s ease;}
-.faq-item.open .faq-q svg{transform:rotate(180deg);color:var(--cobalt);}
-.faq-a-wrap{display:grid;grid-template-rows:0fr;transition:grid-template-rows .3s ease;}
-.faq-item.open .faq-a-wrap{grid-template-rows:1fr;}
-.faq-a-inner{overflow:hidden;}
-.faq-a-inner p{padding:0 var(--s4) var(--s5);color:var(--slate);font-size:.97rem;line-height:1.65;max-width:56ch;}
+    .btn-g {
+      font-size:.9rem; font-weight:500; padding:.85rem 2rem;
+      background:var(--grad); color:var(--white); border:none;
+      border-radius:100px; text-decoration:none; cursor:pointer;
+      transition:opacity .2s, transform .2s;
+      box-shadow:0 4px 20px rgba(109,40,217,.3);
+    }
+    .btn-g:hover { opacity:.88; transform:translateY(-1px); }
 
-/* Contact */
-.contact{position:relative;overflow:hidden;background:radial-gradient(120% 100% at 50% 0%,#232640,var(--ink) 60%);color:#fff;text-align:center;}
-.contact::before{content:"";position:absolute;bottom:-30%;left:50%;transform:translateX(-50%);width:680px;height:420px;background:radial-gradient(circle,rgba(61,79,224,.2),transparent 70%);pointer-events:none;}
-.contact .container{position:relative;z-index:1;}
-.contact-inner{padding-block:var(--s8);display:flex;flex-direction:column;align-items:center;}
-.contact h2{font-family:var(--font-display);font-weight:700;font-size:clamp(1.9rem,1.6rem + 1.4vw,2.8rem);max-width:20ch;}
-.contact p.sub{margin-top:var(--s4);color:rgba(255,255,255,.62);font-size:1.05rem;max-width:48ch;line-height:1.65;}
-.contact .btn{margin-top:var(--s6);}
-.contact-secondary{margin-top:var(--s4);display:flex;align-items:center;gap:var(--s3);}
-.contact-secondary a{width:38px;height:38px;border-radius:50%;border:1px solid rgba(255,255,255,.18);display:flex;align-items:center;justify-content:center;color:#fff;transition:.15s;}
-.contact-secondary a:hover{background:rgba(255,255,255,.08);}
-.contact-secondary svg{width:16px;height:16px;}
-.starter-tags{margin-top:var(--s8);display:flex;flex-wrap:wrap;gap:.6rem;justify-content:center;}
-.starter-tags span{font-family:var(--font-mono);font-size:.76rem;padding:.4rem .85rem;border:1px solid rgba(255,255,255,.16);border-radius:99px;color:rgba(255,255,255,.55);transition:border-color .2s ease, color .2s ease, background .2s ease;}
-.starter-tags span:hover{border-color:rgba(142,156,255,.6);color:#fff;background:rgba(142,156,255,.1);}
+    .btn-out {
+      font-size:.9rem; font-weight:400; padding:.85rem 2rem;
+      background:transparent; color:var(--black);
+      border:1.5px solid var(--border); border-radius:100px;
+      text-decoration:none; transition:border-color .2s, background .2s;
+    }
+    .btn-out:hover { border-color:#A1A1AA; background:var(--surface); }
 
-/* Footer */
-.footer{background:var(--surface);border-top:1px solid var(--line);}
-.footer-inner{padding-block:var(--s7) var(--s6);display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:var(--s6);}
-.footer-brand p{margin-top:var(--s2);color:var(--slate);font-size:.88rem;max-width:30ch;}
-.footer-links{display:flex;gap:var(--s7);}
-.footer-col h4{font-family:var(--font-mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--slate-light);margin-bottom:var(--s3);}
-.footer-col li{padding-block:.3rem;}
-.footer-col a{font-size:.9rem;font-family:var(--font-display);font-weight:500;color:var(--slate);transition:color .15s ease;}
-.footer-col a:hover{color:var(--cobalt-ink);}
-.footer-bottom{border-top:1px solid var(--line);padding-block:var(--s5);display:flex;justify-content:space-between;font-size:.8rem;color:var(--slate-light);flex-wrap:wrap;gap:var(--s3);font-family:var(--font-mono);}
+    .flags {
+      display:flex; gap:1.5rem; justify-content:center; flex-wrap:wrap;
+      font-size:.82rem; color:var(--muted);
+    }
+    .flag-item { display:flex; align-items:center; gap:.4rem; }
+    .flag-sep { color:var(--border); }
 
-/* Reveal */
-.reveal{opacity:0;transform:translateY(16px);transition:opacity .6s ease, transform .6s ease;}
-.reveal.in-view{opacity:1;transform:none;}
+    /* ─── SECTION SHARED ─── */
+    .section { max-width:1120px; margin:0 auto; padding:6rem 2.5rem; }
+    .eyebrow {
+      font-size:.72rem; font-weight:600; letter-spacing:.1em;
+      text-transform:uppercase; color:var(--violet); margin-bottom:.9rem;
+    }
+    .section-h {
+      font-family:var(--syne); font-size:clamp(1.8rem,3vw,2.6rem);
+      font-weight:700; letter-spacing:-.02em; line-height:1.15; margin-bottom:1rem;
+    }
+    .section-sub {
+      color:var(--muted); font-size:.95rem; line-height:1.75;
+      font-weight:300; max-width:56ch; margin-bottom:3rem;
+    }
 
-/* Back to top */
-.to-top{position:fixed;right:clamp(1rem,3vw,2rem);bottom:clamp(1rem,3vw,2rem);width:48px;height:48px;border-radius:50%;background:var(--cobalt);color:#fff;display:flex;align-items:center;justify-content:center;box-shadow:0 10px 30px -10px rgba(61,79,224,.7);opacity:0;visibility:hidden;transform:translateY(12px) scale(.9);transition:opacity .25s ease, transform .25s ease, visibility .25s;z-index:90;}
-.to-top.show{opacity:1;visibility:visible;transform:none;}
-.to-top:hover{background:var(--cobalt-ink);transform:translateY(-2px);}
-.to-top svg{width:20px;height:20px;}
+    /* ─── SERVICES ─── */
+    .services-bg { background:var(--surface); border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
 
-/* Scroll hint */
-.scroll-hint{display:inline-flex;align-items:center;gap:.5rem;margin-top:var(--s6);font-family:var(--font-mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--slate-light);}
-.scroll-hint svg{width:16px;height:16px;animation:nudge 1.8s ease-in-out infinite;}
-@keyframes nudge{0%,100%{transform:translateY(0);}50%{transform:translateY(4px);}}
+    .services-grid {
+      display:grid; grid-template-columns:repeat(2,1fr); gap:1.5rem;
+    }
+    .scard {
+      background:var(--white); border:1.5px solid var(--border);
+      border-radius:16px; padding:2rem;
+      transition:border-color .2s, box-shadow .2s, transform .2s;
+      position:relative; overflow:hidden;
+    }
+    .scard::before {
+      content:''; position:absolute; top:0;left:0;right:0; height:3px;
+      background:var(--grad); transform:scaleX(0); transform-origin:left;
+      transition:transform .3s ease;
+    }
+    .scard:hover { border-color:rgba(109,40,217,.25); box-shadow:0 8px 30px rgba(109,40,217,.07); transform:translateY(-3px); }
+    .scard:hover::before { transform:scaleX(1); }
 
-/* Visual density: render compact by default so the site fits comfortably at
-   the browser's normal 100% zoom (no need to zoom out manually).
-   Only above the mobile breakpoint — shrinking text further on phones hurts readability. */
-@media (min-width:761px){
-  html{zoom:67.5%;}
-}
+    .scard-icon { font-size:1.6rem; margin-bottom:1.25rem; }
+    .scard-title { font-family:var(--syne); font-size:1.1rem; font-weight:700; margin-bottom:.65rem; letter-spacing:-.01em; }
+    .scard-desc { font-size:.875rem; color:var(--muted); line-height:1.7; font-weight:300; margin-bottom:1.25rem; }
+    .tag-row { display:flex; flex-wrap:wrap; gap:.4rem; }
+    .stag {
+      font-size:.7rem; font-weight:500; padding:.22rem .65rem;
+      background:var(--lavender); color:var(--violet);
+      border-radius:100px; border:1px solid rgba(109,40,217,.15);
+    }
+    .stag-sky { background:#E0F2FE; color:#0369A1; border-color:rgba(14,165,233,.2); }
+    .stag-green { background:#ECFDF5; color:#059669; border-color:rgba(5,150,105,.2); }
+    .stag-amber { background:#FFFBEB; color:#B45309; border-color:rgba(245,158,11,.2); }
 
-/* Responsive */
-@media (max-width:980px){
-  .hero-inner{grid-template-columns:1fr;gap:var(--s7);}
-  .graph-wrap{order:-1;}
-  .graph{max-width:300px;}
-  .sol-grid{grid-template-columns:1fr 1fr;}
-  .principles{grid-template-columns:1fr;gap:var(--s7);}
-}
-@media (max-width:760px){
-  .nav-links{position:fixed;inset:var(--nav-h) 0 0 0;background:var(--paper);flex-direction:column;align-items:flex-start;padding:var(--s6);gap:var(--s5);transform:translateX(100%);transition:transform .25s ease;overflow-y:auto;}
-  .nav-links.is-open{transform:translateX(0);}
-  .nav-links a{font-size:1.1rem;}
-  .nav-toggle{display:flex;}
-  .nav-right .btn-primary{display:none;}
-  .nav-links .btn-primary{display:inline-flex;margin-top:var(--s4);}
-  .sol-grid{grid-template-columns:1fr;}
-  .footer-inner{flex-direction:column;}
-  .footer-links{gap:var(--s6);flex-wrap:wrap;}
-  .container{padding-inline:var(--s5);}
-}
-@media (prefers-reduced-motion:reduce){
-  html{scroll-behavior:auto;}
-  .reveal{opacity:1;transform:none;transition:none;}
-  .scroll-hint svg{animation:none;}
-  animateMotion{display:none;}
-}
-</style>
+    /* ─── IA ─── */
+    .ia-bg { background:var(--black); color:var(--white); }
+
+    .ia-inner {
+      max-width:1120px; margin:0 auto; padding:6rem 2.5rem;
+      display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:center;
+    }
+    .ia-inner .eyebrow { color:var(--sky); }
+    .ia-inner .section-h { color:var(--white); }
+    .ia-inner .section-sub { color:#A1A1AA; margin-bottom:2rem; }
+
+    .ia-pills { display:flex; flex-direction:column; gap:.75rem; }
+    .ia-pill {
+      display:flex; align-items:flex-start; gap:.9rem;
+      background:#111113; border:1px solid #27272A;
+      border-radius:12px; padding:1rem 1.25rem;
+      transition:border-color .2s;
+    }
+    .ia-pill:hover { border-color:#3F3F46; }
+    .ia-pill-icon { font-size:1.1rem; flex-shrink:0; margin-top:.1rem; }
+    .ia-pill-title { font-weight:500; font-size:.88rem; margin-bottom:.2rem; }
+    .ia-pill-desc { font-size:.8rem; color:#71717A; line-height:1.6; }
+
+    .ia-visual {
+      background:#0D0D0F; border:1px solid #27272A;
+      border-radius:16px; padding:1.5rem; position:relative; overflow:hidden;
+    }
+    .ia-visual::before {
+      content:''; position:absolute;
+      top:-60px; right:-60px; width:200px; height:200px;
+      background:radial-gradient(circle, rgba(109,40,217,.3) 0%, transparent 70%);
+    }
+    .ia-bar { margin-bottom:1rem; }
+    .ia-bar-label {
+      display:flex; justify-content:space-between;
+      font-size:.72rem; color:#71717A; margin-bottom:.4rem;
+    }
+    .ia-bar-label span:last-child { color:var(--sky); }
+    .bar-track { height:5px; background:#27272A; border-radius:3px; overflow:hidden; }
+    .bar-fill { height:100%; border-radius:3px; background:var(--grad); }
+    .ia-stat-grid { display:grid; grid-template-columns:1fr 1fr; gap:.75rem; margin-top:1.5rem; }
+    .ia-stat {
+      background:#111113; border:1px solid #27272A;
+      border-radius:10px; padding:.9rem 1rem; text-align:center;
+    }
+    .ia-stat-val {
+      font-family:var(--syne); font-size:1.4rem; font-weight:700;
+      background:var(--grad); -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent; background-clip:text;
+    }
+    .ia-stat-label { font-size:.72rem; color:#71717A; margin-top:.2rem; }
+
+    /* ─── RÉALISATIONS ─── */
+    .projects-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; }
+
+    .pcard {
+      border:1.5px solid var(--border); border-radius:16px;
+      overflow:hidden; transition:transform .2s, box-shadow .2s;
+      background:var(--white);
+    }
+    .pcard:hover { transform:translateY(-4px); box-shadow:0 12px 40px rgba(0,0,0,.08); }
+
+    .pcard-header {
+      padding:1.75rem 1.75rem 1rem;
+      display:flex; align-items:flex-start; justify-content:space-between;
+    }
+    .pcard-logo {
+      width:44px; height:44px; border-radius:10px;
+      display:flex; align-items:center; justify-content:center;
+      font-size:1.2rem; font-weight:700; font-family:var(--syne);
+    }
+    .logo-vigicve { background:var(--grad); color:var(--white); }
+    .logo-soon { background:var(--surface); color:var(--muted); font-size:.8rem; }
+
+    .pcard-badge {
+      font-size:.65rem; font-weight:600; letter-spacing:.05em;
+      padding:.22rem .65rem; border-radius:100px; text-transform:uppercase;
+    }
+    .badge-live { background:#ECFDF5; color:#059669; border:1px solid rgba(5,150,105,.2); }
+    .badge-soon { background:var(--surface); color:var(--muted); border:1px solid var(--border); }
+
+    .pcard-body { padding:0 1.75rem 1.75rem; }
+    .pcard-title { font-family:var(--syne); font-size:1.1rem; font-weight:700; margin-bottom:.5rem; letter-spacing:-.01em; }
+    .pcard-desc { font-size:.85rem; color:var(--muted); line-height:1.7; font-weight:300; margin-bottom:1.25rem; }
+    .pcard-tags { display:flex; flex-wrap:wrap; gap:.4rem; }
+
+    .pcard-link {
+      display:inline-flex; align-items:center; gap:.35rem;
+      font-size:.82rem; font-weight:500; color:var(--violet);
+      text-decoration:none; margin-top:1.25rem;
+      transition:gap .2s;
+    }
+    .pcard-link:hover { gap:.6rem; }
+
+    /* ─── CTA ─── */
+    .cta-section { padding:7rem 2.5rem; text-align:center; }
+    .cta-inner { max-width:580px; margin:0 auto; }
+    .cta-inner .section-h { margin-bottom:1rem; }
+    .cta-inner p { color:var(--muted); font-size:1rem; line-height:1.7; font-weight:300; margin-bottom:2.5rem; }
+    .cta-email {
+      display:inline-block; font-size:1rem; font-weight:500;
+      color:var(--white); background:var(--black);
+      padding:1rem 2.5rem; border-radius:100px; text-decoration:none;
+      transition:opacity .2s, transform .2s;
+      box-shadow:0 4px 24px rgba(0,0,0,.12);
+    }
+    .cta-email:hover { opacity:.82; transform:translateY(-2px); }
+    .cta-note { margin-top:1rem; font-size:.78rem; color:var(--muted); }
+
+    /* ─── FOOTER ─── */
+    footer { border-top:1px solid var(--border); padding:2rem 2.5rem; }
+    .footer-inner {
+      max-width:1120px; margin:0 auto;
+      display:flex; justify-content:space-between; align-items:center;
+    }
+    .footer-copy { font-size:.78rem; color:var(--muted); }
+    .footer-right { display:flex; gap:1.5rem; }
+    .footer-link { font-size:.78rem; color:var(--muted); text-decoration:none; transition:color .2s; }
+    .footer-link:hover { color:var(--black); }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width:960px) {
+      .nav-links { display:none; }
+      .services-grid { grid-template-columns:1fr; }
+      .ia-inner { grid-template-columns:1fr; gap:3rem; }
+      .projects-grid { grid-template-columns:1fr; }
+    }
+    @media (prefers-reduced-motion:reduce) {
+      .blob,.tag-dot { animation:none; }
+      .btn-g:hover,.cta-email:hover,.pcard:hover,.scard:hover { transform:none; }
+    }
+  </style>
 </head>
 <body>
-<a class="skip-link" href="#main">Aller au contenu</a>
 
-<header class="nav">
-  <div class="container nav-inner">
-    <a class="logo" href="#">
-      <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="6" r="2" fill="#3D4FE0"/><circle cx="6" cy="17" r="2" fill="#3D4FE0"/><circle cx="18" cy="17" r="2" fill="#3D4FE0"/><path d="M12 8l-4.5 7M12 8l4.5 7M8 17h8" stroke="currentColor" stroke-width="1.3"/></svg>
-      IT-COREOPS
+<!-- NAV -->
+<nav>
+  <a href="#" class="logo">IT-CoreOPS<span class="logo-dot">.</span></a>
+  <ul class="nav-links">
+    <li><a href="#services">Services</a></li>
+    <li><a href="solutions.html">Solutions</a></li>
+    <li><a href="#ia">IA & Automatisation</a></li>
+    <li><a href="#contact" class="nav-btn">Nous contacter</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="blob blob-1"></div>
+  <div class="blob blob-2"></div>
+
+  <div class="hero-tag">
+    <div class="tag-dot"></div>
+    Cybersécurité propulsée par l'IA
+  </div>
+
+  <h1>
+    Votre sécurité IT,<br />
+    <span class="g">automatisée et maîtrisée.</span>
+  </h1>
+
+  <p class="hero-sub">
+    Audit de sécurité, infogérance, cybersécurité réseau et outils SaaS — IT-CoreOPS protège les PMEs avec des solutions modernes propulsées par l'IA.
+  </p>
+
+  <div class="hero-actions">
+    <a href="#realisations" class="btn-g">Voir nos réalisations →</a>
+    <a href="#contact" class="btn-out">Nous contacter</a>
+  </div>
+
+  <div class="flags">
+    <div class="flag-item">🇫🇷 Basé en France</div>
+    <span class="flag-sep">·</span>
+    <div class="flag-item">🇲🇦 Présent au Maroc</div>
+    <span class="flag-sep">·</span>
+    <div class="flag-item">⚡ Réponse &lt; 24h</div>
+    <span class="flag-sep">·</span>
+    <div class="flag-item">🤖 IA-powered</div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<div class="services-bg" id="services">
+  <div class="section">
+    <div class="eyebrow">Ce qu'on fait</div>
+    <h2 class="section-h">Prestation complète,<br/>du réseau au cloud.</h2>
+    <p class="section-sub">
+      Audit, infogérance sécurisée, cybersécurité réseau, support IT — on couvre l'ensemble du périmètre technique de votre organisation.
+    </p>
+
+    <div class="services-grid">
+      <div class="scard">
+        <div class="scard-icon">🔐</div>
+        <div class="scard-title">Audit de sécurité infrastructure et code</div>
+        <div class="scard-desc">Analyse complète de votre exposition aux vulnérabilités, cartographie des risques et recommandations priorisées. Rapports clairs pour votre direction et vos clients.</div>
+        <div class="tag-row">
+          <span class="stag">Audit CVE</span>
+          <span class="stag">Pentest</span>
+          <span class="stag">Rapport RSSI</span>
+          <span class="stag">Conformité ANSSI</span>
+        </div>
+      </div>
+
+      <div class="scard">
+        <div class="scard-icon">🛡️</div>
+        <div class="scard-title">Infogérance & Cybersécurité</div>
+        <div class="scard-desc">Supervision proactive de votre infrastructure, patch management et mises à jour de sécurité. On s'occupe de tout, vous vous concentrez sur votre métier.</div>
+        <div class="tag-row">
+          <span class="stag stag-sky">Monitoring 24/7</span>
+          <span class="stag stag-sky">Patch management</span>
+          <span class="stag stag-sky">Mises à jour</span>
+          <span class="stag stag-sky">Incidents</span>
+        </div>
+      </div>
+
+      <div class="scard">
+        <div class="scard-icon">🎣</div>
+        <div class="scard-title">Campagnes de phishing interne</div>
+        <div class="scard-desc">Simulez des attaques de phishing réalistes sur vos collaborateurs pour mesurer leur niveau de vigilance. Résultats détaillés, sensibilisation ciblée et recommandations concrètes.</div>
+        <div class="tag-row">
+          <span class="stag stag-green">Simulation d'attaque</span>
+          <span class="stag stag-green">Sensibilisation</span>
+          <span class="stag stag-green">Rapport détaillé</span>
+        </div>
+      </div>
+
+      <div class="scard">
+        <div class="scard-icon">⚡</div>
+        <div class="scard-title">Support IT & Projets</div>
+        <div class="scard-desc">Support utilisateurs, migrations, déploiements et projets sur-mesure. On intervient ponctuellement ou dans la durée — sans friction, sans ticket perdu dans un portail.</div>
+        <div class="tag-row">
+          <span class="stag stag-amber">Helpdesk</span>
+          <span class="stag stag-amber">Migration</span>
+          <span class="stag stag-amber">Déploiement</span>
+          <span class="stag stag-amber">Formation</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- IA & AUTOMATISATION -->
+<div class="ia-bg" id="ia">
+  <div class="ia-inner">
+    <div>
+      <div class="eyebrow">IA & Automatisation</div>
+      <h2 class="section-h" style="color:var(--white)">Ce qui prenait<br/>des heures, en secondes.</h2>
+      <p class="section-sub" style="color:#A1A1AA;margin-bottom:2rem">
+        L'IA est au cœur de notre approche. Chaque tâche répétitive est automatisée pour que nos interventions soient plus rapides, plus précises et sans angle mort.
+      </p>
+
+      <div class="ia-pills">
+        <div class="ia-pill">
+          <div class="ia-pill-icon">🧠</div>
+          <div>
+            <div class="ia-pill-title">Corrélation intelligente des CVE</div>
+            <div class="ia-pill-desc">Notre moteur IA croise chaque nouvelle vulnérabilité avec votre inventaire en temps réel — uniquement ce qui vous concerne.</div>
+          </div>
+        </div>
+        <div class="ia-pill">
+          <div class="ia-pill-icon">⚙️</div>
+          <div>
+            <div class="ia-pill-title">Automatisation du patch management</div>
+            <div class="ia-pill-desc">Planification, application et validation des mises à jour critiques sans intervention manuelle. Tracé et documenté automatiquement.</div>
+          </div>
+        </div>
+        <div class="ia-pill">
+          <div class="ia-pill-icon">📄</div>
+          <div>
+            <div class="ia-pill-title">Reporting automatique</div>
+            <div class="ia-pill-desc">Rapports de sécurité générés automatiquement avec synthèse IA — prêts à envoyer à votre direction ou vos clients.</div>
+          </div>
+        </div>
+        <div class="ia-pill">
+          <div class="ia-pill-icon">🔔</div>
+          <div>
+            <div class="ia-pill-title">Alertes contextualisées</div>
+            <div class="ia-pill-desc">Zéro bruit. Chaque alerte est enrichie automatiquement : score de criticité, impact potentiel et action recommandée.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="ia-visual">
+      <div class="eyebrow" style="color:var(--sky);margin-bottom:1.5rem">Analyse en cours · live</div>
+
+      <div class="ia-bar">
+        <div class="ia-bar-label"><span>CVE analysées</span><span>4 238 / mois</span></div>
+        <div class="bar-track"><div class="bar-fill" style="width:92%"></div></div>
+      </div>
+      <div class="ia-bar">
+        <div class="ia-bar-label"><span>Corrélation automatique</span><span>99.4%</span></div>
+        <div class="bar-track"><div class="bar-fill" style="width:99%"></div></div>
+      </div>
+      <div class="ia-bar">
+        <div class="ia-bar-label"><span>Patches appliqués auto</span><span>87%</span></div>
+        <div class="bar-track"><div class="bar-fill" style="width:87%"></div></div>
+      </div>
+      <div class="ia-bar" style="margin-bottom:0">
+        <div class="ia-bar-label"><span>Faux positifs éliminés</span><span>96%</span></div>
+        <div class="bar-track"><div class="bar-fill" style="width:96%"></div></div>
+      </div>
+
+      <div class="ia-stat-grid">
+        <div class="ia-stat">
+          <div class="ia-stat-val">−82%</div>
+          <div class="ia-stat-label">de temps d'analyse</div>
+        </div>
+        <div class="ia-stat">
+          <div class="ia-stat-val">&lt; 1h</div>
+          <div class="ia-stat-label">détection → alerte</div>
+        </div>
+        <div class="ia-stat">
+          <div class="ia-stat-val">24/7</div>
+          <div class="ia-stat-label">surveillance continue</div>
+        </div>
+        <div class="ia-stat">
+          <div class="ia-stat-val">0</div>
+          <div class="ia-stat-label">agent à installer</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- RÉALISATIONS -->
+<div id="realisations">
+  <div class="section">
+    <div class="eyebrow">Réalisations</div>
+    <h2 class="section-h">Ce qu'on a construit.</h2>
+    <p class="section-sub">
+      Des outils SaaS nés de vrais besoins terrain. VigiCVE est notre produit phare — d'autres solutions arrivent prochainement.
+    </p>
+
+    <div class="projects-grid">
+      <div class="pcard">
+        <div class="pcard-header">
+          <div class="pcard-logo logo-vigicve">V</div>
+          <span class="pcard-badge badge-live">En ligne</span>
+        </div>
+        <div class="pcard-body">
+          <div class="pcard-title">VigiCVE</div>
+          <div class="pcard-desc">
+            Plateforme SaaS de veille et d'audit CVE pour PMEs. Surveillance en temps réel, scoring CVSS + EPSS, alertes ciblées et rapports automatiques — sans SOC interne requis.
+          </div>
+          <div class="pcard-tags">
+            <span class="stag">SaaS</span>
+            <span class="stag stag-sky">Cybersécurité</span>
+            <span class="stag stag-green">CVE / NVD</span>
+            <span class="stag stag-amber">IA</span>
+          </div>
+          <a href="https://vigi-cve.com" target="_blank" class="pcard-link">
+            Voir le produit →
+          </a>
+        </div>
+      </div>
+
+      <div class="pcard" style="opacity:.7">
+        <div class="pcard-header">
+          <div class="pcard-logo logo-soon">🔜</div>
+          <span class="pcard-badge badge-soon">Bientôt</span>
+        </div>
+        <div class="pcard-body">
+          <div class="pcard-title">Outil #2</div>
+          <div class="pcard-desc">
+            Un nouvel outil SaaS dans la suite IT-CoreOPS est en cours de développement. Inscrivez-vous pour être informé au lancement.
+          </div>
+          <div class="pcard-tags">
+            <span class="stag">À venir</span>
+            <span class="stag stag-sky">Sécurité</span>
+          </div>
+          <a href="#contact" class="pcard-link">
+            Être notifié →
+          </a>
+        </div>
+      </div>
+
+      <div class="pcard" style="opacity:.7">
+        <div class="pcard-header">
+          <div class="pcard-logo logo-soon">🔜</div>
+          <span class="pcard-badge badge-soon">Bientôt</span>
+        </div>
+        <div class="pcard-body">
+          <div class="pcard-title">Outil #3</div>
+          <div class="pcard-desc">
+            Un troisième produit est en cours de conception. Notre roadmap SaaS s'étoffe pour couvrir encore plus de besoins IT des PMEs.
+          </div>
+          <div class="pcard-tags">
+            <span class="stag">À venir</span>
+            <span class="stag stag-green">Automatisation</span>
+          </div>
+          <a href="#contact" class="pcard-link">
+            Être notifié →
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<section class="cta-section" id="contact" style="border-top:1px solid var(--border)">
+  <div class="cta-inner">
+    <div class="eyebrow">Contact</div>
+    <h2 class="section-h">Parlons de votre projet.</h2>
+    <p>Audit de sécurité, infogérance, projet IT ou démonstration de VigiCVE — écrivez-nous, on répond sous 24h.</p>
+    <a href="mailto:nabil.yagoubi@it-coreops.com" class="cta-email">
+      nabil.yagoubi@it-coreops.com
     </a>
-    <nav class="nav-links" id="navLinks">
-      <a href="#solutions">Solutions</a>
-      <a href="#approche">Approche</a>
-      <a href="#a-propos">À propos</a>
-      <a href="#faq">FAQ</a>
-      <a class="btn btn-primary btn-small" href="#contact">Discutons de votre besoin</a>
-    </nav>
-    <div class="nav-right">
-      <a class="btn btn-primary btn-small" href="#contact">Discutons de votre besoin</a>
-      <button class="nav-toggle" id="navToggle" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="navLinks">
-        <svg class="icon-open" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
-        <svg class="icon-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><line x1="6" y1="6" x2="18" y2="18"/><line x1="18" y1="6" x2="6" y2="18"/></svg>
-      </button>
-    </div>
+    <div class="cta-note">🇫🇷 France · 🇲🇦 Maroc · Réponse garantie sous 24h</div>
   </div>
-</header>
+</section>
 
-<main id="main">
-
-  <section class="hero">
-    <div class="container hero-inner">
-      <div>
-        <p class="eyebrow">Vos outils IT &amp; cybersécurité, automatisés</p>
-        <h1 class="reveal">L'IT et la cybersécurité, automatisées et simplifiées.</h1>
-        <p class="lead reveal">Je suis Nabil, et je construis les outils que les petites structures n'ont ni l'effectif ni le budget pour construire elles-mêmes, en commençant par Vigi-CVE, ma veille de vulnérabilités automatisée. Une structure, plusieurs solutions, le même principe à chaque fois.</p>
-        <div class="hero-ctas reveal">
-          <a class="btn btn-primary" href="#contact">Discutons de votre besoin</a>
-          <a class="btn btn-ghost" href="https://vigi-cve.com/" target="_blank" rel="noopener noreferrer">Découvrir Vigi-CVE</a>
-        </div>
-        <p class="hero-note">RÉPONSE PERSONNELLE SOUS 24–48H · PAS DE FORMULAIRE GÉNÉRIQUE</p>
-        <a class="scroll-hint reveal" href="#solutions" aria-label="Défiler vers les solutions">
-          Découvrir
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><polyline points="19 12 12 19 5 12"/></svg>
-        </a>
-      </div>
-      <div class="graph-wrap" aria-hidden="true">
-        <svg class="graph" viewBox="0 0 440 380">
-          <line class="node-line active" x1="220" y1="200" x2="340" y2="100"/>
-          <line class="node-line" x1="220" y1="200" x2="370" y2="260"/>
-          <line class="node-line" x1="220" y1="200" x2="180" y2="330"/>
-          <line class="node-line" x1="220" y1="200" x2="80" y2="130"/>
-          <circle class="node-pulse" r="3.4"><animateMotion dur="2.6s" repeatCount="indefinite" path="M220,200 L340,100"/></circle>
-          <circle class="node-pulse" r="2.4" opacity=".5"><animateMotion dur="3.4s" repeatCount="indefinite" path="M220,200 L80,130"/></circle>
-          <circle class="node-pulse" r="2.4" opacity=".5"><animateMotion dur="4s" repeatCount="indefinite" path="M220,200 L370,260"/></circle>
-          <circle class="node-dot hub" cx="220" cy="200" r="9">
-            <animate attributeName="r" values="9;10;9" dur="3s" repeatCount="indefinite"/>
-          </circle>
-          <text class="node-label" x="220" y="222" text-anchor="middle">IT-COREOPS</text>
-          <circle class="node-dot active" cx="340" cy="100" r="7"/>
-          <text class="node-label active" x="340" y="84" text-anchor="middle">VIGI-CVE · ACTIF</text>
-          <circle class="node-dot" cx="370" cy="260" r="6" stroke-dasharray="2 2"/>
-          <circle class="node-dot" cx="180" cy="330" r="6" stroke-dasharray="2 2"/>
-          <text class="node-label" x="180" y="352" text-anchor="middle">À VENIR</text>
-          <circle class="node-dot" cx="80" cy="130" r="6" stroke-dasharray="2 2"/>
-        </svg>
-      </div>
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <a href="#" class="logo">IT-CoreOPS<span class="logo-dot">.</span></a>
+    <div class="footer-copy">© 2026 IT-CoreOPS</div>
+    <div class="footer-right">
+      <a href="https://vigi-cve.com" target="_blank" class="footer-link">VigiCVE →</a>
+      <a href="mailto:nabil.yagoubi@it-coreops.com" class="footer-link">Contact</a>
     </div>
-  </section>
-
-  <section class="section" id="solutions">
-    <div class="container">
-      <div class="section-head reveal">
-        <p class="eyebrow">Solutions</p>
-        <h2>Une structure, plusieurs outils.</h2>
-        <p>IT-CoreOps est pensée pour grandir produit par produit. Aujourd'hui, une solution en production, d'autres en réflexion.</p>
-      </div>
-      <div class="sol-grid">
-        <div class="sol-card reveal">
-          <p class="sol-status"><span class="dot"></span>Actif</p>
-          <h3>Vigi-CVE</h3>
-          <p>Veille automatisée des vulnérabilités (CVE) qui touchent votre stack logicielle. Un scan analyse vos composants et remonte les CVE qui vous concernent, avec une alerte claire dès qu'une faille critique apparaît, sans avoir à surveiller vous-même les bases de données de sécurité.</p>
-          <a class="sol-link" href="https://vigi-cve.com/" target="_blank" rel="noopener noreferrer">Voir Vigi-CVE <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
-        </div>
-        <div class="sol-card future reveal">
-          <p class="sol-status"><span class="dot"></span>À venir</p>
-          <h3>Prochaine solution</h3>
-          <p>De nouveaux outils d'automatisation IT et cybersécurité sont en cours de réflexion, dans la continuité de Vigi-CVE.</p>
-        </div>
-        <div class="sol-card future reveal">
-          <p class="sol-status"><span class="dot"></span>Sur mesure</p>
-          <h3>Votre besoin spécifique</h3>
-          <p>Un sujet IT ou cybersécurité vous prend du temps et n'a pas encore de solution toute faite ? C'est exactement ce dont IT-CoreOps aime discuter.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section approche" id="approche">
-    <div class="container">
-      <div class="section-head reveal">
-        <p class="eyebrow on-dark">Approche</p>
-        <h2>Automatiser ce qui prend du temps. Simplifier ce qui est compliqué.</h2>
-      </div>
-      <div class="principles">
-        <div class="principle reveal">
-          <div class="principle-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="3.2"/><path d="M5 20c.8-3.6 3.6-5.5 7-5.5s6.2 1.9 7 5.5"/></svg></div>
-          <h3>Pour les équipes IT qui n'ont pas le temps, ni le budget, ni les ressources</h3>
-        </div>
-        <div class="principle reveal">
-          <div class="principle-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 13a7.6 7.6 0 0 0 0-2l2-1.5-2-3.4-2.3.7a7.6 7.6 0 0 0-1.7-1L15 3h-4l-.4 2.3a7.6 7.6 0 0 0-1.7 1l-2.3-.7-2 3.4L6.6 11a7.6 7.6 0 0 0 0 2l-2 1.5 2 3.4 2.3-.7a7.6 7.6 0 0 0 1.7 1L11 21h4l.4-2.3a7.6 7.6 0 0 0 1.7-1l2.3.7 2-3.4-2-1.5z"/></svg></div>
-          <h3>Automatisé par défaut</h3>
-          <p>Ce qui peut tourner seul tourne seul. Vous gagnez du temps.</p>
-        </div>
-        <div class="principle reveal">
-          <div class="principle-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
-          <h3>Une vraie personne, pas un support</h3>
-          <p>Vous écrivez, je réponds. Directement, sans intermédiaire.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="a-propos">
-    <div class="container">
-      <div class="about-text reveal">
-        <p class="eyebrow">À propos</p>
-        <h2 class="fd" style="font-size:clamp(1.8rem,1.55rem + 1.2vw,2.5rem);font-weight:700;margin-top:var(--s3);margin-bottom:var(--s5);line-height:1.1;">Qui est derrière IT-CoreOps.</h2>
-        <p>Je m'appelle Nabil Yagoubi. Après 3 ans d'expérience en SOC, sécurité réseaux, infrastructure cloud et on-premise, à maintenir et améliorer l'existant, j'ai commencé à construire les outils que j'aurais aimé avoir : simples, automatisés, pensés pour des équipes IT qui n'ont parfois pas le budget, les ressources ou le temps, par exemple.</p>
-        <p>IT-CoreOps, c'est cette idée mise en structure : une base commune pour tous ces outils, en commençant par Vigi-CVE. Pas une grosse équipe, pas un centre d'appel, juste quelqu'un qui construit, et qui répond.</p>
-        <div class="tags">
-          <span class="tag">Cybersécurité</span>
-          <span class="tag">Automatisation IT</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="section" id="faq">
-    <div class="container">
-      <div class="section-head reveal">
-        <p class="eyebrow">Questions fréquentes</p>
-        <h2>Ce qu'on me demande le plus souvent.</h2>
-      </div>
-      <div class="faq-list reveal">
-        <div class="faq-item">
-          <button class="faq-q" aria-expanded="false">Vigi-CVE convient à quel type d'entreprise ?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
-          <div class="faq-a-wrap"><div class="faq-a-inner"><p>Principalement des PME sans équipe sécurité dédiée, qui veulent être informées des vulnérabilités critiques sans surveiller elles-mêmes les bases de données CVE.</p></div></div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-q" aria-expanded="false">Travaillez-vous aussi sur des besoins sur mesure ?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
-          <div class="faq-a-wrap"><div class="faq-a-inner"><p>Oui. IT-CoreOps existe justement pour ça : si Vigi-CVE ne couvre pas votre besoin, écrivez-moi et on regarde ensemble ce qui est possible.</p></div></div>
-        </div>
-        <div class="faq-item">
-          <button class="faq-q" aria-expanded="false">Comment se passe un premier échange ?<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
-          <div class="faq-a-wrap"><div class="faq-a-inner"><p>Un message, un échange de 20-30 minutes pour comprendre votre contexte, et un retour honnête sur si et comment je peux aider. Pas de discours commercial.</p></div></div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="contact" id="contact">
-    <div class="container contact-inner">
-      <h2 class="reveal">Vous avez un besoin IT ou cybersécurité ? Parlons-en.</h2>
-      <p class="sub reveal">Que ce soit pour Vigi-CVE, un besoin spécifique, ou juste une question, écrivez-moi directement. Je réponds personnellement, sous 24 à 48h.</p>
-      <a class="btn btn-primary reveal" href="mailto:nabilyagoubi123@hotmail.com">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
-        Envoyer un message
-      </a>
-      <div class="contact-secondary reveal">
-        <a href="https://www.linkedin.com/in/nabil-yagoubi-768b7b231/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5zM3 9h4v12H3zM9 9h3.8v1.7h.05c.53-1 1.83-2.05 3.76-2.05 4.02 0 4.76 2.65 4.76 6.1V21h-4v-5.6c0-1.34-.02-3.06-1.87-3.06-1.87 0-2.16 1.46-2.16 2.97V21H9z"/></svg></a>
-      </div>
-      <div class="starter-tags reveal">
-        <span>Veille CVE</span>
-        <span>Automatisation IT</span>
-        <span>Audit sécurité</span>
-        <span>Un autre besoin</span>
-      </div>
-    </div>
-  </section>
-
-</main>
-
-<footer class="footer">
-  <div class="container footer-inner">
-    <div class="footer-brand">
-      <a class="logo" href="#">
-        <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="6" r="2" fill="#3D4FE0"/><circle cx="6" cy="17" r="2" fill="#3D4FE0"/><circle cx="18" cy="17" r="2" fill="#3D4FE0"/><path d="M12 8l-4.5 7M12 8l4.5 7M8 17h8" stroke="currentColor" stroke-width="1.3"/></svg>
-        IT-COREOPS
-      </a>
-      <p>Vos outils IT &amp; cybersécurité, automatisés.</p>
-    </div>
-    <div class="footer-links">
-      <div class="footer-col">
-        <h4>Aller à</h4>
-        <ul>
-          <li><a href="#solutions">Solutions</a></li>
-          <li><a href="#approche">Approche</a></li>
-          <li><a href="#a-propos">À propos</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-      </div>
-      <div class="footer-col">
-        <h4>Légal</h4>
-        <ul>
-          <li><a href="#">Mentions légales</a></li>
-          <li><a href="#">Confidentialité</a></li>
-        </ul>
-      </div>
-    </div>
-  </div>
-  <div class="container footer-bottom">
-    <span>© 2026 IT-CoreOps</span>
-    <span>nabilyagoubi123@hotmail.com</span>
   </div>
 </footer>
 
-<button class="to-top" id="toTop" aria-label="Revenir en haut de la page">
-  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
-</button>
-
-<script>
-const navToggle = document.getElementById('navToggle');
-const navLinks = document.getElementById('navLinks');
-navToggle.addEventListener('click', () => {
-  const isOpen = navLinks.classList.toggle('is-open');
-  navToggle.classList.toggle('is-open', isOpen);
-  navToggle.setAttribute('aria-expanded', String(isOpen));
-  navToggle.setAttribute('aria-label', isOpen ? 'Fermer le menu' : 'Ouvrir le menu');
-});
-navLinks.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-  navLinks.classList.remove('is-open');
-  navToggle.classList.remove('is-open');
-  navToggle.setAttribute('aria-expanded', 'false');
-}));
-
-document.querySelectorAll('.faq-item').forEach(item => {
-  const btn = item.querySelector('.faq-q');
-  btn.addEventListener('click', () => {
-    const isOpen = item.classList.toggle('open');
-    btn.setAttribute('aria-expanded', String(isOpen));
-  });
-});
-
-const navEl = document.querySelector('.nav');
-const toTopEl = document.getElementById('toTop');
-
-let ticking = false;
-const onScroll = () => {
-  if (ticking) return;
-  ticking = true;
-  requestAnimationFrame(() => {
-    const y = window.scrollY;
-    navEl.classList.toggle('scrolled', y > 8);
-    toTopEl.classList.toggle('show', y > 600);
-    ticking = false;
-  });
-};
-onScroll();
-window.addEventListener('scroll', onScroll, { passive: true });
-
-toTopEl.addEventListener('click', () => {
-  const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-  window.scrollTo({ top: 0, behavior: reduce ? 'auto' : 'smooth' });
-});
-
-// Scroll-spy: highlight the nav link for the section currently in view
-const spyLinks = [...navLinks.querySelectorAll('a:not(.btn)')];
-const sections = spyLinks
-  .map(a => document.querySelector(a.getAttribute('href')))
-  .filter(Boolean);
-if ('IntersectionObserver' in window && sections.length) {
-  const setActive = (id) => spyLinks.forEach(a => {
-    const on = a.getAttribute('href') === '#' + id;
-    a.classList.toggle('active', on);
-    if (on) a.setAttribute('aria-current', 'true'); else a.removeAttribute('aria-current');
-  });
-  const spy = new IntersectionObserver((entries) => {
-    entries.forEach(entry => { if (entry.isIntersecting) setActive(entry.target.id); });
-  }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
-  sections.forEach(s => spy.observe(s));
-}
-
-const revealEls = document.querySelectorAll('.reveal');
-if ('IntersectionObserver' in window) {
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('in-view');
-        io.unobserve(entry.target);
-      }
-    });
-  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
-  revealEls.forEach(el => io.observe(el));
-} else {
-  revealEls.forEach(el => el.classList.add('in-view'));
-}
-</script>
 </body>
 </html>

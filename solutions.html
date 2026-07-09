@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VigiCVE — Veille CVE & Audit de sécurité SaaS | IT-CoreOPS</title>
+  <meta name="description" content="VigiCVE surveille vos vulnérabilités en temps réel. Alertes CVE ciblées, scoring IA, rapports automatiques. Essai gratuit." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --white:    #FFFFFF;
+      --black:    #09090B;
+      --violet:   #6D28D9;
+      --sky:      #0EA5E9;
+      --lavender: #F1F0FF;
+      --surface:  #FAFAFA;
+      --border:   #E4E4E7;
+      --muted:    #71717A;
+      --grad: linear-gradient(135deg, #6D28D9 0%, #0EA5E9 100%);
+      --syne: 'Syne', sans-serif;
+      --inter: 'Inter', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--inter); background: var(--white); color: var(--black); overflow-x: hidden; }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1rem 2.5rem;
+      background: rgba(255,255,255,0.88); backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+    .logo { font-family: var(--syne); font-size: 1rem; font-weight: 700; color: var(--black); text-decoration: none; letter-spacing: -.02em; }
+    .logo-dot { color: var(--violet); }
+    .nav-links { list-style: none; display: flex; align-items: center; gap: 2rem; }
+    .nav-links a { font-size: .85rem; color: var(--muted); text-decoration: none; transition: color .2s; }
+    .nav-links a:hover, .nav-links a.active { color: var(--black); }
+    .nav-btn { font-size: .82rem !important; font-weight: 500 !important; color: var(--white) !important; background: var(--black); padding: .5rem 1.25rem; border-radius: 100px; transition: opacity .2s !important; }
+    .nav-btn:hover { opacity: .75; }
+
+    /* ─── BREADCRUMB ─── */
+    .breadcrumb {
+      max-width: 1120px; margin: 0 auto; padding: 5.5rem 2.5rem 0;
+      display: flex; align-items: center; gap: .5rem;
+      font-size: .78rem; color: var(--muted);
+    }
+    .breadcrumb a { color: var(--muted); text-decoration: none; transition: color .2s; }
+    .breadcrumb a:hover { color: var(--black); }
+    .breadcrumb-sep { color: var(--border); }
+    .breadcrumb-cur { color: var(--violet); font-weight: 500; }
+
+    /* ─── HERO ─── */
+    .hero {
+      max-width: 1120px; margin: 0 auto;
+      padding: 3rem 2.5rem 5rem;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 4rem; align-items: center;
+    }
+
+    .hero-left { }
+
+    .product-badge {
+      display: inline-flex; align-items: center; gap: .5rem;
+      background: var(--lavender); border: 1px solid rgba(109,40,217,.2);
+      padding: .3rem .9rem; border-radius: 100px; margin-bottom: 1.75rem;
+    }
+    .product-badge-logo {
+      width: 20px; height: 20px; border-radius: 5px;
+      background: var(--grad); display: flex; align-items: center;
+      justify-content: center; font-family: var(--syne);
+      font-size: .65rem; font-weight: 700; color: var(--white);
+    }
+    .product-badge-text { font-size: .78rem; font-weight: 500; color: var(--violet); }
+
+    .hero h1 {
+      font-family: var(--syne); font-size: clamp(2.2rem, 4vw, 3.4rem);
+      font-weight: 800; line-height: 1.1; letter-spacing: -.03em;
+      margin-bottom: 1.25rem;
+    }
+    .g { background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+
+    .hero-sub {
+      font-size: 1rem; color: var(--muted); line-height: 1.75;
+      font-weight: 300; margin-bottom: 2rem; max-width: 48ch;
+    }
+
+    .hero-actions { display: flex; gap: .75rem; flex-wrap: wrap; margin-bottom: 2rem; }
+
+    .btn-g {
+      font-size: .9rem; font-weight: 500; padding: .85rem 1.75rem;
+      background: var(--grad); color: var(--white); border: none;
+      border-radius: 100px; text-decoration: none; cursor: pointer;
+      transition: opacity .2s, transform .2s;
+      box-shadow: 0 4px 20px rgba(109,40,217,.3);
+    }
+    .btn-g:hover { opacity: .88; transform: translateY(-1px); }
+
+    .btn-out {
+      font-size: .9rem; font-weight: 400; padding: .85rem 1.75rem;
+      background: transparent; color: var(--black);
+      border: 1.5px solid var(--border); border-radius: 100px;
+      text-decoration: none; transition: border-color .2s, background .2s;
+    }
+    .btn-out:hover { border-color: #A1A1AA; background: var(--surface); }
+
+    .hero-meta { display: flex; gap: 1.25rem; flex-wrap: wrap; }
+    .hero-meta-item { display: flex; align-items: center; gap: .4rem; font-size: .78rem; color: var(--muted); }
+    .meta-dot { width: 6px; height: 6px; border-radius: 50%; background: #34D399; }
+
+    /* ─── HERO RIGHT: mock dashboard ─── */
+    .dashboard-mock {
+      background: var(--black); border-radius: 16px; overflow: hidden;
+      box-shadow: 0 24px 60px rgba(0,0,0,.2);
+    }
+    .dash-topbar {
+      display: flex; align-items: center; gap: .5rem;
+      padding: .9rem 1.25rem; background: #111113;
+      border-bottom: 1px solid #27272A;
+    }
+    .dash-dot { width: 9px; height: 9px; border-radius: 50%; }
+    .d-r { background: #FF5F57; } .d-y { background: #FFBD2E; } .d-g { background: #28CA41; }
+    .dash-title { font-size: .72rem; color: #52525B; margin: 0 auto; font-family: 'Inter', monospace; }
+    .dash-body { padding: 1.25rem; }
+    .dash-stat-row { display: grid; grid-template-columns: repeat(3,1fr); gap: .75rem; margin-bottom: 1.25rem; }
+    .dash-stat {
+      background: #111113; border: 1px solid #27272A; border-radius: 10px;
+      padding: .75rem 1rem;
+    }
+    .dash-stat-val { font-family: var(--syne); font-size: 1.3rem; font-weight: 700; }
+    .dash-stat-label { font-size: .68rem; color: #52525B; margin-top: .15rem; }
+    .red { color: #F87171; } .amber { color: #FCD34D; } .green { color: #34D399; }
+
+    .dash-section-title { font-size: .68rem; font-weight: 600; color: #52525B; letter-spacing: .06em; text-transform: uppercase; margin-bottom: .75rem; }
+
+    .cve-item {
+      display: flex; align-items: center; gap: .75rem;
+      padding: .6rem .75rem; border-radius: 8px; margin-bottom: .4rem;
+      background: #111113; border: 1px solid #27272A;
+    }
+    .cve-score {
+      font-family: var(--syne); font-size: .8rem; font-weight: 700;
+      width: 34px; text-align: center; flex-shrink: 0;
+    }
+    .cve-info { flex: 1; min-width: 0; }
+    .cve-id { font-size: .72rem; font-weight: 500; color: #E4E4E7; }
+    .cve-desc { font-size: .68rem; color: #52525B; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .cve-badge { font-size: .62rem; font-weight: 600; padding: .15rem .5rem; border-radius: 100px; flex-shrink: 0; }
+    .cb-crit { background: rgba(248,113,113,.15); color: #F87171; }
+    .cb-high { background: rgba(252,211,77,.12); color: #FCD34D; }
+    .cb-med  { background: rgba(52,211,153,.12); color: #34D399; }
+
+    /* ─── VIDEO ─── */
+    .video-section {
+      background: var(--surface); border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border); padding: 5rem 2.5rem;
+    }
+    .video-inner { max-width: 860px; margin: 0 auto; text-align: center; }
+    .eyebrow { font-size: .72rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--violet); margin-bottom: .9rem; }
+    .section-h { font-family: var(--syne); font-size: clamp(1.6rem,3vw,2.4rem); font-weight: 700; letter-spacing: -.02em; margin-bottom: 1rem; }
+    .section-sub { color: var(--muted); font-size: .95rem; line-height: 1.75; font-weight: 300; margin-bottom: 2.5rem; }
+
+    .video-placeholder {
+      position: relative; width: 100%; padding-bottom: 56.25%;
+      background: var(--black); border-radius: 16px; overflow: hidden;
+      box-shadow: 0 20px 50px rgba(0,0,0,.15); cursor: pointer;
+    }
+    .video-placeholder-inner {
+      position: absolute; inset: 0;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      background: linear-gradient(135deg, #0D0D14 0%, #0A0D18 100%);
+    }
+    .video-placeholder::before {
+      content: ''; position: absolute; inset: 0;
+      background: radial-gradient(ellipse at 30% 40%, rgba(109,40,217,.2) 0%, transparent 60%),
+                  radial-gradient(ellipse at 70% 70%, rgba(14,165,233,.15) 0%, transparent 60%);
+      z-index: 0;
+    }
+    .play-btn {
+      position: relative; z-index: 1;
+      width: 72px; height: 72px; border-radius: 50%;
+      background: rgba(255,255,255,.1); backdrop-filter: blur(8px);
+      border: 1.5px solid rgba(255,255,255,.2);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 1.25rem;
+      transition: background .2s, transform .2s;
+    }
+    .video-placeholder:hover .play-btn { background: rgba(255,255,255,.18); transform: scale(1.06); }
+    .play-icon { width: 0; height: 0; border-top: 12px solid transparent; border-bottom: 12px solid transparent; border-left: 20px solid white; margin-left: 4px; }
+    .video-label { position: relative; z-index: 1; font-size: .85rem; color: rgba(255,255,255,.5); font-weight: 300; }
+    .video-label strong { color: rgba(255,255,255,.85); font-weight: 500; display: block; margin-bottom: .2rem; }
+
+    /* ─── FEATURES ─── */
+    .features { max-width: 1120px; margin: 0 auto; padding: 6rem 2.5rem; }
+    .features-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; }
+
+    .fcard {
+      border: 1.5px solid var(--border); border-radius: 16px; padding: 1.75rem;
+      transition: border-color .2s, box-shadow .2s, transform .2s;
+      position: relative; overflow: hidden;
+    }
+    .fcard::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: var(--grad); transform: scaleX(0); transform-origin: left;
+      transition: transform .3s ease;
+    }
+    .fcard:hover { border-color: rgba(109,40,217,.25); box-shadow: 0 8px 30px rgba(109,40,217,.07); transform: translateY(-3px); }
+    .fcard:hover::before { transform: scaleX(1); }
+    .fcard-icon { font-size: 1.4rem; margin-bottom: 1rem; }
+    .fcard-title { font-family: var(--syne); font-size: 1rem; font-weight: 700; margin-bottom: .5rem; letter-spacing: -.01em; }
+    .fcard-desc { font-size: .85rem; color: var(--muted); line-height: 1.7; font-weight: 300; }
+
+    /* ─── DEVIS / CTA ─── */
+    .devis-section {
+      background: var(--black); color: var(--white); padding: 6rem 2.5rem;
+    }
+    .devis-inner {
+      max-width: 1120px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start;
+    }
+    .devis-left .eyebrow { color: var(--sky); }
+    .devis-left .section-h { color: var(--white); margin-bottom: 1rem; }
+    .devis-left .section-sub { color: #A1A1AA; margin-bottom: 2rem; max-width: 44ch; }
+
+    .devis-points { display: flex; flex-direction: column; gap: .65rem; }
+    .devis-point { display: flex; align-items: center; gap: .75rem; font-size: .88rem; color: #A1A1AA; }
+    .devis-point::before { content: '✓'; color: #34D399; font-weight: 600; flex-shrink: 0; }
+
+    .devis-form {
+      background: #111113; border: 1px solid #27272A; border-radius: 16px; padding: 2rem;
+    }
+    .form-title { font-family: var(--syne); font-size: 1.1rem; font-weight: 700; color: var(--white); margin-bottom: 1.5rem; }
+    .form-group { margin-bottom: 1rem; }
+    .form-label { display: block; font-size: .78rem; font-weight: 500; color: #A1A1AA; margin-bottom: .4rem; }
+    .form-input, .form-select, .form-textarea {
+      width: 100%; background: #0D0D0F; border: 1px solid #27272A;
+      border-radius: 8px; padding: .7rem 1rem;
+      color: var(--white); font-family: var(--inter); font-size: .875rem;
+      transition: border-color .2s; outline: none;
+    }
+    .form-input:focus, .form-select:focus, .form-textarea:focus { border-color: var(--violet); }
+    .form-input::placeholder, .form-textarea::placeholder { color: #3F3F46; }
+    .form-select option { background: #111113; }
+    .form-textarea { resize: vertical; min-height: 90px; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .form-submit {
+      width: 100%; padding: .9rem;
+      background: var(--grad); color: var(--white);
+      border: none; border-radius: 100px;
+      font-family: var(--inter); font-size: .9rem; font-weight: 500;
+      cursor: pointer; transition: opacity .2s, transform .2s;
+      box-shadow: 0 4px 20px rgba(109,40,217,.4);
+      margin-top: .5rem;
+    }
+    .form-submit:hover { opacity: .88; transform: translateY(-1px); }
+    .form-note { font-size: .72rem; color: #52525B; text-align: center; margin-top: .75rem; }
+
+    .or-divider { display: flex; align-items: center; gap: 1rem; margin: 1.5rem 0; }
+    .or-line { flex: 1; height: 1px; background: #27272A; }
+    .or-text { font-size: .72rem; color: #52525B; }
+
+    .btn-site {
+      display: block; text-align: center; padding: .85rem;
+      border: 1px solid #27272A; border-radius: 100px;
+      color: #A1A1AA; font-size: .85rem; text-decoration: none;
+      transition: border-color .2s, color .2s;
+    }
+    .btn-site:hover { border-color: #52525B; color: var(--white); }
+
+    /* ─── FOOTER ─── */
+    footer { border-top: 1px solid var(--border); padding: 2rem 2.5rem; }
+    .footer-inner { max-width: 1120px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
+    .footer-copy { font-size: .78rem; color: var(--muted); }
+    .footer-right { display: flex; gap: 1.5rem; }
+    .footer-link { font-size: .78rem; color: var(--muted); text-decoration: none; transition: color .2s; }
+    .footer-link:hover { color: var(--black); }
+
+    /* ─── RESPONSIVE ─── */
+    @media (max-width: 960px) {
+      .nav-links { display: none; }
+      .hero { grid-template-columns: 1fr; }
+      .features-grid { grid-template-columns: 1fr; }
+      .devis-inner { grid-template-columns: 1fr; gap: 3rem; }
+      .form-row { grid-template-columns: 1fr; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .btn-g:hover, .fcard:hover { transform: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="index.html" class="logo">IT-CoreOPS<span class="logo-dot">.</span></a>
+  <ul class="nav-links">
+    <li><a href="index.html#services">Services</a></li>
+    <li><a href="solutions.html" class="active" style="color:var(--black);font-weight:500">Solutions</a></li>
+    <li><a href="index.html#ia">IA & Automatisation</a></li>
+    <li><a href="#devis" class="nav-btn">Demander un devis</a></li>
+  </ul>
+</nav>
+
+<!-- BREADCRUMB -->
+<div class="breadcrumb">
+  <a href="index.html">IT-CoreOPS</a>
+  <span class="breadcrumb-sep">/</span>
+  <span>Solutions</span>
+  <span class="breadcrumb-sep">/</span>
+  <span class="breadcrumb-cur">VigiCVE</span>
+</div>
+
+<!-- HERO -->
+<section>
+  <div class="hero">
+    <div class="hero-left">
+      <div class="product-badge">
+        <div class="product-badge-logo">V</div>
+        <span class="product-badge-text">VigiCVE — par IT-CoreOPS</span>
+      </div>
+
+      <h1>
+        Vos vulnérabilités,<br />
+        <span class="g">sous contrôle en temps réel.</span>
+      </h1>
+
+      <p class="hero-sub">
+        VigiCVE surveille en continu les CVE qui touchent votre infrastructure et vous alerte uniquement sur ce qui compte — avec le contexte pour agir vite.
+      </p>
+
+      <div class="hero-actions">
+        <a href="#devis" class="btn-g">Demander un devis →</a>
+        <a href="https://vigi-cve.com" target="_blank" class="btn-out">Voir le site ↗</a>
+      </div>
+
+      <div class="hero-meta">
+        <div class="hero-meta-item"><div class="meta-dot"></div>SaaS, sans installation</div>
+        <div class="hero-meta-item"><div class="meta-dot"></div>Essai gratuit disponible</div>
+        <div class="hero-meta-item"><div class="meta-dot"></div>Alertes email & Teams</div>
+      </div>
+    </div>
+
+    <!-- Dashboard mock -->
+    <div class="dashboard-mock">
+      <div class="dash-topbar">
+        <div class="dash-dot d-r"></div>
+        <div class="dash-dot d-y"></div>
+        <div class="dash-dot d-g"></div>
+        <div class="dash-title">vigi-cve.com — Tableau de bord</div>
+      </div>
+      <div class="dash-body">
+        <div class="dash-stat-row">
+          <div class="dash-stat">
+            <div class="dash-stat-val red">3</div>
+            <div class="dash-stat-label">CVE critiques</div>
+          </div>
+          <div class="dash-stat">
+            <div class="dash-stat-val amber">11</div>
+            <div class="dash-stat-label">CVE élevées</div>
+          </div>
+          <div class="dash-stat">
+            <div class="dash-stat-val green">98.2</div>
+            <div class="dash-stat-label">VigiScore™</div>
+          </div>
+        </div>
+
+        <div class="dash-section-title">Dernières vulnérabilités détectées</div>
+
+        <div class="cve-item">
+          <div class="cve-score red">9.8</div>
+          <div class="cve-info">
+            <div class="cve-id">CVE-2024-21762</div>
+            <div class="cve-desc">Fortinet FortiOS — Out-of-bound write</div>
+          </div>
+          <span class="cve-badge cb-crit">Critique</span>
+        </div>
+        <div class="cve-item">
+          <div class="cve-score amber">8.1</div>
+          <div class="cve-info">
+            <div class="cve-id">CVE-2024-3400</div>
+            <div class="cve-desc">Palo Alto PAN-OS — Command injection</div>
+          </div>
+          <span class="cve-badge cb-high">Élevée</span>
+        </div>
+        <div class="cve-item">
+          <div class="cve-score" style="color:#34D399">6.5</div>
+          <div class="cve-info">
+            <div class="cve-id">CVE-2024-29895</div>
+            <div class="cve-desc">Cacti — RCE via HTTP headers</div>
+          </div>
+          <span class="cve-badge cb-med">Moyenne</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEO -->
+<div class="video-section">
+  <div class="video-inner">
+    <div class="eyebrow">Démo produit</div>
+    <h2 class="section-h">Voir VigiCVE en action.</h2>
+    <p class="section-sub">Une présentation complète de la plateforme — de la configuration de votre inventaire à la réception de vos premières alertes.</p>
+
+    <div class="video-placeholder">
+      <div class="video-placeholder-inner">
+        <div class="play-btn">
+          <div class="play-icon"></div>
+        </div>
+        <div class="video-label">
+          <strong>Présentation VigiCVE</strong>
+          Vidéo de démonstration — bientôt disponible
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FEATURES -->
+<div class="features" id="features">
+  <div class="eyebrow">Fonctionnalités</div>
+  <h2 class="section-h" style="margin-bottom:.75rem">Ce que VigiCVE fait pour vous.</h2>
+  <p class="section-sub" style="margin-bottom:3rem;max-width:56ch">Conçu pour les PMEs sans SOC interne. Pas de fausse complexité, pas de bruit — juste ce qui compte pour votre sécurité.</p>
+
+  <div class="features-grid">
+    <div class="fcard">
+      <div class="fcard-icon">📡</div>
+      <div class="fcard-title">Veille CVE en temps réel</div>
+      <div class="fcard-desc">Agrégation continue de NVD, MITRE, CISA KEV et autres sources. Chaque nouvelle CVE est analysée dès sa publication.</div>
+    </div>
+    <div class="fcard">
+      <div class="fcard-icon">🎯</div>
+      <div class="fcard-title">Corrélation avec votre parc</div>
+      <div class="fcard-desc">Renseignez vos équipements une seule fois. VigiCVE vous remonte uniquement les CVE qui vous concernent vraiment.</div>
+    </div>
+    <div class="fcard">
+      <div class="fcard-icon">🧮</div>
+      <div class="fcard-title">VigiScore™ — Scoring IA</div>
+      <div class="fcard-desc">Un score propriétaire combinant CVSS et EPSS pour prioriser vos actions. Sachez en un coup d'œil ce qui est urgent.</div>
+    </div>
+    <div class="fcard">
+      <div class="fcard-icon">🔔</div>
+      <div class="fcard-title">Alertes email & Microsoft Teams</div>
+      <div class="fcard-desc">Recevez les alertes là où vous travaillez déjà. Aucune app à installer, aucune formation nécessaire.</div>
+    </div>
+    <div class="fcard">
+      <div class="fcard-icon">📊</div>
+      <div class="fcard-title">Rapports PDF automatiques</div>
+      <div class="fcard-desc">Rapports de sécurité clairs et exportables en un clic — prêts à envoyer à votre direction ou vos clients.</div>
+    </div>
+    <div class="fcard">
+      <div class="fcard-icon">🏢</div>
+      <div class="fcard-title">On-premise disponible</div>
+      <div class="fcard-desc">Besoin d'un déploiement sur vos propres serveurs ? Une version auto-hébergée est disponible pour les entreprises exigeantes.</div>
+    </div>
+  </div>
+</div>
+
+<!-- DEVIS -->
+<div class="devis-section" id="devis">
+  <div class="devis-inner">
+    <div class="devis-left">
+      <div class="eyebrow">Tarifs & Devis</div>
+      <h2 class="section-h">Obtenez un devis<br />sur mesure.</h2>
+      <p class="section-sub">Chaque organisation a un périmètre différent. Décrivez-nous votre contexte et on vous revient sous 24h avec une proposition adaptée.</p>
+
+      <div class="devis-points">
+        <div class="devis-point">Essai gratuit disponible sans CB</div>
+        <div class="devis-point">Plans SaaS à partir de 29€/mois</div>
+        <div class="devis-point">Licence on-premise disponible</div>
+        <div class="devis-point">Accompagnement à l'onboarding inclus</div>
+        <div class="devis-point">Support prioritaire inclus</div>
+        <div class="devis-point">Facturation France & Maroc</div>
+      </div>
+    </div>
+
+    <div class="devis-form">
+      <div class="form-title">Demande de devis</div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label class="form-label">Prénom & Nom</label>
+          <input class="form-input" type="text" placeholder="Jean Dupont" />
+        </div>
+        <div class="form-group">
+          <label class="form-label">Société</label>
+          <input class="form-input" type="text" placeholder="Acme Corp" />
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Email professionnel</label>
+        <input class="form-input" type="email" placeholder="jean@acme.fr" />
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Ce qui vous intéresse</label>
+        <select class="form-select">
+          <option value="" disabled selected>Choisir...</option>
+          <option>VigiCVE SaaS (cloud)</option>
+          <option>VigiCVE On-premise</option>
+          <option>Audit de sécurité</option>
+          <option>Infogérance & Cybersécurité</option>
+          <option>Campagne de phishing interne</option>
+          <option>Plusieurs services</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Votre contexte (optionnel)</label>
+        <textarea class="form-textarea" placeholder="Taille de votre parc, besoins spécifiques, délai..."></textarea>
+      </div>
+
+      <button class="form-submit" onclick="handleSubmit(event)">Envoyer la demande →</button>
+      <div class="form-note" id="form-msg">Réponse sous 24h · Sans engagement</div>
+
+      <div class="or-divider">
+        <div class="or-line"></div>
+        <div class="or-text">ou</div>
+        <div class="or-line"></div>
+      </div>
+
+      <a href="https://vigi-cve.com" target="_blank" class="btn-site">
+        Essayer VigiCVE gratuitement ↗
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <a href="index.html" class="logo">IT-CoreOPS<span class="logo-dot">.</span></a>
+    <div class="footer-copy">© 2026 IT-CoreOPS · VigiCVE</div>
+    <div class="footer-right">
+      <a href="https://vigi-cve.com" target="_blank" class="footer-link">vigi-cve.com ↗</a>
+      <a href="mailto:nabil.yagoubi@it-coreops.com" class="footer-link">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  function handleSubmit(e) {
+    e.preventDefault();
+    const btn = e.target;
+    btn.textContent = 'Envoi en cours...';
+    btn.style.opacity = '.6';
+    setTimeout(() => {
+      btn.textContent = '✓ Demande envoyée';
+      btn.style.background = 'linear-gradient(135deg,#059669,#10B981)';
+      btn.style.opacity = '1';
+      document.getElementById('form-msg').textContent = 'On vous répond sous 24h !';
+    }, 1200);
+    // TODO: connecter à un vrai endpoint (email ou Supabase)
+    const email = document.querySelector('input[type="email"]').value;
+    const subject = encodeURIComponent('Demande de devis VigiCVE / IT-CoreOPS');
+    const body = encodeURIComponent('Bonjour,\n\nJe souhaite obtenir un devis pour VigiCVE.\n\nCordialement');
+    setTimeout(() => {
+      window.location.href = `mailto:nabil.yagoubi@it-coreops.com?subject=${subject}&body=${body}`;
+    }, 1400);
+  }
+</script>
+
+</body>
+</html>
