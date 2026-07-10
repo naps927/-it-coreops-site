@@ -306,6 +306,19 @@
       .ia-inner { grid-template-columns:1fr; gap:3rem; }
       .projects-grid { grid-template-columns:1fr; }
     }
+    /* ─── PROCESS / STEPS ─── */
+    .steps { display:flex; margin-top:1.5rem; }
+    .step { flex:1; position:relative; padding:0 .75rem; text-align:center; }
+    .step:not(:last-child)::after { content:''; position:absolute; top:23px; left:50%; width:100%; height:2px; background:var(--border); z-index:0; }
+    .step-num { width:48px; height:48px; border-radius:50%; background:var(--grad); color:#fff; font-family:var(--syne); font-weight:700; font-size:1.05rem; display:flex; align-items:center; justify-content:center; margin:0 auto 1rem; position:relative; z-index:1; box-shadow:0 4px 14px rgba(109,40,217,.3); }
+    .step-title { font-family:var(--syne); font-weight:700; font-size:1rem; margin-bottom:.4rem; }
+    .step-desc { font-size:.83rem; color:var(--muted); line-height:1.6; font-weight:300; }
+    @media (max-width:820px) {
+      .steps { flex-direction:column; gap:1.75rem; }
+      .step { padding:0; }
+      .step:not(:last-child)::after { display:none; }
+    }
+
     @media (prefers-reduced-motion:reduce) {
       .blob,.tag-dot { animation:none; }
       .btn-g:hover,.cta-email:hover,.pcard:hover,.scard:hover { transform:none; }
@@ -414,6 +427,40 @@
     <div style="text-align:center;margin-top:2.5rem;display:flex;gap:1rem;justify-content:center;flex-wrap:wrap">
       <a href="services.html" class="btn-out" style="display:inline-block">Voir le détail des services →</a>
       <a href="mailto:nabil.yagoubi@it-coreops.com?subject=Demande%20de%20devis%20IT-CoreOPS&body=Bonjour,%0A%0AJe%20souhaite%20obtenir%20un%20devis%20pour%20:%0A%0ACordialement" class="btn-g" style="display:inline-block">Demander un devis</a>
+    </div>
+  </div>
+</div>
+
+<!-- COMMENT ON TRAVAILLE -->
+<div class="section" id="process">
+  <div class="eyebrow">Comment on travaille</div>
+  <h2 class="section-h">Une méthode claire,<br/>de l'échange au suivi.</h2>
+
+  <div class="steps">
+    <div class="step">
+      <div class="step-num">1</div>
+      <div class="step-title">Échange</div>
+      <div class="step-desc">On comprend votre contexte, vos besoins et vos contraintes.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">2</div>
+      <div class="step-title">Audit</div>
+      <div class="step-desc">On analyse votre existant et on identifie les priorités.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">3</div>
+      <div class="step-title">Proposition</div>
+      <div class="step-desc">On vous présente un plan d'action clair et chiffré.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">4</div>
+      <div class="step-title">PoC</div>
+      <div class="step-desc">On valide la solution par une preuve de concept avant tout déploiement.</div>
+    </div>
+    <div class="step">
+      <div class="step-num">5</div>
+      <div class="step-title">Mise en place & suivi</div>
+      <div class="step-desc">On déploie, puis on assure le suivi et l'accompagnement dans la durée.</div>
     </div>
   </div>
 </div>
