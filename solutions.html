@@ -360,46 +360,50 @@
         <div class="dash-title">vigi-cve.com Tableau de bord</div>
       </div>
       <div class="dash-body">
-        <div class="dash-stat-row">
+        <div class="dash-stat-row" style="grid-template-columns:repeat(4,1fr)">
           <div class="dash-stat">
-            <div class="dash-stat-val red">3</div>
-            <div class="dash-stat-label">CVE critiques</div>
+            <div class="dash-stat-val red">4</div>
+            <div class="dash-stat-label">Critiques</div>
           </div>
           <div class="dash-stat">
-            <div class="dash-stat-val amber">11</div>
-            <div class="dash-stat-label">CVE élevées</div>
+            <div class="dash-stat-val amber">10</div>
+            <div class="dash-stat-label">Hautes</div>
           </div>
           <div class="dash-stat">
-            <div class="dash-stat-val green">98.2</div>
-            <div class="dash-stat-label">VigiScore™</div>
+            <div class="dash-stat-val" style="color:#FCD34D">3</div>
+            <div class="dash-stat-label">Moyennes</div>
+          </div>
+          <div class="dash-stat">
+            <div class="dash-stat-val" style="color:#E4E4E7">17</div>
+            <div class="dash-stat-label">Total</div>
           </div>
         </div>
 
-        <div class="dash-section-title">Dernières vulnérabilités détectées</div>
+        <div class="dash-section-title">Top 5 à patcher cette semaine</div>
 
         <div class="cve-item">
           <div class="cve-score red">9.8</div>
           <div class="cve-info">
             <div class="cve-id">CVE-2024-21762</div>
-            <div class="cve-desc">Fortinet FortiOS Out-of-bound write</div>
+            <div class="cve-desc">Fortinet FortiOS · CVSS 9.8</div>
           </div>
-          <span class="cve-badge cb-crit">Critique</span>
+          <span class="cve-badge cb-crit">EPSS 97%</span>
         </div>
         <div class="cve-item">
           <div class="cve-score amber">8.1</div>
           <div class="cve-info">
             <div class="cve-id">CVE-2024-3400</div>
-            <div class="cve-desc">Palo Alto PAN-OS Command injection</div>
+            <div class="cve-desc">Palo Alto PAN-OS · CVSS 8.1</div>
           </div>
-          <span class="cve-badge cb-high">Élevée</span>
+          <span class="cve-badge cb-high">EPSS 92%</span>
         </div>
         <div class="cve-item">
           <div class="cve-score" style="color:#34D399">6.5</div>
           <div class="cve-info">
             <div class="cve-id">CVE-2024-29895</div>
-            <div class="cve-desc">Cacti RCE via HTTP headers</div>
+            <div class="cve-desc">Cacti · CVSS 6.5</div>
           </div>
-          <span class="cve-badge cb-med">Moyenne</span>
+          <span class="cve-badge cb-med">EPSS 61%</span>
         </div>
       </div>
     </div>
