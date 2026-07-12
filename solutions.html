@@ -112,6 +112,23 @@
 
     .hero-meta { display: flex; gap: 1.25rem; flex-wrap: wrap; }
     .hero-meta-item { display: flex; align-items: center; gap: .4rem; font-size: .78rem; color: var(--muted); }
+
+    /* Dashboard réduit dans le hero */
+    .hero-dash {
+      position: relative; border-radius: 14px; overflow: hidden;
+      box-shadow: 0 30px 70px rgba(0,0,0,.28); border: 1px solid #1e1e28;
+      max-height: 560px;
+    }
+    .hero-dash .vc-app { zoom: .72; min-height: 0; }
+    .hero-dash::after {
+      content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 130px;
+      background: linear-gradient(rgba(10,10,15,0), rgba(10,10,15,.9));
+      pointer-events: none;
+    }
+    @media (max-width: 900px) {
+      .hero-dash { max-height: none; }
+      .hero-dash::after { display: none; }
+    }
     .meta-dot { width: 6px; height: 6px; border-radius: 50%; background: #34D399; }
 
     /* ─── HERO RIGHT: mock dashboard ─── */
@@ -373,7 +390,7 @@
 
 <!-- HERO -->
 <section>
-  <div class="hero" style="grid-template-columns:1fr;max-width:840px;text-align:center">
+  <div class="hero" style="align-items:start">
     <div class="hero-left">
       <div class="product-badge">
         <div class="product-badge-logo">V</div>
@@ -385,32 +402,24 @@
         <span class="g">sous contrôle en temps réel.</span>
       </h1>
 
-      <p class="hero-sub" style="margin-inline:auto">
+      <p class="hero-sub">
         VigiCVE surveille en continu les CVE qui touchent votre infrastructure et vous alerte uniquement sur ce qui compte avec le contexte pour agir vite. Une solution accessible, pensée pour les structures aux budgets plus serrés qui veulent rester protégées sans se ruiner.
       </p>
 
-      <div class="hero-actions" style="justify-content:center">
+      <div class="hero-actions">
         <a href="#devis" class="btn-g">Demander un devis</a>
         <a href="https://vigi-cve.com" target="_blank" class="btn-out">Voir le site ↗</a>
       </div>
 
-      <div class="hero-meta" style="justify-content:center">
+      <div class="hero-meta">
         <div class="hero-meta-item"><div class="meta-dot"></div>SaaS, sans installation</div>
         <div class="hero-meta-item"><div class="meta-dot"></div>Essai gratuit disponible</div>
         <div class="hero-meta-item"><div class="meta-dot"></div>Alertes email & Teams</div>
         <div class="hero-meta-item"><div class="meta-dot"></div>Déjà 5 clients en version on-premise</div>
       </div>
     </div>
-  </div>
-</section>
 
-<!-- APERÇU PRODUIT -->
-<div style="background:var(--surface);border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:5rem 2.5rem">
-  <div style="max-width:1240px;margin:0 auto;text-align:center">
-    <div class="eyebrow">Aperçu du produit</div>
-    <h2 class="section-h">Le tableau de bord VigiCVE.</h2>
-    <p class="section-sub" style="margin:0 auto 2.5rem">Priorisation par risque réel (EPSS + CVSS), équipement le plus critique et distribution des vulnérabilités : tout ce qui compte, en un coup d'œil.</p>
-    <div style="border-radius:14px;overflow:hidden;box-shadow:0 30px 70px rgba(0,0,0,.28);border:1px solid #1e1e28;text-align:left">
+    <div class="hero-dash">
       <div class="vc-app">
         <!-- SIDEBAR -->
         <aside class="vc-side">
@@ -509,7 +518,7 @@
       </div>
     </div>
   </div>
-</div>
+</section>
 
 <!-- VIDEO -->
 <div class="video-section">
