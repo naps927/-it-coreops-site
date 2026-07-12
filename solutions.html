@@ -156,6 +156,57 @@
     .cb-high { background: rgba(252,211,77,.12); color: #FCD34D; }
     .cb-med { background: rgba(52,211,153,.12); color: #34D399; }
 
+    /* ─── DASHBOARD HTML (replica) ─── */
+    .vc-app { display:flex; background:#0a0a0f; color:#e8e8ee; text-align:left; min-height:620px; font-size:13px; }
+    .vc-side { width:210px; flex-shrink:0; background:#0c0c12; border-right:1px solid #1a1a24; padding:1rem 0 .5rem; display:flex; flex-direction:column; }
+    .vc-brand { display:flex; align-items:center; gap:.55rem; padding:.2rem 1.1rem 1.1rem; }
+    .vc-brand .vc-l { width:30px; height:30px; border-radius:8px; background:var(--grad); display:flex; align-items:center; justify-content:center; font-family:var(--syne); font-weight:700; color:#fff; font-size:.85rem; }
+    .vc-brand b { font-size:.85rem; }
+    .vc-brand small { display:block; font-size:.62rem; color:#6b6b7a; }
+    .vc-grp { font-size:.58rem; letter-spacing:.12em; color:#45454f; text-transform:uppercase; padding:.85rem 1.15rem .35rem; }
+    .vc-it { padding:.5rem 1.15rem; font-size:.8rem; color:#9a9aa8; border-left:2px solid transparent; }
+    .vc-it.on { color:#fff; background:rgba(96,165,250,.1); border-left-color:#60a5fa; }
+    .vc-side-b { margin-top:auto; }
+    .vc-ent { display:flex; align-items:center; gap:.5rem; margin:.5rem 1.15rem .75rem; }
+    .vc-ent .vc-av { width:26px; height:26px; border-radius:50%; background:#1d4ed8; display:flex; align-items:center; justify-content:center; font-size:.6rem; font-weight:700; color:#fff; }
+    .vc-onprem { font-size:.6rem; color:#60a5fa; background:rgba(96,165,250,.1); border:1px solid rgba(96,165,250,.25); border-radius:5px; padding:.05rem .4rem; }
+    .vc-main { flex:1; min-width:0; padding:1.4rem 1.6rem; }
+    .vc-head { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:1.2rem; }
+    .vc-h1 { font-family:var(--syne); font-size:1.25rem; font-weight:700; }
+    .vc-hsub { font-size:.72rem; color:#6b6b7a; margin-top:.15rem; }
+    .vc-btn { font-size:.7rem; color:#c8c8d2; border:1px solid #26262e; border-radius:8px; padding:.4rem .75rem; white-space:nowrap; }
+    .vc-stats { display:grid; grid-template-columns:repeat(5,1fr); gap:.7rem; margin-bottom:1.4rem; }
+    .vc-stat { border-radius:10px; padding:.9rem .5rem; text-align:center; border:1px solid #26262e; background:#10101a; }
+    .vc-stat b { display:block; font-family:var(--syne); font-size:1.55rem; line-height:1; }
+    .vc-stat span { font-size:.58rem; letter-spacing:.05em; color:#8a8a98; text-transform:uppercase; }
+    .vc-card { background:#0f0f16; border:1px solid #1e1e28; border-radius:12px; padding:1.05rem 1.2rem; margin-bottom:1rem; }
+    .vc-ct { font-size:.7rem; font-weight:700; letter-spacing:.05em; text-transform:uppercase; color:#8a8a98; }
+    .vc-ctsub { font-size:.68rem; color:#5b5b68; margin:.15rem 0 .8rem; }
+    .vc-trow { display:flex; align-items:center; gap:.7rem; padding:.5rem .2rem; border-top:1px solid #17171f; }
+    .vc-trow:first-of-type { border-top:none; }
+    .vc-rank { color:#5b5b68; font-size:.75rem; width:12px; }
+    .vc-cve { color:#7ca9f5; font-family:var(--inter); font-weight:600; font-size:.76rem; letter-spacing:.02em; }
+    .vc-tag { font-size:.6rem; font-weight:700; padding:.1rem .4rem; border-radius:5px; }
+    .vc-tag.cvss { background:rgba(251,146,60,.16); color:#fb923c; }
+    .vc-tag.cvss5 { background:rgba(251,191,36,.16); color:#fbbf24; }
+    .vc-tag.epss { background:#17171f; color:#6b6b7a; }
+    .vc-host { font-size:.66rem; color:#6b6b7a; margin-top:.2rem; }
+    .vc-pill { font-size:.62rem; font-weight:600; padding:.12rem .5rem; border-radius:100px; }
+    .vc-donut { width:150px; height:150px; border-radius:50%; margin:1.25rem auto .75rem; position:relative;
+      background:conic-gradient(#f87171 0 25%, #fb923c 25% 63%, #fbbf24 63% 100%); }
+    .vc-donut::after { content:''; position:absolute; inset:27px; border-radius:50%; background:#0f0f16; }
+    .vc-legend { display:flex; gap:1rem; justify-content:center; font-size:.66rem; color:#8a8a98; }
+    .vc-legend i { width:7px; height:7px; border-radius:50%; display:inline-block; margin-right:.3rem; }
+    .vc-2col { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
+    .vc-cfg { display:flex; justify-content:space-between; font-size:.76rem; padding:.4rem 0; border-top:1px solid #17171f; }
+    .vc-cfg:first-of-type { border-top:none; }
+    .vc-cfg span { color:#9a9aa8; }
+    @media (max-width:860px) {
+      .vc-side { display:none; }
+      .vc-stats { grid-template-columns:repeat(3,1fr); }
+      .vc-2col { grid-template-columns:1fr; }
+    }
+
     /* ─── VIDEO ─── */
     .video-section {
       background: var(--surface); border-top: 1px solid var(--border);
@@ -416,8 +467,103 @@
     <div class="eyebrow">Aperçu du produit</div>
     <h2 class="section-h">Le tableau de bord VigiCVE.</h2>
     <p class="section-sub" style="margin:0 auto 2.5rem">Priorisation par risque réel (EPSS + CVSS), équipement le plus critique et distribution des vulnérabilités : tout ce qui compte, en un coup d'œil.</p>
-    <div style="border-radius:14px;overflow:hidden;box-shadow:0 30px 70px rgba(0,0,0,.28);border:1px solid var(--border);background:#0A0A0F">
-      <img src="vigicve-dashboard-hd.png" alt="Tableau de bord VigiCVE — vue d'ensemble des vulnérabilités" style="display:block;width:100%;height:auto" />
+    <div style="border-radius:14px;overflow:hidden;box-shadow:0 30px 70px rgba(0,0,0,.28);border:1px solid #1e1e28;text-align:left">
+      <div class="vc-app">
+        <!-- SIDEBAR -->
+        <aside class="vc-side">
+          <div class="vc-brand"><div class="vc-l">V</div><div><b>VigiCVE</b><small>Veille cybersécurité</small></div></div>
+          <div class="vc-grp">Veille</div>
+          <div class="vc-it">Accueil</div>
+          <div class="vc-it on">Tableau de bord</div>
+          <div class="vc-it">Vulnérabilités</div>
+          <div class="vc-it">Sources de veille</div>
+          <div class="vc-grp">Périmètre</div>
+          <div class="vc-it">Mon infrastructure</div>
+          <div class="vc-it">Mes équipements</div>
+          <div class="vc-grp">Opérations</div>
+          <div class="vc-it">Notifications</div>
+          <div class="vc-it">Rapports</div>
+          <div class="vc-grp">Compte</div>
+          <div class="vc-it">API &amp; Intégrations</div>
+          <div class="vc-it">Support</div>
+          <div class="vc-it">Suggestions</div>
+          <div class="vc-side-b">
+            <div class="vc-ent"><div class="vc-av">EN</div><div><b style="font-size:.75rem">Entreprise</b><br><span class="vc-onprem">On-Premise</span></div></div>
+            <div class="vc-it">Paramètres</div>
+            <div class="vc-it">Mode clair</div>
+            <div class="vc-it">Déconnexion</div>
+          </div>
+        </aside>
+        <!-- MAIN -->
+        <main class="vc-main">
+          <div class="vc-head">
+            <div><div class="vc-h1">Tableau de bord</div><div class="vc-hsub">Dernière mise à jour : 11:18 · 17 CVE(s)</div></div>
+            <div class="vc-btn">↻ Actualiser</div>
+          </div>
+
+          <div class="vc-stats">
+            <div class="vc-stat" style="background:rgba(248,113,113,.07);border-color:rgba(248,113,113,.28)"><b style="color:#f87171">4</b><span>Critiques</span></div>
+            <div class="vc-stat" style="background:rgba(251,146,60,.07);border-color:rgba(251,146,60,.28)"><b style="color:#fb923c">10</b><span>Hautes</span></div>
+            <div class="vc-stat" style="background:rgba(251,191,36,.07);border-color:rgba(251,191,36,.25)"><b style="color:#fbbf24">3</b><span>Moyennes</span></div>
+            <div class="vc-stat" style="background:rgba(52,211,153,.07);border-color:rgba(52,211,153,.28)"><b style="color:#34d399">0</b><span>Patchées</span></div>
+            <div class="vc-stat"><b>17</b><span>Total</span></div>
+          </div>
+
+          <div class="vc-card">
+            <div class="vc-ct">🎯 Top 5 à patcher cette semaine</div>
+            <div class="vc-ctsub">Les vulnérabilités qui comptent vraiment — priorisées par risque réel (exploitées, probables), pas par volume.</div>
+            <div class="vc-trow"><span class="vc-rank">1</span><div style="flex:1"><span class="vc-cve">CVE-2003-0352</span> <span class="vc-tag cvss">CVSS 7.5</span> <span class="vc-tag epss">EPSS 99%</span><div class="vc-host">🖥 Windows Server →</div></div></div>
+            <div class="vc-trow"><span class="vc-rank">2</span><div style="flex:1"><span class="vc-cve">CVE-2002-0597</span> <span class="vc-tag cvss5">CVSS 5</span> <span class="vc-tag epss">EPSS 52%</span><div class="vc-host">🖥 Windows Server →</div></div></div>
+            <div class="vc-trow"><span class="vc-rank">3</span><div style="flex:1"><span class="vc-cve">CVE-2003-0725</span> <span class="vc-tag cvss">CVSS 7.5</span> <span class="vc-tag epss">EPSS 51%</span><div class="vc-host">🖥 Windows Server →</div></div></div>
+            <div class="vc-trow"><span class="vc-rank">4</span><div style="flex:1"><span class="vc-cve">CVE-2003-0003</span> <span class="vc-tag cvss">CVSS 7.5</span> <span class="vc-tag epss">EPSS 45%</span><div class="vc-host">🖥 Windows Server →</div></div></div>
+            <div class="vc-trow"><span class="vc-rank">5</span><div style="flex:1"><span class="vc-cve">CVE-2003-0807</span> <span class="vc-tag cvss5">CVSS 5</span> <span class="vc-tag epss">EPSS 40%</span><div class="vc-host">🖥 Windows Server →</div></div></div>
+            <div style="font-size:.66rem;color:#5b5b68;margin-top:.7rem">Corrige d'abord celles du haut : failles activement exploitées (🔴), puis les plus probables (EPSS), puis les plus graves (CVSS).</div>
+          </div>
+
+          <div class="vc-card">
+            <div style="font-size:.62rem;color:#8a8a98;letter-spacing:.05em;text-transform:uppercase">⚠ Équipement le plus critique</div>
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-top:.35rem">
+              <div><b style="font-family:var(--syne);font-size:1.05rem">Windows Server</b><div class="vc-host" style="margin-top:.15rem">192.168.1.195</div></div>
+              <div style="display:flex;align-items:center;gap:.5rem">
+                <span class="vc-pill" style="background:rgba(248,113,113,.15);color:#f87171">1 critique</span>
+                <span class="vc-pill" style="background:rgba(251,146,60,.15);color:#fb923c">7 hautes</span>
+                <span style="font-size:.68rem;color:#7ca9f5">21 vulns →</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="vc-card">
+            <div class="vc-ct">Distribution par criticité</div>
+            <div class="vc-ctsub">CVEs actives actuellement</div>
+            <div class="vc-donut"></div>
+            <div class="vc-legend">
+              <span><i style="background:#f87171"></i>Critiques</span>
+              <span><i style="background:#fb923c"></i>Hautes</span>
+              <span><i style="background:#fbbf24"></i>Moyennes</span>
+              <span><i style="background:#34d399"></i>Patchées</span>
+            </div>
+          </div>
+
+          <div class="vc-2col">
+            <div class="vc-card" style="margin-bottom:0">
+              <div class="vc-ct">Dernière activité</div>
+              <div class="vc-ctsub">Historique des événements</div>
+              <div style="font-size:.75rem;color:#6b6b7a;padding:.5rem 0">Aucune activité récente</div>
+            </div>
+            <div class="vc-card" style="margin-bottom:0">
+              <div style="display:flex;justify-content:space-between;align-items:flex-start">
+                <div><div class="vc-ct">Configuration active</div><div class="vc-ctsub">Vos paramètres de surveillance</div></div>
+                <span style="font-size:.66rem;color:#7ca9f5">↻ Rafraîchir</span>
+              </div>
+              <div class="vc-cfg"><span>Solutions surveillées</span><b style="color:#7ca9f5">5</b></div>
+              <div class="vc-cfg"><span>Seuil CVSS minimum</span><b>5+</b></div>
+              <div class="vc-cfg"><span>CVEs patchées</span><b style="color:#34d399">0</b></div>
+              <div class="vc-cfg"><span>CVEs actives</span><b style="color:#fb923c">17</b></div>
+              <div style="font-size:.7rem;color:#7ca9f5;margin-top:.6rem">Modifier la configuration →</div>
+            </div>
+          </div>
+        </main>
+      </div>
     </div>
   </div>
 </div>
