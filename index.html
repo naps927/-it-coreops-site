@@ -319,6 +319,24 @@
       .step:not(:last-child)::after { display:none; }
     }
 
+    /* ─── FORMULAIRE CONTACT ─── */
+    .cform { max-width:720px; margin:2.5rem auto 0; text-align:left; }
+    .cform-grid { display:grid; grid-template-columns:1fr 1fr; gap:1.1rem 1.25rem; }
+    .cform .full { grid-column:1 / -1; }
+    .cform label.fld { display:block; font-size:.8rem; font-weight:600; margin-bottom:.4rem; color:var(--black); }
+    .cform .req { color:var(--violet); }
+    .cform input, .cform select, .cform textarea {
+      width:100%; padding:.8rem 1rem; border:1.5px solid var(--border); border-radius:10px;
+      font-family:inherit; font-size:.9rem; background:var(--white); color:var(--black); transition:border-color .2s;
+    }
+    .cform input:focus, .cform select:focus, .cform textarea:focus { outline:none; border-color:var(--violet); }
+    .cform textarea { resize:vertical; min-height:120px; }
+    .cform-consent { display:flex; align-items:flex-start; gap:.6rem; font-size:.83rem; color:var(--muted); margin:1.25rem 0 1.5rem; }
+    .cform-consent input { width:auto; margin-top:.15rem; flex-shrink:0; }
+    .cform-submit { width:100%; justify-content:center; border:none; cursor:pointer; }
+    .cform-hint { font-size:.75rem; color:var(--muted); margin-top:1rem; text-align:center; }
+    @media (max-width:620px) { .cform-grid { grid-template-columns:1fr; } }
+
     @media (prefers-reduced-motion:reduce) {
       .blob,.tag-dot { animation:none; }
       .btn-g:hover,.cta-email:hover,.pcard:hover,.scard:hover { transform:none; }
@@ -630,7 +648,61 @@
     <div class="eyebrow">Contact</div>
     <h2 class="section-h">Parlons de votre projet.</h2>
     <p>Audit de sécurité, infogérance, projet IT ou démonstration de VigiCVE écrivez-nous, on répond sous 24h.</p>
-    <a href="mailto:nabil.yagoubi@it-coreops.com" class="cta-email">
+
+    <form class="cform" action="https://formsubmit.co/nabil.yagoubi@it-coreops.com" method="POST">
+      <input type="hidden" name="_subject" value="Nouvelle demande de contact — it-coreops.com">
+      <input type="hidden" name="_template" value="table">
+      <input type="hidden" name="_captcha" value="false">
+      <input type="text" name="_honey" style="display:none">
+      <div class="cform-grid">
+        <div>
+          <label class="fld">Nom et prénom <span class="req">*</span></label>
+          <input type="text" name="Nom et prénom" required>
+        </div>
+        <div>
+          <label class="fld">Entreprise</label>
+          <input type="text" name="Entreprise">
+        </div>
+        <div>
+          <label class="fld">Email <span class="req">*</span></label>
+          <input type="email" name="Email" required>
+        </div>
+        <div>
+          <label class="fld">Téléphone</label>
+          <input type="tel" name="Téléphone">
+        </div>
+        <div>
+          <label class="fld">Type de besoin</label>
+          <select name="Type de besoin">
+            <option value="">Sélectionner</option>
+            <option>Audit de sécurité</option>
+            <option>Infogérance & Cybersécurité</option>
+            <option>Campagnes de phishing & sensibilisation</option>
+            <option>Support IT & Projets</option>
+            <option>Cours / Formation</option>
+            <option>VigiCVE (démo / essai)</option>
+            <option>Autre</option>
+          </select>
+        </div>
+        <div>
+          <label class="fld">Ville / pays</label>
+          <input type="text" name="Ville / pays">
+        </div>
+        <div class="full">
+          <label class="fld">Message <span class="req">*</span></label>
+          <textarea name="Message" required placeholder="Décrivez votre projet, votre contexte ou le meilleur moment pour vous rappeler."></textarea>
+        </div>
+      </div>
+      <label class="cform-consent">
+        <input type="checkbox" required>
+        <span>J'accepte que mes coordonnées soient utilisées pour me recontacter au sujet de ma demande.</span>
+      </label>
+      <button type="submit" class="btn-g cform-submit">Envoyer ma demande →</button>
+      <p class="cform-hint">Le formulaire utilise un relais sécurisé (FormSubmit). Au premier envoi, l'adresse destinataire devra être confirmée une fois.</p>
+    </form>
+
+    <div style="text-align:center;margin-top:2.5rem;color:var(--muted);font-size:.85rem">— ou directement —</div>
+    <a href="mailto:nabil.yagoubi@it-coreops.com" class="cta-email" style="margin-top:1rem">
       nabil.yagoubi@it-coreops.com
     </a>
     <div style="margin:1.75rem 0 .5rem">
