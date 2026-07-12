@@ -196,6 +196,8 @@
     .play-icon { width: 0; height: 0; border-top: 12px solid transparent; border-bottom: 12px solid transparent; border-left: 20px solid white; margin-left: 4px; }
     .video-label { position: relative; z-index: 1; font-size: .85rem; color: rgba(255,255,255,.5); font-weight: 300; }
     .video-label strong { color: rgba(255,255,255,.85); font-weight: 500; display: block; margin-bottom: .2rem; }
+    .demo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 1rem; }
+    @media (max-width: 720px) { .demo-grid { grid-template-columns: 1fr; } }
 
     /* ─── FEATURES ─── */
     .features { max-width: 1120px; margin: 0 auto; padding: 6rem 2.5rem; }
@@ -409,16 +411,30 @@
   <div class="video-inner">
     <div class="eyebrow">Démo produit</div>
     <h2 class="section-h">Voir VigiCVE en action.</h2>
-    <p class="section-sub">Une présentation complète de la plateforme de la configuration de votre inventaire à la réception de vos premières alertes.</p>
+    <p class="section-sub" style="margin-inline:auto">Deux versions, deux démos : la version SaaS publique et la version on-premise auto-hébergée.</p>
 
-    <div class="video-placeholder">
-      <div class="video-placeholder-inner">
-        <div class="play-btn">
-          <div class="play-icon"></div>
+    <div class="demo-grid">
+      <div class="video-placeholder">
+        <div class="video-placeholder-inner">
+          <div class="play-btn">
+            <div class="play-icon"></div>
+          </div>
+          <div class="video-label">
+            <strong>Démo — Version SaaS (public)</strong>
+            Vidéo bientôt disponible
+          </div>
         </div>
-        <div class="video-label">
-          <strong>Présentation VigiCVE</strong>
-          Vidéo de démonstration bientôt disponible
+      </div>
+
+      <div class="video-placeholder">
+        <div class="video-placeholder-inner">
+          <div class="play-btn">
+            <div class="play-icon"></div>
+          </div>
+          <div class="video-label">
+            <strong>Démo — Version On-premise</strong>
+            Vidéo bientôt disponible
+          </div>
         </div>
       </div>
     </div>
