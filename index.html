@@ -141,7 +141,9 @@
       font-weight: 800; line-height: 1.07; letter-spacing: -.035em;
       max-width: 900px; margin-bottom: 1.5rem;
     }
-    .g { background: var(--grad); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
+    .g { background: var(--grad); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; background-size:220% 220%; animation:itcGrad 9s ease infinite; }
+    @keyframes itcGrad { 0%,100%{background-position:0% 50%;} 50%{background-position:100% 50%;} }
+    @media (prefers-reduced-motion:reduce) { .g { animation:none; } }
 
     .hero-sub {
       font-size: 1.1rem; color: var(--muted); max-width: 54ch;
