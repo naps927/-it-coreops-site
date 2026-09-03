@@ -795,15 +795,15 @@
   // Souris (cible + position lissée)
   var tmx = -9999, tmy = -9999, mx = 0, my = 0;
   var hasMouse = false, infl = 0;
-  var R = 230;      // rayon d'influence de la souris
-  var PUSH = 58;    // force de déformation
+  var R = 190;      // rayon d'influence de la souris
+  var PUSH = 42;    // force de déformation
 
   function resize() {
     var r = canvas.getBoundingClientRect();
     W = r.width; H = r.height;
     canvas.width = W * dpr; canvas.height = H * dpr;
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    spacing = Math.max(32, Math.min(W, H) / 20);
+    spacing = Math.max(22, Math.min(W, H) / 32);
     cols = Math.ceil(W / spacing) + 2;
     rows = Math.ceil(H / spacing) + 2;
     cx = W / 2; cy = H / 2;
@@ -816,7 +816,7 @@
     var by = (j - 1) * spacing;
     var wx = Math.sin(bx * 0.010 + by * 0.006 + t) + Math.cos(by * 0.012 - t * 0.7);
     var wy = Math.cos(bx * 0.008 - t * 0.8) + Math.sin(by * 0.010 + bx * 0.006 + t * 1.1);
-    return { x: bx + wx * 9, y: by + wy * 9 };
+    return { x: bx + wx * 6, y: by + wy * 6 };
   }
 
   // déformation par la souris (repousse le maillage = effet loupe)
