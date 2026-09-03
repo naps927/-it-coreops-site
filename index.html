@@ -786,44 +786,64 @@
 (function () {
   var canvas = document.getElementById('heroMesh');
   if (!canvas) return;
+  var hero = canvas.parentElement;
   var ctx = canvas.getContext('2d');
   var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var W = 0, H = 0, dpr = Math.min(window.devicePixelRatio || 1, 2);
   var spacing, cols, rows, cx, cy, maxDist;
+
+  // Souris (cible + position lissée)
+  var tmx = -9999, tmy = -9999, mx = 0, my = 0;
+  var hasMouse = false, infl = 0;
+  var R = 230;      // rayon d'influence de la souris
+  var PUSH = 58;    // force de déformation
 
   function resize() {
     var r = canvas.getBoundingClientRect();
     W = r.width; H = r.height;
     canvas.width = W * dpr; canvas.height = H * dpr;
     ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-    spacing = Math.max(34, Math.min(W, H) / 18);
+    spacing = Math.max(32, Math.min(W, H) / 20);
     cols = Math.ceil(W / spacing) + 2;
     rows = Math.ceil(H / spacing) + 2;
     cx = W / 2; cy = H / 2;
     maxDist = Math.sqrt(cx * cx + cy * cy);
   }
 
-  function pt(i, j, t) {
+  // point de base + légère ondulation d'ambiance
+  function base(i, j, t) {
     var bx = (i - 1) * spacing;
     var by = (j - 1) * spacing;
     var wx = Math.sin(bx * 0.010 + by * 0.006 + t) + Math.cos(by * 0.012 - t * 0.7);
     var wy = Math.cos(bx * 0.008 - t * 0.8) + Math.sin(by * 0.010 + bx * 0.006 + t * 1.1);
-    var amp = 16;
-    return { x: bx + wx * amp, y: by + wy * amp };
+    return { x: bx + wx * 9, y: by + wy * 9 };
   }
 
-  function alphaAt(x, y) {
-    var dx = x - cx, dy = y - cy;
-    var d = Math.sqrt(dx * dx + dy * dy) / maxDist; // 0 center .. 1 edge
-    var a = 1 - d;              // brighter near center
-    a = a * a;                  // sharpen the focal look
-    return Math.max(0, Math.min(0.42, a * 0.5));
+  // déformation par la souris (repousse le maillage = effet loupe)
+  function warp(p) {
+    if (infl < 0.01) return p;
+    var dx = p.x - mx, dy = p.y - my;
+    var d = Math.sqrt(dx * dx + dy * dy);
+    if (d >= R || d === 0) return p;
+    var f = 1 - d / R; f = f * f;                 // falloff doux
+    var push = f * PUSH * infl;
+    p.x += (dx / d) * push;
+    p.y += (dy / d) * push;
+    p.b = f * infl;                               // pour la lueur locale
+    return p;
+  }
+
+  function alphaAt(p) {
+    var dx = p.x - cx, dy = p.y - cy;
+    var d = Math.sqrt(dx * dx + dy * dy) / maxDist;
+    var a = 1 - d; a = a * a;
+    var val = a * 0.5 + (p.b || 0) * 0.5;         // + lueur autour de la souris
+    return Math.max(0, Math.min(0.6, val));
   }
 
   function line(a, b) {
-    var al = (alphaAt(a.x, a.y) + alphaAt(b.x, b.y)) / 2;
+    var al = (alphaAt(a) + alphaAt(b)) / 2;
     if (al < 0.012) return;
-    // teinte : violet côté gauche, bleu côté droit
     var mix = (a.x + b.x) / 2 / W;
     var rC = Math.round(109 + (14 - 109) * mix);
     var gC = Math.round(40 + (165 - 40) * mix);
@@ -836,12 +856,25 @@
   }
 
   function draw(t) {
+    // pilotage de la déformation : souris si présente, sinon balade automatique
+    var targetInfl;
+    if (hasMouse) {
+      targetInfl = 1;
+    } else {
+      tmx = cx + Math.cos(t * 0.5) * W * 0.24;
+      tmy = cy + Math.sin(t * 0.42) * H * 0.24;
+      targetInfl = 0.9;
+    }
+    infl += (targetInfl - infl) * 0.06;
+    mx += (tmx - mx) * 0.12;
+    my += (tmy - my) * 0.12;
+
     ctx.clearRect(0, 0, W, H);
-    ctx.lineWidth = 1;
+    ctx.lineWidth = 1.15;
     var grid = [], i, j;
     for (i = 0; i < cols; i++) {
       grid[i] = [];
-      for (j = 0; j < rows; j++) grid[i][j] = pt(i, j, t);
+      for (j = 0; j < rows; j++) grid[i][j] = warp(base(i, j, t));
     }
     for (i = 0; i < cols; i++) {
       for (j = 0; j < rows; j++) {
@@ -849,29 +882,37 @@
         if (j < rows - 1) line(grid[i][j], grid[i][j + 1]);
       }
     }
-    // petits noeuds lumineux au centre
     for (i = 0; i < cols; i++) {
       for (j = 0; j < rows; j++) {
         var p = grid[i][j];
-        var al = alphaAt(p.x, p.y);
-        if (al > 0.24) {
-          ctx.fillStyle = 'rgba(109,40,217,' + (al * 0.9) + ')';
+        var al = alphaAt(p);
+        if (al > 0.26) {
+          ctx.fillStyle = 'rgba(109,40,217,' + (al * 0.95) + ')';
           ctx.beginPath();
-          ctx.arc(p.x, p.y, 1.6, 0, 6.283);
+          ctx.arc(p.x, p.y, 1.7, 0, 6.283);
           ctx.fill();
         }
       }
     }
   }
 
+  hero.addEventListener('pointermove', function (e) {
+    var r = canvas.getBoundingClientRect();
+    tmx = e.clientX - r.left;
+    tmy = e.clientY - r.top;
+    hasMouse = true;
+  });
+  hero.addEventListener('pointerleave', function () { hasMouse = false; });
+
   var start = performance.now();
   function loop(now) {
     draw((now - start) / 1000 * 0.35);
-    if (!reduce) requestAnimationFrame(loop);
+    requestAnimationFrame(loop);
   }
 
   window.addEventListener('resize', function () { resize(); if (reduce) draw(0); });
   resize();
+  mx = cx; my = cy;
   if (reduce) { draw(0); } else { requestAnimationFrame(loop); }
 })();
 </script>
