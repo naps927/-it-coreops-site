@@ -1,0 +1,61 @@
+/* ==========================================================================
+   IT-CoreOPS — couche de finition UI/UX
+   Chargée APRÈS les styles inline de chaque page (elle peut donc les affiner).
+   Additive et sûre : n'introduit aucun contenu, seulement de la finition.
+   ========================================================================== */
+
+/* Défilement fluide pour les ancres (#contact, #devis…) */
+html { scroll-behavior: smooth; }
+
+/* Sélection de texte aux couleurs de la marque */
+::selection { background: rgba(109, 40, 217, .16); }
+
+/* --- Icônes de carte : pastille en dégradé (look moderne) --- */
+.scard-icon {
+  width: 52px; height: 52px; border-radius: 14px;
+  display: inline-flex; align-items: center; justify-content: center;
+  font-size: 1.5rem; line-height: 1; margin-bottom: 1.35rem;
+  background: linear-gradient(135deg, rgba(109, 40, 217, .12), rgba(14, 165, 233, .12));
+  border: 1px solid rgba(109, 40, 217, .16);
+  transition: transform .25s ease, box-shadow .25s ease;
+}
+.scard:hover .scard-icon {
+  transform: translateY(-2px) scale(1.04);
+  box-shadow: 0 8px 20px rgba(109, 40, 217, .14);
+}
+
+/* --- Cartes : transitions plus douces et homogènes --- */
+.scard, .pcard { transition: border-color .25s ease, box-shadow .25s ease, transform .25s ease; }
+
+/* --- Boutons : interaction plus vivante --- */
+.btn-g, .cta-email { transition: transform .2s ease, box-shadow .2s ease, opacity .2s ease; }
+.btn-g:hover, .cta-email:hover { box-shadow: 0 10px 30px rgba(109, 40, 217, .32); }
+.btn-out { transition: border-color .2s ease, background .2s ease, transform .2s ease; }
+.btn-out:hover { transform: translateY(-1px); }
+
+/* --- Liens de navigation : soulignement animé au survol --- */
+.nav-links a:not(.nav-btn) { position: relative; }
+.nav-links a:not(.nav-btn)::after {
+  content: ''; position: absolute; left: 0; right: 100%; bottom: -5px;
+  height: 2px; background: var(--grad); border-radius: 2px;
+  transition: right .25s ease;
+}
+.nav-links a:not(.nav-btn):hover::after { right: 0; }
+
+/* --- Accessibilité : focus clavier visible et cohérent --- */
+a:focus-visible, button:focus-visible,
+input:focus-visible, select:focus-visible, textarea:focus-visible {
+  outline: 2px solid var(--violet); outline-offset: 3px; border-radius: 6px;
+}
+
+/* --- Tags : légère montée au survol de la carte --- */
+.stag { transition: transform .2s ease; }
+.scard:hover .stag { transform: translateY(-1px); }
+
+/* --- Respect de prefers-reduced-motion --- */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .scard:hover .scard-icon,
+  .btn-out:hover,
+  .scard:hover .stag { transform: none; }
+}
