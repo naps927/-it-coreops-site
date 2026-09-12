@@ -8,24 +8,24 @@
 html { scroll-behavior: smooth; }
 
 /* Sélection de texte aux couleurs de la marque */
-::selection { background: rgba(109, 40, 217, .16); }
+::selection { background: rgba(13, 148, 136, .16); }
 
 /* --- Icônes de carte : pastille en dégradé + icône SVG (pas d'emoji) --- */
 .scard-icon {
   width: 52px; height: 52px; border-radius: 14px;
   display: inline-flex; align-items: center; justify-content: center;
   font-size: 1.5rem; line-height: 1; margin-bottom: 1.35rem;
-  background: linear-gradient(135deg, rgba(109, 40, 217, .12), rgba(14, 165, 233, .12));
-  border: 1px solid rgba(109, 40, 217, .16);
+  background: linear-gradient(135deg, rgba(13, 148, 136, .12), rgba(6, 182, 212, .12));
+  border: 1px solid rgba(13, 148, 136, .16);
   transition: transform .25s ease, box-shadow .25s ease;
 }
 .scard-icon svg {
-  width: 26px; height: 26px; fill: none; stroke: #6D28D9;
+  width: 26px; height: 26px; fill: none; stroke: #0D9488;
   stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round;
 }
 .scard:hover .scard-icon {
   transform: translateY(-2px) scale(1.04);
-  box-shadow: 0 8px 20px rgba(109, 40, 217, .14);
+  box-shadow: 0 8px 20px rgba(13, 148, 136, .14);
 }
 
 /* --- Cartes : transitions plus douces et homogènes --- */
@@ -33,7 +33,7 @@ html { scroll-behavior: smooth; }
 
 /* --- Boutons : interaction plus vivante --- */
 .btn-g, .cta-email { transition: transform .2s ease, box-shadow .2s ease, opacity .2s ease; }
-.btn-g:hover, .cta-email:hover { box-shadow: 0 10px 30px rgba(109, 40, 217, .32); }
+.btn-g:hover, .cta-email:hover { box-shadow: 0 10px 30px rgba(13, 148, 136, .32); }
 .btn-out { transition: border-color .2s ease, background .2s ease, transform .2s ease; }
 .btn-out:hover { transform: translateY(-1px); }
 
@@ -93,7 +93,7 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
 .footer-brand .logo { color:#fff; }
 .footer-brand p { font-size:.85rem; color:#8A8A98; line-height:1.7; margin-top:1rem; max-width:36ch; }
 .footer-social { display:flex; gap:.6rem; margin-top:1.4rem; }
-.footer-social a { width:38px; height:38px; border-radius:10px; display:inline-flex; align-items:center; justify-content:center; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.1); color:#C4B5FD; transition:background .2s, border-color .2s, transform .2s; }
+.footer-social a { width:38px; height:38px; border-radius:10px; display:inline-flex; align-items:center; justify-content:center; background:rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.1); color:#5EEAD4; transition:background .2s, border-color .2s, transform .2s; }
 .footer-social a:hover { background:rgba(255,255,255,.12); border-color:rgba(255,255,255,.25); transform:translateY(-2px); }
 .footer-social svg { width:18px; height:18px; }
 .footer-col h4 { font-family:var(--syne); font-size:.78rem; font-weight:700; color:#fff; text-transform:uppercase; letter-spacing:.08em; margin-bottom:1.1rem; }
