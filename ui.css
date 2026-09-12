@@ -10,7 +10,7 @@ html { scroll-behavior: smooth; }
 /* Sélection de texte aux couleurs de la marque */
 ::selection { background: rgba(109, 40, 217, .16); }
 
-/* --- Icônes de carte : pastille en dégradé (look moderne) --- */
+/* --- Icônes de carte : pastille en dégradé + icône SVG (pas d'emoji) --- */
 .scard-icon {
   width: 52px; height: 52px; border-radius: 14px;
   display: inline-flex; align-items: center; justify-content: center;
@@ -18,6 +18,10 @@ html { scroll-behavior: smooth; }
   background: linear-gradient(135deg, rgba(109, 40, 217, .12), rgba(14, 165, 233, .12));
   border: 1px solid rgba(109, 40, 217, .16);
   transition: transform .25s ease, box-shadow .25s ease;
+}
+.scard-icon svg {
+  width: 26px; height: 26px; fill: none; stroke: #6D28D9;
+  stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round;
 }
 .scard:hover .scard-icon {
   transform: translateY(-2px) scale(1.04);
