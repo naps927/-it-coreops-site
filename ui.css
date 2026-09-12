@@ -52,6 +52,29 @@ input:focus-visible, select:focus-visible, textarea:focus-visible {
 .stag { transition: transform .2s ease; }
 .scard:hover .stag { transform: translateY(-1px); }
 
+/* --- Menu mobile (hamburger) : la nav ne doit jamais disparaître --- */
+.nav-toggle { display: none; }
+@media (max-width: 960px) {
+  .nav-toggle {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 44px; height: 44px; padding: 0;
+    background: var(--white); color: var(--black);
+    border: 1px solid var(--border); border-radius: 10px; cursor: pointer;
+  }
+  nav .nav-links {
+    display: none; position: absolute; top: 100%; left: 0; right: 0;
+    flex-direction: column; align-items: stretch; gap: 0;
+    background: rgba(255, 255, 255, .98); backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--border);
+    padding: .5rem 1.5rem 1.25rem; box-shadow: 0 14px 30px rgba(0, 0, 0, .06);
+  }
+  nav .nav-links.open { display: flex; }
+  nav .nav-links li { width: 100%; }
+  nav .nav-links a { display: block; padding: .95rem .25rem; font-size: 1rem; }
+  nav .nav-links a::after { display: none; }
+  nav .nav-links a.nav-btn { text-align: center; margin-top: .6rem; padding: .85rem; }
+}
+
 /* --- Respect de prefers-reduced-motion --- */
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
