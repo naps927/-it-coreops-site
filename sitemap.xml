@@ -17,9 +17,15 @@
   </url>
   <url>
     <loc>https://it-coreops.com/solutions.html</loc>
-    <lastmod>2026-07-14</lastmod>
+    <lastmod>2026-09-16</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://it-coreops.com/vigicve.html</loc>
+    <lastmod>2026-09-16</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://it-coreops.com/cours.html</loc>

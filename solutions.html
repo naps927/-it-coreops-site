@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>VigiCVE Veille CVE & Audit de sécurité SaaS | IT-CoreOPS</title>
-  <meta name="description" content="VigiCVE surveille vos vulnérabilités en temps réel. Alertes CVE ciblées, scoring CVSS + EPSS, rapports automatiques. Essai gratuit." />
+  <title>Solutions — Nos produits IT & cybersécurité | IT-CoreOPS</title>
+  <meta name="description" content="Découvrez les solutions IT-CoreOPS : VigiCVE (veille et audit CVE), agents IA pour l'IT, et d'autres outils à venir. Choisissez la solution adaptée à vos besoins." />
     <link rel="icon" type="image/svg+xml" href="favicon.svg" />
   <link rel="canonical" href="https://it-coreops.com/solutions.html" />
   <meta name="robots" content="index, follow" />
@@ -12,36 +12,18 @@
   <meta property="og:site_name" content="IT-CoreOPS" />
   <meta property="og:locale" content="fr_FR" />
   <meta property="og:url" content="https://it-coreops.com/solutions.html" />
-  <meta property="og:title" content="VigiCVE — Veille CVE & Audit de sécurité SaaS | IT-CoreOPS" />
-  <meta property="og:description" content="Surveillez vos vulnérabilités en temps réel : alertes CVE ciblées, scoring CVSS + EPSS, rapports automatiques. Essai gratuit." />
+  <meta property="og:title" content="Solutions — Nos produits IT & cybersécurité | IT-CoreOPS" />
+  <meta property="og:description" content="Découvrez les solutions IT-CoreOPS : VigiCVE, agents IA pour l'IT et d'autres outils à venir." />
   <meta property="og:image" content="https://it-coreops.com/og-image.png" />
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="VigiCVE — Veille CVE & Audit de sécurité SaaS | IT-CoreOPS" />
-  <meta name="twitter:description" content="Surveillez vos vulnérabilités en temps réel : alertes CVE ciblées, scoring CVSS + EPSS, rapports automatiques. Essai gratuit." />
+  <meta name="twitter:title" content="Solutions — Nos produits IT & cybersécurité | IT-CoreOPS" />
+  <meta name="twitter:description" content="Découvrez les solutions IT-CoreOPS : VigiCVE, agents IA pour l'IT et d'autres outils à venir." />
   <meta name="twitter:image" content="https://it-coreops.com/og-image.png" />
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "VigiCVE",
-    "applicationCategory": "SecurityApplication",
-    "operatingSystem": "Web, On-premise",
-    "url": "https://vigi-cve.com",
-    "description": "Plateforme SaaS de veille et d'audit CVE : surveillance en temps réel, scoring CVSS + EPSS, alertes ciblées et rapports automatiques.",
-    "offers": { "@type": "Offer", "price": "29", "priceCurrency": "EUR" },
-    "publisher": {
-      "@type": "Organization",
-      "name": "IT-CoreOPS",
-      "url": "https://it-coreops.com/",
-      "logo": "https://it-coreops.com/logo.png"
-    }
-  }
-  </script>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:ital,wght@0,300;0,400;0,500;0,600;1,300&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
@@ -49,357 +31,299 @@
       --white: #FFFFFF;
       --black: #09090B;
       --violet: #0D9488;
+      --violet-l: #14B8A6;
       --sky: #06B6D4;
       --lavender: #E6FBF9;
       --surface: #FAFAFA;
       --border: #E4E4E7;
       --muted: #71717A;
+      --dark: #18181B;
       --grad: linear-gradient(135deg, #0D9488 0%, #06B6D4 100%);
       --syne: 'Space Grotesk', sans-serif;
       --inter: 'Inter', sans-serif;
     }
 
     html { scroll-behavior: smooth; }
-    body { font-family: var(--inter); background: var(--white); color: var(--black); overflow-x: hidden; }
+
+    body {
+      font-family: var(--inter);
+      background: var(--white);
+      color: var(--black);
+      overflow-x: hidden;
+    }
 
     /* ─── NAV ─── */
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       display: flex; align-items: center; justify-content: space-between;
       padding: 1rem 2.5rem;
-      background: rgba(255,255,255,0.88); backdrop-filter: blur(16px);
+      background: rgba(255,255,255,0.88);
+      backdrop-filter: blur(16px);
       border-bottom: 1px solid var(--border);
     }
-    .logo { font-family: var(--syne); font-size: 1rem; font-weight: 700; color: var(--black); text-decoration: none; letter-spacing: -.02em; }
+    .logo {
+      font-family: var(--syne); font-size: 1rem; font-weight: 700;
+      color: var(--black); letter-spacing: -0.02em; text-decoration: none;
+    }
     .logo-dot { color: var(--violet); }
     .nav-links { list-style: none; display: flex; align-items: center; gap: 2rem; }
-    .nav-links a { font-size: .85rem; color: var(--muted); text-decoration: none; transition: color .2s; }
-    .nav-links a:hover, .nav-links a.active { color: var(--black); }
-    .nav-btn { font-size: .82rem !important; font-weight: 500 !important; color: var(--white) !important; background: var(--black); padding: .5rem 1.25rem; border-radius: 100px; transition: opacity .2s !important; }
-    .nav-btn:hover { opacity: .75; }
-
-    /* ─── BREADCRUMB ─── */
-    .breadcrumb {
-      max-width: 1120px; margin: 0 auto; padding: 5.5rem 2.5rem 0;
-      display: flex; align-items: center; gap: .5rem;
-      font-size: .78rem; color: var(--muted);
+    .nav-links a {
+      font-size: 0.85rem; color: var(--muted); text-decoration: none; transition: color .2s;
     }
-    .breadcrumb a { color: var(--muted); text-decoration: none; transition: color .2s; }
-    .breadcrumb a:hover { color: var(--black); }
-    .breadcrumb-sep { color: var(--border); }
-    .breadcrumb-cur { color: var(--violet); font-weight: 500; }
+    .nav-links a:hover { color: var(--black); }
+    .nav-btn {
+      font-size: 0.82rem !important; font-weight: 500 !important;
+      color: var(--white) !important; background: var(--black);
+      padding: .5rem 1.25rem; border-radius: 100px; transition: opacity .2s !important;
+    }
+    .nav-btn:hover { opacity: .75; }
 
     /* ─── HERO ─── */
     .hero {
-      max-width: 1120px; margin: 0 auto;
-      padding: 3rem 2.5rem 5rem;
-      display: grid; grid-template-columns: 1fr 1fr;
-      gap: 4rem; align-items: center;
-    }
-
-    .hero-left { }
-
-    .product-badge {
-      display: inline-flex; align-items: center; gap: .5rem;
-      background: var(--lavender); border: 1px solid rgba(13,148,136,.2);
-      padding: .3rem .9rem; border-radius: 100px; margin-bottom: 1.75rem;
-    }
-    .product-badge-logo {
-      width: 20px; height: 20px; border-radius: 5px;
-      background: var(--grad); display: flex; align-items: center;
-      justify-content: center; font-family: var(--syne);
-      font-size: .65rem; font-weight: 700; color: var(--white);
-    }
-    .product-badge-text { font-size: .78rem; font-weight: 500; color: var(--violet); }
-
-    .hero h1 {
-      font-family: var(--syne); font-size: clamp(2.2rem, 4vw, 3.4rem);
-      font-weight: 800; line-height: 1.1; letter-spacing: -.03em;
-      margin-bottom: 1.25rem;
-    }
-    .g { background: var(--grad); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-
-    .hero-sub {
-      font-size: 1rem; color: var(--muted); line-height: 1.75;
-      font-weight: 300; margin-bottom: 2rem; max-width: 48ch;
-    }
-
-    .hero-actions { display: flex; gap: .75rem; flex-wrap: wrap; margin-bottom: 2rem; }
-
-    .btn-g {
-      font-size: .9rem; font-weight: 500; padding: .85rem 1.75rem;
-      background: var(--grad); color: var(--white); border: none;
-      border-radius: 100px; text-decoration: none; cursor: pointer;
-      transition: opacity .2s, transform .2s;
-      box-shadow: 0 4px 20px rgba(13,148,136,.3);
-    }
-    .btn-g:hover { opacity: .88; transform: translateY(-1px); }
-
-    .btn-out {
-      font-size: .9rem; font-weight: 400; padding: .85rem 1.75rem;
-      background: transparent; color: var(--black);
-      border: 1.5px solid var(--border); border-radius: 100px;
-      text-decoration: none; transition: border-color .2s, background .2s;
-    }
-    .btn-out:hover { border-color: #A1A1AA; background: var(--surface); }
-
-    .hero-meta { display: flex; gap: 1.25rem; flex-wrap: wrap; }
-    .hero-meta-item { display: flex; align-items: center; gap: .4rem; font-size: .78rem; color: var(--muted); }
-
-    /* Dashboard réduit dans le hero */
-    .hero-dash {
-      position: relative; border-radius: 14px; overflow: hidden;
-      box-shadow: 0 30px 70px rgba(0,0,0,.28); border: 1px solid #1e1e28;
-      max-height: 560px;
-    }
-    .hero-dash .vc-app { zoom: .72; min-height: 0; }
-    .hero-dash::after {
-      content: ''; position: absolute; left: 0; right: 0; bottom: 0; height: 130px;
-      background: linear-gradient(rgba(10,10,15,0), rgba(10,10,15,.9));
-      pointer-events: none;
-    }
-    @media (max-width: 900px) {
-      .hero-dash { max-height: none; }
-      .hero-dash::after { display: none; }
-    }
-    .meta-dot { width: 6px; height: 6px; border-radius: 50%; background: #34D399; }
-
-    /* ─── HERO RIGHT: mock dashboard ─── */
-    .dashboard-mock {
-      background: var(--black); border-radius: 16px; overflow: hidden;
-      box-shadow: 0 24px 60px rgba(0,0,0,.2);
-    }
-    .dash-topbar {
-      display: flex; align-items: center; gap: .5rem;
-      padding: .9rem 1.25rem; background: #111113;
-      border-bottom: 1px solid #27272A;
-    }
-    .dash-dot { width: 9px; height: 9px; border-radius: 50%; }
-    .d-r { background: #FF5F57; } .d-y { background: #FFBD2E; } .d-g { background: #28CA41; }
-    .dash-title { font-size: .72rem; color: #52525B; margin: 0 auto; font-family: 'Inter', monospace; }
-    .dash-body { padding: 1.25rem; }
-    .dash-stat-row { display: grid; grid-template-columns: repeat(3,1fr); gap: .75rem; margin-bottom: 1.25rem; }
-    .dash-stat {
-      background: #111113; border: 1px solid #27272A; border-radius: 10px;
-      padding: .75rem 1rem;
-    }
-    .dash-stat-val { font-family: var(--syne); font-size: 1.3rem; font-weight: 700; }
-    .dash-stat-label { font-size: .68rem; color: #52525B; margin-top: .15rem; }
-    .red { color: #F87171; } .amber { color: #FCD34D; } .green { color: #34D399; }
-
-    .dash-section-title { font-size: .68rem; font-weight: 600; color: #52525B; letter-spacing: .06em; text-transform: uppercase; margin-bottom: .75rem; }
-
-    .cve-item {
-      display: flex; align-items: center; gap: .75rem;
-      padding: .6rem .75rem; border-radius: 8px; margin-bottom: .4rem;
-      background: #111113; border: 1px solid #27272A;
-    }
-    .cve-score {
-      font-family: var(--syne); font-size: .8rem; font-weight: 700;
-      width: 34px; text-align: center; flex-shrink: 0;
-    }
-    .cve-info { flex: 1; min-width: 0; }
-    .cve-id { font-size: .72rem; font-weight: 500; color: #E4E4E7; }
-    .cve-desc { font-size: .68rem; color: #52525B; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-    .cve-badge { font-size: .62rem; font-weight: 600; padding: .15rem .5rem; border-radius: 100px; flex-shrink: 0; }
-    .cb-crit { background: rgba(248,113,113,.15); color: #F87171; }
-    .cb-high { background: rgba(252,211,77,.12); color: #FCD34D; }
-    .cb-med { background: rgba(52,211,153,.12); color: #34D399; }
-
-    /* ─── DASHBOARD HTML (replica) ─── */
-    .vc-app { display:flex; background:#0a0a0f; color:#e8e8ee; text-align:left; min-height:620px; font-size:13px; }
-    .vc-side { width:210px; flex-shrink:0; background:#0c0c12; border-right:1px solid #1a1a24; padding:1rem 0 .5rem; display:flex; flex-direction:column; }
-    .vc-brand { display:flex; align-items:center; gap:.55rem; padding:.2rem 1.1rem 1.1rem; }
-    .vc-brand .vc-l { width:30px; height:30px; border-radius:8px; background:var(--grad); display:flex; align-items:center; justify-content:center; font-family:var(--syne); font-weight:700; color:#fff; font-size:.85rem; }
-    .vc-brand b { font-size:.85rem; }
-    .vc-brand small { display:block; font-size:.62rem; color:#6b6b7a; }
-    .vc-grp { font-size:.58rem; letter-spacing:.12em; color:#45454f; text-transform:uppercase; padding:.85rem 1.15rem .35rem; }
-    .vc-it { padding:.5rem 1.15rem; font-size:.8rem; color:#9a9aa8; border-left:2px solid transparent; }
-    .vc-it.on { color:#fff; background:rgba(96,165,250,.1); border-left-color:#60a5fa; }
-    .vc-side-b { margin-top:auto; }
-    .vc-ent { display:flex; align-items:center; gap:.5rem; margin:.5rem 1.15rem .75rem; }
-    .vc-ent .vc-av { width:26px; height:26px; border-radius:50%; background:#1d4ed8; display:flex; align-items:center; justify-content:center; font-size:.6rem; font-weight:700; color:#fff; }
-    .vc-onprem { font-size:.6rem; color:#60a5fa; background:rgba(96,165,250,.1); border:1px solid rgba(96,165,250,.25); border-radius:5px; padding:.05rem .4rem; }
-    .vc-main { flex:1; min-width:0; padding:1.4rem 1.6rem; }
-    .vc-head { display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:1.2rem; }
-    .vc-h1 { font-family:var(--syne); font-size:1.25rem; font-weight:700; }
-    .vc-hsub { font-size:.72rem; color:#6b6b7a; margin-top:.15rem; }
-    .vc-btn { font-size:.7rem; color:#c8c8d2; border:1px solid #26262e; border-radius:8px; padding:.4rem .75rem; white-space:nowrap; }
-    .vc-stats { display:grid; grid-template-columns:repeat(5,1fr); gap:.7rem; margin-bottom:1.4rem; }
-    .vc-stat { border-radius:10px; padding:.9rem .5rem; text-align:center; border:1px solid #26262e; background:#10101a; }
-    .vc-stat b { display:block; font-family:var(--syne); font-size:1.55rem; line-height:1; }
-    .vc-stat span { font-size:.58rem; letter-spacing:.05em; color:#8a8a98; text-transform:uppercase; }
-    .vc-card { background:#0f0f16; border:1px solid #1e1e28; border-radius:12px; padding:1.05rem 1.2rem; margin-bottom:1rem; }
-    .vc-ct { font-size:.7rem; font-weight:700; letter-spacing:.05em; text-transform:uppercase; color:#8a8a98; }
-    .vc-ctsub { font-size:.68rem; color:#5b5b68; margin:.15rem 0 .8rem; }
-    .vc-trow { display:flex; align-items:center; gap:.7rem; padding:.5rem .2rem; border-top:1px solid #17171f; }
-    .vc-trow:first-of-type { border-top:none; }
-    .vc-rank { color:#5b5b68; font-size:.75rem; width:12px; }
-    .vc-cve { color:#7ca9f5; font-family:var(--inter); font-weight:600; font-size:.76rem; letter-spacing:.02em; }
-    .vc-tag { font-size:.6rem; font-weight:700; padding:.1rem .4rem; border-radius:5px; }
-    .vc-tag.cvss { background:rgba(251,146,60,.16); color:#fb923c; }
-    .vc-tag.cvss5 { background:rgba(251,191,36,.16); color:#fbbf24; }
-    .vc-tag.epss { background:#17171f; color:#6b6b7a; }
-    .vc-host { font-size:.66rem; color:#6b6b7a; margin-top:.2rem; }
-    .vc-pill { font-size:.62rem; font-weight:600; padding:.12rem .5rem; border-radius:100px; }
-    .vc-donut { width:150px; height:150px; border-radius:50%; margin:1.25rem auto .75rem; position:relative;
-      background:conic-gradient(#f87171 0 25%, #fb923c 25% 63%, #fbbf24 63% 100%); }
-    .vc-donut::after { content:''; position:absolute; inset:27px; border-radius:50%; background:#0f0f16; }
-    .vc-legend { display:flex; gap:1rem; justify-content:center; font-size:.66rem; color:#8a8a98; }
-    .vc-legend i { width:7px; height:7px; border-radius:50%; display:inline-block; margin-right:.3rem; }
-    .vc-2col { display:grid; grid-template-columns:1fr 1fr; gap:1rem; }
-    .vc-cfg { display:flex; justify-content:space-between; font-size:.76rem; padding:.4rem 0; border-top:1px solid #17171f; }
-    .vc-cfg:first-of-type { border-top:none; }
-    .vc-cfg span { color:#9a9aa8; }
-    @media (max-width:860px) {
-      .vc-side { display:none; }
-      .vc-stats { grid-template-columns:repeat(3,1fr); }
-      .vc-2col { grid-template-columns:1fr; }
-    }
-
-    /* ─── VIDEO ─── */
-    .video-section {
-      background: var(--surface); border-top: 1px solid var(--border);
-      border-bottom: 1px solid var(--border); padding: 5rem 2.5rem;
-    }
-    .video-inner { max-width: 860px; margin: 0 auto; text-align: center; }
-    .eyebrow { font-size: .72rem; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--violet); margin-bottom: .9rem; }
-    .section-h { font-family: var(--syne); font-size: clamp(1.6rem,3vw,2.4rem); font-weight: 700; letter-spacing: -.02em; margin-bottom: 1rem; }
-    .section-sub { color: var(--muted); font-size: .95rem; line-height: 1.75; font-weight: 300; margin-bottom: 2.5rem; }
-
-    .video-placeholder {
-      position: relative; width: 100%; padding-bottom: 56.25%;
-      background: var(--black); border-radius: 16px; overflow: hidden;
-      box-shadow: 0 20px 50px rgba(0,0,0,.15); cursor: pointer;
-    }
-    .video-placeholder-inner {
-      position: absolute; inset: 0;
+      position: relative; min-height: 100vh;
       display: flex; flex-direction: column;
       align-items: center; justify-content: center;
-      background: linear-gradient(135deg, #0D0D14 0%, #0A0D18 100%);
+      text-align: center;
+      padding: 9rem 2rem 5rem;
+      overflow: hidden;
     }
-    .video-placeholder::before {
-      content: ''; position: absolute; inset: 0;
-      background: radial-gradient(ellipse at 30% 40%, rgba(13,148,136,.2) 0%, transparent 60%),
-                  radial-gradient(ellipse at 70% 70%, rgba(6,182,212,.15) 0%, transparent 60%);
-      z-index: 0;
+    .blob {
+      position: absolute; border-radius: 50%;
+      filter: blur(90px); opacity: .10; pointer-events: none;
     }
-    .play-btn {
-      position: relative; z-index: 1;
-      width: 72px; height: 72px; border-radius: 50%;
-      background: rgba(255,255,255,.1); backdrop-filter: blur(8px);
-      border: 1.5px solid rgba(255,255,255,.2);
-      display: flex; align-items: center; justify-content: center;
-      margin-bottom: 1.25rem;
-      transition: background .2s, transform .2s;
-    }
-    .video-placeholder:hover .play-btn { background: rgba(255,255,255,.18); transform: scale(1.06); }
-    .play-icon { width: 0; height: 0; border-top: 12px solid transparent; border-bottom: 12px solid transparent; border-left: 20px solid white; margin-left: 4px; }
-    .video-label { position: relative; z-index: 1; font-size: .85rem; color: rgba(255,255,255,.5); font-weight: 300; }
-    .video-label strong { color: rgba(255,255,255,.85); font-weight: 500; display: block; margin-bottom: .2rem; }
-    .demo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 1rem; }
-    @media (max-width: 720px) { .demo-grid { grid-template-columns: 1fr; } }
+    .blob-1 { width:650px;height:650px;background:var(--violet);top:-120px;left:-160px;animation:d1 20s ease-in-out infinite alternate; }
+    .blob-2 { width:500px;height:500px;background:var(--sky);bottom:-80px;right:-100px;animation:d2 24s ease-in-out infinite alternate; }
+    @keyframes d1 { to { transform:translate(60px,40px); } }
+    @keyframes d2 { to { transform:translate(-50px,-30px); } }
 
-    /* Lecteur vidéo intégré */
-    .video-embed { position: relative; width: 100%; padding-bottom: 56.25%; background: #000; border-radius: 16px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,.15); }
-    .video-embed iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
-    .video-cap { margin-top: .9rem; font-size: .85rem; color: var(--muted); font-weight: 500; text-align: center; }
+    .hero-tag {
+      display: inline-flex; align-items: center; gap: .45rem;
+      font-size: .78rem; font-weight: 500; color: var(--violet);
+      background: var(--lavender); border: 1px solid rgba(13,148,136,.2);
+      padding: .3rem .9rem; border-radius: 100px; margin-bottom: 2rem;
+    }
+    .tag-dot {
+      width:6px;height:6px;border-radius:50%;background:var(--violet);
+      animation: pulse 2s ease-in-out infinite;
+    }
+    @keyframes pulse { 0%,100%{transform:scale(1);opacity:1} 50%{transform:scale(.7);opacity:.5} }
 
-    /* ─── FEATURES ─── */
-    .features { max-width: 1120px; margin: 0 auto; padding: 6rem 2.5rem; }
-    .features-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; }
+    .hero h1 {
+      font-family: var(--syne);
+      font-size: clamp(2.6rem, 6vw, 5.2rem);
+      font-weight: 800; line-height: 1.07; letter-spacing: -.035em;
+      max-width: 900px; margin-bottom: 1.5rem;
+    }
+    .g { background: var(--grad); -webkit-background-clip:text; -webkit-text-fill-color:transparent; background-clip:text; }
 
-    .fcard {
-      border: 1.5px solid var(--border); border-radius: 16px; padding: 1.75rem;
-      transition: border-color .2s, box-shadow .2s, transform .2s;
-      position: relative; overflow: hidden;
+    .hero-sub {
+      font-size: 1.1rem; color: var(--muted); max-width: 54ch;
+      line-height: 1.75; font-weight: 300; margin-bottom: 2.5rem;
     }
-    .fcard::before {
-      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
-      background: var(--grad); transform: scaleX(0); transform-origin: left;
-      transition: transform .3s ease;
-    }
-    .fcard:hover { border-color: rgba(13,148,136,.25); box-shadow: 0 8px 30px rgba(13,148,136,.07); transform: translateY(-3px); }
-    .fcard:hover::before { transform: scaleX(1); }
-    .fcard-icon { font-size: 1.4rem; margin-bottom: 1rem; }
-    .fcard-title { font-family: var(--syne); font-size: 1rem; font-weight: 700; margin-bottom: .5rem; letter-spacing: -.01em; }
-    .fcard-desc { font-size: .85rem; color: var(--muted); line-height: 1.7; font-weight: 300; }
+    .hero-actions { display:flex; gap:1rem; justify-content:center; flex-wrap:wrap; margin-bottom:3.5rem; }
 
-    /* ─── DEVIS / CTA ─── */
-    .devis-section {
-      background: var(--black); color: var(--white); padding: 6rem 2.5rem;
+    .btn-g {
+      font-size:.9rem; font-weight:500; padding:.85rem 2rem;
+      background:var(--grad); color:var(--white); border:none;
+      border-radius:100px; text-decoration:none; cursor:pointer;
+      transition:opacity .2s, transform .2s;
+      box-shadow:0 4px 20px rgba(13,148,136,.3);
     }
-    .devis-inner {
-      max-width: 1120px; margin: 0 auto;
-      display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start;
-    }
-    .devis-left .eyebrow { color: var(--sky); }
-    .devis-left .section-h { color: var(--white); margin-bottom: 1rem; }
-    .devis-left .section-sub { color: #A1A1AA; margin-bottom: 2rem; max-width: 44ch; }
+    .btn-g:hover { opacity:.88; transform:translateY(-1px); }
 
-    .devis-points { display: flex; flex-direction: column; gap: .65rem; }
-    .devis-point { display: flex; align-items: center; gap: .75rem; font-size: .88rem; color: #A1A1AA; }
-    .devis-point::before { content: '✓'; color: #34D399; font-weight: 600; flex-shrink: 0; }
+    .btn-out {
+      font-size:.9rem; font-weight:400; padding:.85rem 2rem;
+      background:transparent; color:var(--black);
+      border:1.5px solid var(--border); border-radius:100px;
+      text-decoration:none; transition:border-color .2s, background .2s;
+    }
+    .btn-out:hover { border-color:#A1A1AA; background:var(--surface); }
 
-    .devis-form {
-      background: #111113; border: 1px solid #27272A; border-radius: 16px; padding: 2rem;
+    .flags {
+      display:flex; gap:1.5rem; justify-content:center; flex-wrap:wrap;
+      font-size:.82rem; color:var(--muted);
     }
-    .form-title { font-family: var(--syne); font-size: 1.1rem; font-weight: 700; color: var(--white); margin-bottom: 1.5rem; }
-    .form-group { margin-bottom: 1rem; }
-    .form-label { display: block; font-size: .78rem; font-weight: 500; color: #A1A1AA; margin-bottom: .4rem; }
-    .form-input, .form-select, .form-textarea {
-      width: 100%; background: #0D0D0F; border: 1px solid #27272A;
-      border-radius: 8px; padding: .7rem 1rem;
-      color: var(--white); font-family: var(--inter); font-size: .875rem;
-      transition: border-color .2s; outline: none;
-    }
-    .form-input:focus, .form-select:focus, .form-textarea:focus { border-color: var(--violet); }
-    .form-input::placeholder, .form-textarea::placeholder { color: #3F3F46; }
-    .form-select option { background: #111113; }
-    .form-textarea { resize: vertical; min-height: 90px; }
-    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
-    .form-submit {
-      width: 100%; padding: .9rem;
-      background: var(--grad); color: var(--white);
-      border: none; border-radius: 100px;
-      font-family: var(--inter); font-size: .9rem; font-weight: 500;
-      cursor: pointer; transition: opacity .2s, transform .2s;
-      box-shadow: 0 4px 20px rgba(13,148,136,.4);
-      margin-top: .5rem;
-    }
-    .form-submit:hover { opacity: .88; transform: translateY(-1px); }
-    .form-note { font-size: .72rem; color: #52525B; text-align: center; margin-top: .75rem; }
+    .flag-item { display:flex; align-items:center; gap:.4rem; }
+    .flag-sep { color:var(--border); }
 
-    .or-divider { display: flex; align-items: center; gap: 1rem; margin: 1.5rem 0; }
-    .or-line { flex: 1; height: 1px; background: #27272A; }
-    .or-text { font-size: .72rem; color: #52525B; }
-
-    .btn-site {
-      display: block; text-align: center; padding: .85rem;
-      border: 1px solid #27272A; border-radius: 100px;
-      color: #A1A1AA; font-size: .85rem; text-decoration: none;
-      transition: border-color .2s, color .2s;
+    /* ─── SECTION SHARED ─── */
+    .section { max-width:1120px; margin:0 auto; padding:6rem 2.5rem; }
+    .eyebrow {
+      font-size:.72rem; font-weight:600; letter-spacing:.1em;
+      text-transform:uppercase; color:var(--violet); margin-bottom:.9rem;
     }
-    .btn-site:hover { border-color: #52525B; color: var(--white); }
+    .section-h {
+      font-family:var(--syne); font-size:clamp(1.8rem,3vw,2.6rem);
+      font-weight:700; letter-spacing:-.02em; line-height:1.15; margin-bottom:1rem;
+    }
+    .section-sub {
+      color:var(--muted); font-size:.95rem; line-height:1.75;
+      font-weight:300; max-width:56ch; margin-bottom:3rem;
+    }
+
+    /* ─── SERVICES ─── */
+    .services-bg { background:var(--surface); border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
+
+    .services-grid {
+      display:grid; grid-template-columns:repeat(2,1fr); gap:1.5rem;
+    }
+    .scard {
+      background:var(--white); border:1.5px solid var(--border);
+      border-radius:16px; padding:2rem;
+      transition:border-color .2s, box-shadow .2s, transform .2s;
+      position:relative; overflow:hidden;
+    }
+    .scard::before {
+      content:''; position:absolute; top:0;left:0;right:0; height:3px;
+      background:var(--grad); transform:scaleX(0); transform-origin:left;
+      transition:transform .3s ease;
+    }
+    .scard:hover { border-color:rgba(13,148,136,.25); box-shadow:0 8px 30px rgba(13,148,136,.07); transform:translateY(-3px); }
+    .scard:hover::before { transform:scaleX(1); }
+
+    .scard-icon { font-size:1.6rem; margin-bottom:1.25rem; }
+    .scard-title { font-family:var(--syne); font-size:1.1rem; font-weight:700; margin-bottom:.65rem; letter-spacing:-.01em; }
+    .scard-desc { font-size:.875rem; color:var(--muted); line-height:1.7; font-weight:300; margin-bottom:1.25rem; }
+    .tag-row { display:flex; flex-wrap:wrap; gap:.4rem; }
+    .stag {
+      font-size:.7rem; font-weight:500; padding:.22rem .65rem;
+      background:var(--lavender); color:var(--violet);
+      border-radius:100px; border:1px solid rgba(13,148,136,.15);
+    }
+    .stag-sky { background:#E0F2FE; color:#0369A1; border-color:rgba(6,182,212,.2); }
+    .stag-green { background:#ECFDF5; color:#059669; border-color:rgba(5,150,105,.2); }
+    .stag-amber { background:#FFFBEB; color:#B45309; border-color:rgba(245,158,11,.2); }
+
+    /* ─── IA ─── */
+    .ia-bg { background:var(--black); color:var(--white); }
+
+    .ia-inner {
+      max-width:1120px; margin:0 auto; padding:6rem 2.5rem;
+      display:grid; grid-template-columns:1fr 1fr; gap:5rem; align-items:center;
+    }
+    .ia-inner .eyebrow { color:var(--sky); }
+    .ia-inner .section-h { color:var(--white); }
+    .ia-inner .section-sub { color:#A1A1AA; margin-bottom:2rem; }
+
+    .ia-pills { display:flex; flex-direction:column; gap:.75rem; }
+    .ia-pill {
+      display:flex; align-items:flex-start; gap:.9rem;
+      background:#111113; border:1px solid #27272A;
+      border-radius:12px; padding:1rem 1.25rem;
+      transition:border-color .2s;
+    }
+    .ia-pill:hover { border-color:#3F3F46; }
+    .ia-pill-icon { font-size:1.1rem; flex-shrink:0; margin-top:.1rem; }
+    .ia-pill-title { font-weight:500; font-size:.88rem; margin-bottom:.2rem; }
+    .ia-pill-desc { font-size:.8rem; color:#71717A; line-height:1.6; }
+
+    .ia-visual {
+      background:#0D0D0F; border:1px solid #27272A;
+      border-radius:16px; padding:1.5rem; position:relative; overflow:hidden;
+    }
+    .ia-visual::before {
+      content:''; position:absolute;
+      top:-60px; right:-60px; width:200px; height:200px;
+      background:radial-gradient(circle, rgba(13,148,136,.3) 0%, transparent 70%);
+    }
+    .ia-bar { margin-bottom:1rem; }
+    .ia-bar-label {
+      display:flex; justify-content:space-between;
+      font-size:.72rem; color:#71717A; margin-bottom:.4rem;
+    }
+    .ia-bar-label span:last-child { color:var(--sky); }
+    .bar-track { height:5px; background:#27272A; border-radius:3px; overflow:hidden; }
+    .bar-fill { height:100%; border-radius:3px; background:var(--grad); }
+    .ia-stat-grid { display:grid; grid-template-columns:1fr 1fr; gap:.75rem; margin-top:1.5rem; }
+    .ia-stat {
+      background:#111113; border:1px solid #27272A;
+      border-radius:10px; padding:.9rem 1rem; text-align:center;
+    }
+    .ia-stat-val {
+      font-family:var(--syne); font-size:1.4rem; font-weight:700;
+      background:var(--grad); -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent; background-clip:text;
+    }
+    .ia-stat-label { font-size:.72rem; color:#71717A; margin-top:.2rem; }
+
+    /* ─── RÉALISATIONS ─── */
+    .projects-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:1.5rem; }
+
+    .pcard {
+      border:1.5px solid var(--border); border-radius:16px;
+      overflow:hidden; transition:transform .2s, box-shadow .2s;
+      background:var(--white);
+    }
+    .pcard:hover { transform:translateY(-4px); box-shadow:0 12px 40px rgba(0,0,0,.08); }
+
+    .pcard-header {
+      padding:1.75rem 1.75rem 1rem;
+      display:flex; align-items:flex-start; justify-content:space-between;
+    }
+    .pcard-logo {
+      width:44px; height:44px; border-radius:10px;
+      display:flex; align-items:center; justify-content:center;
+      font-size:1.2rem; font-weight:700; font-family:var(--syne);
+    }
+    .logo-vigicve { background:var(--grad); color:var(--white); }
+    .logo-soon { background:var(--surface); color:var(--muted); font-size:.8rem; }
+
+    .pcard-badge {
+      font-size:.65rem; font-weight:600; letter-spacing:.05em;
+      padding:.22rem .65rem; border-radius:100px; text-transform:uppercase;
+    }
+    .badge-live { background:#ECFDF5; color:#059669; border:1px solid rgba(5,150,105,.2); }
+    .badge-soon { background:var(--surface); color:var(--muted); border:1px solid var(--border); }
+
+    .pcard-body { padding:0 1.75rem 1.75rem; }
+    .pcard-title { font-family:var(--syne); font-size:1.1rem; font-weight:700; margin-bottom:.5rem; letter-spacing:-.01em; }
+    .pcard-desc { font-size:.85rem; color:var(--muted); line-height:1.7; font-weight:300; margin-bottom:1.25rem; }
+    .pcard-tags { display:flex; flex-wrap:wrap; gap:.4rem; }
+
+    .pcard-link {
+      display:inline-flex; align-items:center; gap:.35rem;
+      font-size:.82rem; font-weight:500; color:var(--violet);
+      text-decoration:none; margin-top:1.25rem;
+      transition:gap .2s;
+    }
+    .pcard-link:hover { gap:.6rem; }
+
+    /* ─── CTA ─── */
+    .cta-section { padding:7rem 2.5rem; text-align:center; }
+    .cta-inner { max-width:580px; margin:0 auto; }
+    .cta-inner .section-h { margin-bottom:1rem; }
+    .cta-inner p { color:var(--muted); font-size:1rem; line-height:1.7; font-weight:300; margin-bottom:2.5rem; }
+    .cta-email {
+      display:inline-block; font-size:1rem; font-weight:500;
+      color:var(--white); background:var(--black);
+      padding:1rem 2.5rem; border-radius:100px; text-decoration:none;
+      transition:opacity .2s, transform .2s;
+      box-shadow:0 4px 24px rgba(0,0,0,.12);
+    }
+    .cta-email:hover { opacity:.82; transform:translateY(-2px); }
+    .cta-note { margin-top:1rem; font-size:.78rem; color:var(--muted); }
 
     /* ─── FOOTER ─── */
-    footer { border-top: 1px solid var(--border); padding: 2rem 2.5rem; }
-    .footer-inner { max-width: 1120px; margin: 0 auto; display: flex; justify-content: space-between; align-items: center; }
-    .footer-copy { font-size: .78rem; color: var(--muted); }
-    .footer-right { display: flex; gap: 1.5rem; }
-    .footer-link { font-size: .78rem; color: var(--muted); text-decoration: none; transition: color .2s; }
-    .footer-link:hover { color: var(--black); }
+    footer { border-top:1px solid var(--border); padding:2rem 2.5rem; }
+    .footer-inner {
+      max-width:1120px; margin:0 auto;
+      display:flex; justify-content:space-between; align-items:center;
+    }
+    .footer-copy { font-size:.78rem; color:var(--muted); }
+    .footer-right { display:flex; gap:1.5rem; }
+    .footer-link { font-size:.78rem; color:var(--muted); text-decoration:none; transition:color .2s; }
+    .footer-link:hover { color:var(--black); }
 
     /* ─── RESPONSIVE ─── */
-    @media (max-width: 960px) {
-      .nav-links { display: none; }
-      .hero { grid-template-columns: 1fr; }
-      .features-grid { grid-template-columns: 1fr; }
-      .devis-inner { grid-template-columns: 1fr; gap: 3rem; }
-      .form-row { grid-template-columns: 1fr; }
+    @media (max-width:960px) {
+      .nav-links { display:none; }
+      .services-grid { grid-template-columns:1fr; }
+      .ia-inner { grid-template-columns:1fr; gap:3rem; }
+      .projects-grid { grid-template-columns:1fr; }
     }
-    @media (prefers-reduced-motion: reduce) {
-      .btn-g:hover, .fcard:hover { transform: none; }
+    @media (prefers-reduced-motion:reduce) {
+      .blob,.tag-dot { animation:none; }
+      .btn-g:hover,.cta-email:hover,.pcard:hover,.scard:hover { transform:none; }
     }
   </style>
   <link rel="stylesheet" href="ui.css?v=4" />
@@ -413,206 +337,60 @@
     <li><a href="index.html">Accueil</a></li>
     <li><a href="services.html">Services</a></li>
     <li><a href="cours.html">Cours</a></li>
-    <li><a href="index.html#solutions" class="active" style="color:var(--black);font-weight:500">Solutions</a></li>
+    <li><a href="solutions.html" class="active" style="color:var(--black);font-weight:600">Solutions</a></li>
     <li><a href="a-propos.html">À propos</a></li>
-    <li><a href="#devis" class="nav-btn">Demander un devis</a></li>
+    <li><a href="index.html#contact" class="nav-btn">Nous contacter</a></li>
   </ul>
 </nav>
 
-<!-- BREADCRUMB -->
-<div class="breadcrumb">
-  <a href="index.html">IT-CoreOPS</a>
-  <span class="breadcrumb-sep">/</span>
-  <span>Solutions</span>
-  <span class="breadcrumb-sep">/</span>
-  <span class="breadcrumb-cur">VigiCVE</span>
-</div>
+<div class="services-bg" id="solutions" style="padding-top:5rem;min-height:calc(100vh - 200px)">
+  <div class="section">
+    <div class="eyebrow">Nos solutions</div>
+    <h1 class="section-h">Nos produits &amp; solutions.</h1>
+    <p class="section-sub">
+      Des outils SaaS nés de vrais besoins terrain. Choisissez la solution qui vous intéresse pour en savoir plus. VigiCVE est notre produit phare, d'autres arrivent prochainement.
+    </p>
 
-<!-- HERO -->
-<section>
-  <div class="hero" style="align-items:start">
-    <div class="hero-left">
-      <div class="product-badge">
-        <div class="product-badge-logo">V</div>
-        <span class="product-badge-text">VigiCVE par IT-CoreOPS</span>
-      </div>
-
-      <h1>
-        Vos vulnérabilités,<br />
-        <span class="g">sous contrôle en temps réel.</span>
-      </h1>
-
-      <p class="hero-sub">
-        VigiCVE surveille en continu les CVE qui touchent votre infrastructure et vous alerte uniquement sur ce qui compte avec le contexte pour agir vite. Une solution accessible, pensée pour les structures aux budgets plus serrés qui veulent rester protégées sans se ruiner.
-      </p>
-
-      <div class="hero-actions">
-        <a href="#devis" class="btn-g">Demander un devis</a>
-        <a href="https://vigi-cve.com" target="_blank" class="btn-out">Voir le site ↗</a>
-        <a href="https://www.linkedin.com/company/vigi-cve/" target="_blank" rel="noopener" class="btn-out" style="display:inline-flex;align-items:center;gap:.5rem" aria-label="LinkedIn VigiCVE">
-          <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.42v1.56h.05c.48-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.55V9h3.57v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg>
-          LinkedIn
-        </a>
-      </div>
-
-      <div class="hero-meta">
-        <div class="hero-meta-item"><div class="meta-dot"></div>SaaS, sans installation</div>
-        <div class="hero-meta-item"><div class="meta-dot"></div>Essai gratuit disponible</div>
-        <div class="hero-meta-item"><div class="meta-dot"></div>Alertes email & Teams</div>
-        <div class="hero-meta-item"><div class="meta-dot"></div>Déjà 5 clients en version on-premise</div>
-      </div>
-    </div>
-
-    <div class="hero-dash-video">
-      <div class="video-embed">
-        <iframe src="https://www.youtube-nocookie.com/embed/9nV7QAg00o4?rel=0" title="Démo VigiCVE — Version SaaS" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- VIDEO -->
-<div class="video-section">
-  <div class="video-inner">
-    <div class="eyebrow">Démo produit</div>
-    <h2 class="section-h">Voir VigiCVE en action.</h2>
-    <p class="section-sub" style="margin-inline:auto">Deux versions, deux démos : la version SaaS publique et la version on-premise auto-hébergée.</p>
-
-    <div class="demo-grid">
-      <div class="video-placeholder">
-        <div class="video-placeholder-inner">
-          <div class="play-btn">
-            <div class="play-icon"></div>
-          </div>
-          <div class="video-label">
-            <strong>Démo — Version SaaS (public)</strong>
-            Voir la vidéo en haut de page
-          </div>
+    <div class="services-grid">
+      <div class="scard">
+        <div class="scard-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#0D9488" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l7 3v6c0 4.6-3.1 7.8-7 9-3.9-1.2-7-4.4-7-9V6l7-3z"/><path d="M8.5 12l2.2 2.2 4.5-4.5"/></svg></div>
+        <div class="scard-title">VigiCVE <span style="font-size:.6rem;font-weight:600;color:#059669;background:#ECFDF5;border:1px solid rgba(5,150,105,.2);padding:.12rem .5rem;border-radius:100px;vertical-align:middle;margin-left:.4rem;text-transform:uppercase;letter-spacing:.04em">En ligne</span></div>
+        <div class="scard-desc">Plateforme SaaS de veille et d'audit CVE. Surveillance en temps réel, scoring CVSS + EPSS, alertes ciblées et rapports automatiques, sans SOC interne. Déjà 5 clients en version on-premise.</div>
+        <div class="tag-row">
+          <span class="stag">SaaS</span>
+          <span class="stag stag-sky">Cybersécurité</span>
+          <span class="stag stag-green">CVE / NVD</span>
         </div>
+        <a href="vigicve.html" style="display:inline-flex;align-items:center;gap:.4rem;font-size:.85rem;font-weight:600;color:var(--violet);text-decoration:none;margin-top:1.35rem">Découvrir VigiCVE →</a>
       </div>
 
-      <div class="video-placeholder">
-        <div class="video-placeholder-inner">
-          <div class="play-btn">
-            <div class="play-icon"></div>
-          </div>
-          <div class="video-label">
-            <strong>Démo — Version On-premise</strong>
-            Vidéo bientôt disponible
-          </div>
+      <div class="scard" style="opacity:.9">
+        <div class="scard-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#0D9488" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.9 4.6L18.5 9.5 13.9 11.4 12 16l-1.9-4.6L5.5 9.5 10.1 7.6z"/><path d="M19 14.5l.7 1.8 1.8.7-1.8.7-.7 1.8-.7-1.8-1.8-.7 1.8-.7z"/></svg></div>
+        <div class="scard-title">Agents IA IT <span style="font-size:.6rem;font-weight:600;color:var(--muted);background:var(--surface);border:1px solid var(--border);padding:.12rem .5rem;border-radius:100px;vertical-align:middle;margin-left:.4rem;text-transform:uppercase;letter-spacing:.04em">Bientôt</span></div>
+        <div class="scard-desc">Des agents IA qui automatisent vos tâches IT récurrentes : tri et résolution de tickets, supervision, réponses de premier niveau et remontées d'alertes. En cours de développement.</div>
+        <div class="tag-row">
+          <span class="stag">IA</span>
+          <span class="stag stag-sky">Automatisation</span>
+          <span class="stag stag-green">Support IT</span>
         </div>
+        <a href="index.html#contact" style="display:inline-flex;align-items:center;gap:.4rem;font-size:.85rem;font-weight:600;color:var(--violet);text-decoration:none;margin-top:1.35rem">Être notifié →</a>
       </div>
-    </div>
-  </div>
-</div>
 
-<!-- FEATURES -->
-<div class="features" id="features">
-  <div class="eyebrow">Fonctionnalités</div>
-  <h2 class="section-h" style="margin-bottom:.75rem">Ce que VigiCVE fait pour vous.</h2>
-  <p class="section-sub" style="margin-bottom:3rem;max-width:56ch">Pensé pour vous aider à garder vos vulnérabilités sous contrôle. Pas de fausse complexité, pas de bruit : juste ce qui compte pour votre sécurité.</p>
-
-  <div class="features-grid">
-    <div class="fcard">
-      <div class="fcard-icon">📡</div>
-      <div class="fcard-title">Veille CVE en temps réel</div>
-      <div class="fcard-desc">Agrégation continue de NVD, MITRE, CISA KEV et autres sources. Chaque nouvelle CVE est analysée dès sa publication.</div>
-    </div>
-    <div class="fcard">
-      <div class="fcard-icon">🎯</div>
-      <div class="fcard-title">Corrélation avec votre parc</div>
-      <div class="fcard-desc">Renseignez vos équipements une seule fois. VigiCVE vous remonte uniquement les CVE qui vous concernent vraiment.</div>
-    </div>
-    <div class="fcard">
-      <div class="fcard-icon">🧮</div>
-      <div class="fcard-title">VigiScore™ Scoring IA</div>
-      <div class="fcard-desc">Un score propriétaire combinant CVSS et EPSS pour prioriser vos actions. Sachez en un coup d'œil ce qui est urgent.</div>
-    </div>
-    <div class="fcard">
-      <div class="fcard-icon">🔔</div>
-      <div class="fcard-title">Alertes email & Microsoft Teams</div>
-      <div class="fcard-desc">Recevez les alertes là où vous travaillez déjà. Aucune app à installer, aucune formation nécessaire.</div>
-    </div>
-    <div class="fcard">
-      <div class="fcard-icon">📊</div>
-      <div class="fcard-title">Rapports PDF automatiques</div>
-      <div class="fcard-desc">Rapports de sécurité clairs et exportables en un clic prêts à envoyer à votre direction ou vos clients.</div>
-    </div>
-    <div class="fcard">
-      <div class="fcard-icon">🏢</div>
-      <div class="fcard-title">On-premise disponible</div>
-      <div class="fcard-desc">Besoin d'un déploiement sur vos propres serveurs ? La version auto-hébergée débloque des fonctionnalités avancées réservées à l'installation interne — pour une souveraineté et une confidentialité totales de vos données.</div>
-    </div>
-  </div>
-</div>
-
-<!-- DEVIS -->
-<div class="devis-section" id="devis">
-  <div class="devis-inner">
-    <div class="devis-left">
-      <div class="eyebrow">Tarifs & Devis</div>
-      <h2 class="section-h">Obtenez un devis<br />sur mesure.</h2>
-      <p class="section-sub">Chaque organisation a un périmètre différent. Décrivez-nous votre contexte et on vous revient sous 24h avec une proposition adaptée.</p>
-
-      <div class="devis-points">
-        <div class="devis-point">Essai gratuit disponible sans CB</div>
-        <div class="devis-point">Plans SaaS à partir de 29€/mois</div>
-        <div class="devis-point">Licence on-premise disponible sur devis</div>
-        <div class="devis-point">Accompagnement à l'onboarding inclus</div>
-        <div class="devis-point">Support prioritaire inclus</div>
-        <div class="devis-point">Facturation partout dans le monde</div>
-      </div>
-    </div>
-
-    <div class="devis-form">
-      <div class="form-title">Demande de devis</div>
-
-      <div class="form-row">
-        <div class="form-group">
-          <label class="form-label">Prénom & Nom</label>
-          <input class="form-input" type="text" placeholder="Jean Dupont" />
+      <div class="scard" style="opacity:.75">
+        <div class="scard-icon"><svg viewBox="0 0 24 24" fill="none" stroke="#A1A1AA" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg></div>
+        <div class="scard-title">Outil #3 <span style="font-size:.6rem;font-weight:600;color:var(--muted);background:var(--surface);border:1px solid var(--border);padding:.12rem .5rem;border-radius:100px;vertical-align:middle;margin-left:.4rem;text-transform:uppercase;letter-spacing:.04em">Bientôt</span></div>
+        <div class="scard-desc">Un troisième produit est en cours de conception. Notre roadmap SaaS s'étoffe pour couvrir encore plus de besoins IT des entreprises.</div>
+        <div class="tag-row">
+          <span class="stag">À venir</span>
+          <span class="stag stag-sky">Automatisation</span>
         </div>
-        <div class="form-group">
-          <label class="form-label">Société</label>
-          <input class="form-input" type="text" placeholder="Acme Corp" />
-        </div>
+        <a href="index.html#contact" style="display:inline-flex;align-items:center;gap:.4rem;font-size:.85rem;font-weight:600;color:var(--violet);text-decoration:none;margin-top:1.35rem">Être notifié →</a>
       </div>
+    </div>
 
-      <div class="form-group">
-        <label class="form-label">Email professionnel</label>
-        <input class="form-input" type="email" placeholder="jean@acme.fr" />
-      </div>
-
-      <div class="form-group">
-        <label class="form-label">Ce qui vous intéresse</label>
-        <select class="form-select">
-          <option value="" disabled selected>Choisir...</option>
-          <option>VigiCVE SaaS (cloud)</option>
-          <option>VigiCVE On-premise</option>
-          <option>Audit de sécurité</option>
-          <option>Infogérance & Cybersécurité</option>
-          <option>Campagne de phishing interne</option>
-          <option>Plusieurs services</option>
-        </select>
-      </div>
-
-      <div class="form-group">
-        <label class="form-label">Votre contexte (optionnel)</label>
-        <textarea class="form-textarea" placeholder="Taille de votre parc, besoins spécifiques, délai..."></textarea>
-      </div>
-
-      <button class="form-submit" onclick="handleSubmit(event)">Envoyer la demande →</button>
-      <div class="form-note" id="form-msg">Réponse sous 24h · Sans engagement</div>
-
-      <div class="or-divider">
-        <div class="or-line"></div>
-        <div class="or-text">ou</div>
-        <div class="or-line"></div>
-      </div>
-
-      <a href="https://vigi-cve.com" target="_blank" class="btn-site">
-        Essayer VigiCVE gratuitement ↗
-      </a>
+    <div style="margin-top:3rem;text-align:center;border-top:1px solid var(--border);padding-top:3rem">
+      <p class="section-sub" style="margin:0 auto 1.25rem">Une question sur nos solutions ? Parlons-en.</p>
+      <a href="index.html#contact" class="btn-g" style="display:inline-block">Nous contacter →</a>
     </div>
   </div>
 </div>
@@ -640,7 +418,7 @@
       <a href="index.html">Accueil</a>
       <a href="services.html">Services</a>
       <a href="cours.html">Cours</a>
-      <a href="index.html#solutions">Solutions</a>
+      <a href="solutions.html">Solutions</a>
       <a href="a-propos.html">À propos</a>
     </div>
     <div class="footer-col">
@@ -648,7 +426,7 @@
       <a href="services.html">Audit de sécurité</a>
       <a href="services.html">Infogérance & cybersécurité</a>
       <a href="services.html">Phishing & formation</a>
-      <a href="solutions.html">VigiCVE</a>
+      <a href="vigicve.html">VigiCVE</a>
     </div>
     <div class="footer-col">
       <h4>Contact</h4>
@@ -666,28 +444,6 @@
     </div>
   </div>
 </footer>
-
-<script>
-  function handleSubmit(e) {
-    e.preventDefault();
-    const btn = e.target;
-    btn.textContent = 'Envoi en cours...';
-    btn.style.opacity = '.6';
-    setTimeout(() => {
-      btn.textContent = '✓ Demande envoyée';
-      btn.style.background = 'linear-gradient(135deg,#059669,#10B981)';
-      btn.style.opacity = '1';
-      document.getElementById('form-msg').textContent = 'On vous répond sous 24h !';
-    }, 1200);
-    // TODO: connecter à un vrai endpoint (email ou Supabase)
-    const email = document.querySelector('input[type="email"]').value;
-    const subject = encodeURIComponent('Demande de devis VigiCVE / IT-CoreOPS');
-    const body = encodeURIComponent('Bonjour,\n\nJe souhaite obtenir un devis pour VigiCVE.\n\nCordialement');
-    setTimeout(() => {
-      window.location.href = `mailto:nabil.yagoubi@it-coreops.com?subject=${subject}&body=${body}`;
-    }, 1400);
-  }
-</script>
 
 
 <script src="anim.js?v=4" defer></script>
