@@ -300,6 +300,11 @@
     .demo-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-top: 1rem; }
     @media (max-width: 720px) { .demo-grid { grid-template-columns: 1fr; } }
 
+    /* Lecteur vidéo intégré */
+    .video-embed { position: relative; width: 100%; padding-bottom: 56.25%; background: #000; border-radius: 16px; overflow: hidden; box-shadow: 0 20px 50px rgba(0,0,0,.15); }
+    .video-embed iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+    .video-cap { margin-top: .9rem; font-size: .85rem; color: var(--muted); font-weight: 500; text-align: center; }
+
     /* ─── FEATURES ─── */
     .features { max-width: 1120px; margin: 0 auto; padding: 6rem 2.5rem; }
     .features-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; }
@@ -567,26 +572,23 @@
     <p class="section-sub" style="margin-inline:auto">Deux versions, deux démos : la version SaaS publique et la version on-premise auto-hébergée.</p>
 
     <div class="demo-grid">
-      <div class="video-placeholder">
-        <div class="video-placeholder-inner">
-          <div class="play-btn">
-            <div class="play-icon"></div>
-          </div>
-          <div class="video-label">
-            <strong>Démo — Version SaaS (public)</strong>
-            Vidéo bientôt disponible
-          </div>
+      <div>
+        <div class="video-embed">
+          <iframe src="https://www.youtube-nocookie.com/embed/9nV7QAg00o4?rel=0" title="Démo VigiCVE — Version SaaS (public)" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
         </div>
+        <div class="video-cap">Démo — Version SaaS (public)</div>
       </div>
 
-      <div class="video-placeholder">
-        <div class="video-placeholder-inner">
-          <div class="play-btn">
-            <div class="play-icon"></div>
-          </div>
-          <div class="video-label">
-            <strong>Démo — Version On-premise</strong>
-            Vidéo bientôt disponible
+      <div>
+        <div class="video-placeholder">
+          <div class="video-placeholder-inner">
+            <div class="play-btn">
+              <div class="play-icon"></div>
+            </div>
+            <div class="video-label">
+              <strong>Démo — Version On-premise</strong>
+              Vidéo bientôt disponible
+            </div>
           </div>
         </div>
       </div>
