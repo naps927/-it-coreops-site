@@ -327,6 +327,13 @@
     }
   </style>
   <link rel="stylesheet" href="ui.css?v=4" />
+  <style>
+    .about-intro { display:grid; grid-template-columns:1.55fr 1fr; gap:3rem; align-items:center; margin-bottom:.5rem; }
+    .about-mascot { display:flex; justify-content:center; }
+    .about-mascot-frame { background:var(--white); border:1.5px solid var(--border); border-radius:22px; padding:1.75rem; box-shadow:0 14px 34px rgba(0,0,0,.06); }
+    .about-mascot img { image-rendering:pixelated; width:196px; height:auto; display:block; }
+    @media (max-width:760px) { .about-intro { grid-template-columns:1fr; gap:2rem; } .about-mascot { order:-1; } }
+  </style>
 </head>
 <body>
 
@@ -345,11 +352,20 @@
 
 <div class="services-bg" id="apropos" style="padding-top:5rem;min-height:calc(100vh - 200px)">
   <div class="section">
-    <div class="eyebrow">À propos de nous</div>
-    <h1 class="section-h">On sécurise et on accompagne,<br/>avec proximité.</h1>
-    <p class="section-sub">
-      IT-CoreOPS est une société spécialisée en cybersécurité et en accompagnement informatique. Notre métier : aider les entreprises à sécuriser, gérer et faire évoluer leur système d'information, sans jargon, sans surenchère, avec un vrai suivi humain.
-    </p>
+    <div class="about-intro">
+      <div>
+        <div class="eyebrow">À propos de nous</div>
+        <h1 class="section-h">On sécurise et on accompagne,<br/>avec proximité.</h1>
+        <p class="section-sub" style="margin-bottom:0">
+          IT-CoreOPS est une société spécialisée en cybersécurité et en accompagnement informatique. Notre métier : aider les entreprises à sécuriser, gérer et faire évoluer leur système d'information, sans jargon, sans surenchère, avec un vrai suivi humain.
+        </p>
+      </div>
+      <div class="about-mascot">
+        <div class="about-mascot-frame">
+          <img src="mascotte.png" alt="Illustration IT-CoreOPS — votre interlocuteur IT" width="196" />
+        </div>
+      </div>
+    </div>
 
     <div class="services-grid">
       <div class="scard">
